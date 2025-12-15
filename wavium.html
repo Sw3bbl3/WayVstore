@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="assets/css/app.css" />
   </head>
 
-  <body class="bg-[#F5F5F7] text-[#1D1D1F] antialiased">
+  <body class="page-shell bg-[#F5F5F7] text-[#1D1D1F]">
     <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md"></div>
 
-    <main class="pt-20 pb-32 px-4 sm:px-6">
+    <main class="page-fade">
       
-      <section class="mx-auto max-w-[1000px] text-center mb-20">
+      <section class="pt-32 pb-20 text-center px-6">
         <div class="flex flex-col items-center">
-          <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="h-24 w-24 mb-8" />
+          <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="h-44 w-44 mb-5" />
           
           <div class="inline-block mb-6">
              <span class="px-3 py-1 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-wider text-orange-500">
@@ -24,7 +24,7 @@
              </span>
           </div>
 
-          <h1 class="text-6xl md:text-8xl font-semibold tracking-tighter mb-6 text-[#1D1D1F]">
+          <h1 class="text-6xl md:text-8xl font-semibold tracking-tighter text-[#1D1D1F] mb-6">
             Wavium Interactive.
           </h1>
           
@@ -34,15 +34,15 @@
         </div>
       </section>
 
-      <section class="mx-auto max-w-[1100px]">
+      <section class="mx-auto max-w-[1000px] px-6 pb-32">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <div class="md:col-span-2 rounded-[40px] bg-white p-10 md:p-14 relative overflow-hidden group hover-scale shadow-sm border border-slate-100">
-            <div class="relative z-10 flex flex-col h-full justify-between min-h-[300px]">
+          <div class="md:col-span-2 bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[400px] relative overflow-hidden group hover-scale">
+            <div class="relative z-10 flex flex-col h-full justify-between">
               <div>
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">First Title</span>
-                <h3 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4">Shape Shooter.</h3>
-                <p class="text-xl text-slate-500 font-medium max-w-md">
+                <h3 class="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Shape Shooter.</h3>
+                <p class="text-lg text-slate-500 font-medium max-w-md">
                   We are currently developing our first video game. A fast-paced arcade experience built to test the limits of our engine.
                 </p>
               </div>
@@ -52,50 +52,39 @@
                 </span>
               </div>
             </div>
-            <div class="absolute right-[-50px] bottom-[-50px] w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+            <div class="absolute right-[-40px] bottom-[-40px] w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
           </div>
 
-          <div class="rounded-[40px] bg-white p-10 relative overflow-hidden group hover-scale shadow-sm border border-slate-100 md:row-span-2 flex flex-col cursor-pointer" onclick="window.location='/news.html'">
-            <div class="mb-auto">
+          <div onclick="window.location='/news.html'" class="bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 flex flex-col justify-between md:row-span-2 cursor-pointer group hover-scale">
+            <div>
               <span class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 block">Dev Logs</span>
               <h3 class="text-3xl font-semibold tracking-tight mb-3">Follow the build.</h3>
-              <p class="text-slate-500 font-medium leading-relaxed">
-                Since we are in the very early stages, all progress updates, engine milestones, and "Shape Shooter" previews are posted to our News section.
+              <p class="text-lg text-slate-500 font-medium">
+                Since we are in early stages, all progress updates and "Shape Shooter" previews are posted to our News section.
               </p>
             </div>
             
-            <div class="mt-12 bg-[#F5F5F7] rounded-3xl p-6">
-               <div class="flex items-center gap-3 mb-2">
-                 <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                 <p class="text-xs font-bold text-slate-500 uppercase">Latest Status</p>
-               </div>
-               <p class="text-sm font-semibold text-[#1D1D1F]">
-                 "Wave Engine physics prototype operational. Shape Shooter level 1 greyboxing started."
-               </p>
-            </div>
-
             <div class="mt-8">
-               <span class="text-blue-600 font-semibold flex items-center gap-2">
+               <span class="text-blue-600 font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
                  Go to News <span class="text-xl">→</span>
                </span>
             </div>
           </div>
 
-          <div class="rounded-[40px] bg-white p-10 relative overflow-hidden group hover-scale shadow-sm border border-slate-100">
+          <div class="bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 group hover-scale">
              <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">Technology</span>
-             <h3 class="text-2xl font-semibold tracking-tight mb-2">Wave Engine.</h3>
-             <p class="text-slate-500 font-medium text-sm mb-6">
-               A proprietary engine built from scratch for high-fidelity 2D and 3D rendering.
+             <h3 class="text-xl font-semibold tracking-tight mb-2">Wave Engine.</h3>
+             <p class="text-slate-500 font-medium text-sm mb-4">
+               A proprietary engine built from scratch for high-fidelity rendering.
              </p>
              <div class="flex gap-2">
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">C++</span>
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">Vulkan</span>
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">ECS</span>
+                <span class="px-2 py-1 bg-slate-50 text-slate-600 rounded-md text-[10px] font-bold uppercase border border-slate-100">C++</span>
+                <span class="px-2 py-1 bg-slate-50 text-slate-600 rounded-md text-[10px] font-bold uppercase border border-slate-100">Vulkan</span>
              </div>
           </div>
 
-          <a href="mailto:wayvsoftware@gmail.com" class="rounded-[40px] bg-black text-white p-10 relative overflow-hidden group hover-scale shadow-sm flex flex-col justify-center text-center">
-             <h3 class="text-2xl font-semibold tracking-tight mb-2">Join the journey.</h3>
+          <a href="mailto:wayvsoftware@gmail.com" class="bg-black text-white rounded-[32px] p-10 shadow-sm border border-slate-900 group hover-scale flex flex-col justify-center text-center">
+             <h3 class="text-xl font-semibold tracking-tight mb-2">Join the journey.</h3>
              <p class="text-gray-400 font-medium text-sm">
                Email us to learn more about our roadmap.
              </p>
@@ -107,7 +96,8 @@
     </main>
 
     <div data-include="partials/footer.html"></div>
+    <script src="assets/js/page-animations.js" defer></script>
     <script src="assets/js/includes.js"></script>
-    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/navigation.js" defer></script>
   </body>
 </html>

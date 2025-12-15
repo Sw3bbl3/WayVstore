@@ -9,55 +9,98 @@
     <link rel="stylesheet" href="assets/css/app.css" />
   </head>
 
-  <body class="page-shell bg-white text-[#1D1D1F]">
-    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur"></div>
+  <body class="page-shell bg-[#F5F5F7] text-[#1D1D1F]">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md"></div>
 
-    <main class="page-fade pt-20">
+    <main class="page-fade">
       
-      <section class="max-w-[1100px] mx-auto text-center px-6 mb-20">
-        <div class="mb-6 inline-block">
-          <span class="px-3 py-1 rounded-full border border-slate-200 text-xs font-semibold tracking-wide text-slate-500">OPERATING SYSTEM</span>
-        </div>
-        <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-6">
-          Fluidity first.
-        </h1>
-        <p class="text-2xl text-slate-500 font-medium tracking-tight max-w-2xl mx-auto">
-          An OS designed to disappear.
-        </p>
-      </section>
-
-      <section class="max-w-[1200px] mx-auto px-6 mb-24">
-        <div class="bg-slate-50 rounded-[40px] border border-slate-100 overflow-hidden aspect-video relative">
-          <img src="assets/images/waveos-logo-rectangle.svg" alt="WaveOS" class="absolute inset-0 w-full h-full object-cover">
-        </div>
-      </section>
-
-      <section class="bg-[#F5F5F7] py-24 px-6">
-        <div class="max-w-[1000px] mx-auto">
-          <h2 class="text-3xl font-semibold tracking-tight mb-6">Development Status.</h2>
-
-          <p class="text-2xl font-medium text-slate-500 leading-tight max-w-2xl mb-16">
-            We are currently in the early stages of development. We are heads-down building the foundation and will share more details as we reach key milestones.
-          </p>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-            
-            <div class="border-t border-slate-300 pt-6">
-              <h3 class="text-lg font-semibold mb-2">Current Phase</h3>
-              <p class="text-slate-500 font-medium leading-snug">Prototyping & Core Architecture.</p>
-            </div>
-
-            <div class="border-t border-slate-300 pt-6">
-              <h3 class="text-lg font-semibold mb-2">Updates</h3>
-              <p class="text-slate-500 font-medium leading-snug">More information will be revealed in the near future.</p>
-            </div>
-
-            <div class="border-t border-slate-300 pt-6">
-              <h3 class="text-lg font-semibold mb-2">Availability</h3>
-              <p class="text-slate-500 font-medium leading-snug">Release timeline to be announced.</p>
-            </div>
-
+      <section class="pt-32 pb-20 text-center px-6">
+        <div class="flex flex-col items-center">
+          <img src="assets/images/waveos-logo-rectangle.svg" alt="WaveOS Logo" class="h-40 w-auto mb-8" />
+          
+          <div class="inline-block mb-6">
+             <span class="px-3 py-1 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-wider text-blue-500">
+               Prototype Phase
+             </span>
           </div>
+
+          <h1 class="text-6xl md:text-8xl font-semibold tracking-tighter text-[#1D1D1F] mb-6">
+            Fast. Local. Intelligent.
+          </h1>
+          
+          <p class="text-2xl md:text-3xl font-medium text-slate-5.00 tracking-tight max-w-2xl mx-auto">
+            An operating system designed for local intelligence
+          </p>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-[1000px] px-6 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="md:col-span-2 bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[400px] relative overflow-hidden group hover-scale">
+            <div class="relative z-10 flex flex-col h-full justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">Philosophy</span>
+                <h3 class="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Fluidity first.</h3>
+                <p class="text-lg text-slate-500 font-medium max-w-md">
+                  We are building a kernel that prioritizes motion and local intelligence over cloud dependency. No loading spinners. No latency.
+                </p>
+              </div>
+              <div class="mt-8">
+                <span class="inline-flex items-center gap-2 bg-black text-white px-5 py-2 rounded-full text-sm font-semibold">
+                  Core Development
+                </span>
+              </div>
+            </div>
+            <div class="absolute right-[-40px] bottom-[-40px] w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+          </div>
+
+          <div onclick="window.location='/news.html'" class="bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 flex flex-col justify-between md:row-span-2 cursor-pointer group hover-scale">
+            <div>
+              <span class="text-xs font-bold text-purple-500 uppercase tracking-widest mb-3 block">Dev Logs</span>
+              <h3 class="text-3xl font-semibold tracking-tight mb-3">Follow the build.</h3>
+              <p class="text-lg text-slate-500 font-medium">
+                Bootloader status, kernel updates, and early AI prototypes are posted to our News section.
+              </p>
+            </div>
+            
+            <div class="mt-8 bg-[#F5F5F7] rounded-3xl p-6">
+               <div class="flex items-center gap-3 mb-2">
+                 <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                 <p class="text-xs font-bold text-slate-500 uppercase">Current Focus</p>
+               </div>
+               <p class="text-sm font-semibold text-[#1D1D1F]">
+                 "Kernel resource management and basic local LLM inference tests."
+               </p>
+            </div>
+
+            <div class="mt-8">
+               <span class="text-blue-600 font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                 Go to News <span class="text-xl">→</span>
+               </span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 group hover-scale">
+             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">Under the hood</span>
+             <h3 class="text-xl font-semibold tracking-tight mb-2">System Status.</h3>
+             <p class="text-slate-500 font-medium text-sm mb-4">
+               Building from the metal up.
+             </p>
+             <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-green-50 text-green-700 rounded-md text-[10px] font-bold uppercase border border-green-100">Bootloader: Active</span>
+                <span class="px-2 py-1 bg-yellow-50 text-yellow-700 rounded-md text-[10px] font-bold uppercase border border-yellow-100">Kernel: Basic</span>
+                <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded-md text-[10px] font-bold uppercase border border-purple-100">AI: Prototype</span>
+             </div>
+          </div>
+
+          <a href="mailto:wayvsoftware@gmail.com" class="bg-black text-white rounded-[32px] p-10 shadow-sm border border-slate-900 group hover-scale flex flex-col justify-center text-center">
+             <h3 class="text-xl font-semibold tracking-tight mb-2">Join the journey.</h3>
+             <p class="text-gray-400 font-medium text-sm">
+               Email us to learn more about our roadmap.
+             </p>
+          </a>
+
         </div>
       </section>
 
