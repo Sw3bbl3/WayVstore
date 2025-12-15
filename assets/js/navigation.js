@@ -1,7 +1,9 @@
 (function () {
+  // 1. Toggle Logic
   const toggleMenu = (header, button, menu) => {
     let isOpen = false;
 
+    // Helper: Collapse the menu
     const collapseMenu = () => {
       const closeEnd = (event) => {
         if (event.target !== menu || event.propertyName !== 'max-height') return;
@@ -10,7 +12,8 @@
       };
 
       menu.setAttribute('aria-hidden', 'true');
-
+      
+      // Set height explicitly so transition can work
       const currentHeight = menu.scrollHeight;
       menu.style.maxHeight = `${currentHeight}px`;
 
@@ -22,10 +25,11 @@
       menu.addEventListener('transitionend', closeEnd);
     };
 
+    // Helper: Expand the menu
     const expandMenu = () => {
       const openEnd = (event) => {
         if (event.target !== menu || event.propertyName !== 'max-height') return;
-        menu.style.maxHeight = 'none';
+        menu.style.maxHeight = 'none'; // Remove limit after animation
         menu.removeEventListener('transitionend', openEnd);
       };
 
@@ -40,6 +44,7 @@
       menu.addEventListener('transitionend', openEnd);
     };
 
+    // Helper: Set State
     const setState = (nextIsOpen, options = { instant: false }) => {
       if (!menu || (nextIsOpen === isOpen && !options.instant)) return;
 
@@ -71,27 +76,33 @@
       isOpen = nextIsOpen;
     };
 
+    // Initial state
     setState(false, { instant: true });
 
+    // Click Listener (Button)
     button.addEventListener('click', (event) => {
       event.stopPropagation();
       setState(!isOpen);
     });
 
+    // Click Listener (Outside)
     document.addEventListener('click', (event) => {
       if (!header.contains(event.target)) {
         setState(false);
       }
     });
 
+    // Resize Listener (Auto-close on Desktop)
     window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setState(false, { instant: true });
       }
     });
   };
 
+  // 2. Initialization
   const initNavigation = () => {
+    // A. Highlight Active Link
     const normalizePath = (path) => {
       if (!path) return '/';
       return path.replace(/\/$/, '/').replace(/\/index\.html$/, '/');
@@ -100,17 +111,13 @@
     const currentPath = normalizePath(window.location.pathname);
 
     document.querySelectorAll('[data-nav-link]').forEach((link) => {
-      const baseColor = link.dataset.baseColor;
       const linkPath = normalizePath(new URL(link.getAttribute('href'), window.location.origin).pathname);
-
       if (linkPath === currentPath) {
-        if (baseColor) {
-          link.classList.remove(baseColor);
-        }
-        link.classList.add('text-slate-900');
+        link.classList.add('text-[#0071E3]'); // Active Color
       }
     });
 
+    // B. Bind Menu Toggles
     document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
       const header = button.closest('header');
       const menu = header?.querySelector('[data-mobile-menu]');
@@ -120,6 +127,7 @@
     });
   };
 
+  // 3. Run
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNavigation);
   } else {
