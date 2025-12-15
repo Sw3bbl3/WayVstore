@@ -1,242 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="WayV builds calm, privacy-first tools like WaveOS and TapMood to help you think faster without noise."
-    />
-    <title>WayV | Think Faster</title>
+    <title>WayV</title>
     <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
-
-    <link rel="canonical" href="https://wayvstore.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="WayV | Think Faster" />
-    <meta
-      property="og:description"
-      content="WayV builds calm, privacy-first tools like WaveOS and TapMood to help you think faster without noise."
-    />
-    <meta property="og:image" content="https://wayvstore.com/assets/images/wayv-logo.svg" />
-    <meta property="og:url" content="https://wayvstore.com/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="WayV | Think Faster" />
-    <meta
-      name="twitter:description"
-      content="WayV builds calm, privacy-first tools like WaveOS and TapMood to help you think faster without noise."
-    />
-    <meta name="twitter:image" content="https://wayvstore.com/assets/images/wayv-logo.svg" />
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css" />
+    <style>
+      /* Apple-like font smoothing */
+      body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      .glass-card { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); }
+      .hover-scale { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+      .hover-scale:hover { transform: scale(1.02); }
+    </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
-    <!-- TOP BAR -->
-    <div data-include="partials/header.html"></div>
+  <body class="bg-[#F5F5F7] text-[#1D1D1F]">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300"></div>
 
-    <main class="pt-28" style="background: linear-gradient(180deg, #ffffff, #fbfbfc 38%, #ffffff 100%);">
-      <!-- TAPMOOD HERO (SIMPLE, SMALL PHONE, MINIMAL TEXT) -->
-      <section class="px-6">
-        <div class="mx-auto max-w-[1240px] tm-hero-shell interactive-panel hover-lift">
-          <div class="tm-hero-grain"></div>
-          <div class="tm-shine"></div>
-
-          <div class="tm-hero-inner">
-            <div class="grid gap-10 md:gap-12 md:grid-cols-12 md:items-center justify-items-center">
-              <!-- LEFT: COPY -->
-              <div class="md:col-span-7 lg:col-span-6 text-center md:text-left">
-                <p class="tm-enter tm-enter-1 text-lg md:text-xl font-semibold text-slate-900">TapMood</p>
-
-                <h1 class="tm-enter tm-enter-2 mt-3 text-[40px] leading-[1.04] md:text-[56px] font-semibold tracking-tight text-slate-900">
-                  Capture every moment.
-                </h1>
-
-                <p class="tm-enter tm-enter-3 mt-3 text-[15px] md:text-[17px] text-slate-600 leading-relaxed">
-                  Calm, private mood tracking.
-                </p>
-
-                <div class="tm-enter tm-enter-3 mt-6 flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-3">
-                  <a
-                    href="/tapmood.html"
-                    class="btn-wayv inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold transition"
-                  >
-                    Learn more
-                  </a>
-                  <a
-                    href="https://testflight.apple.com/join/CjqYMZ4J"
-                    class="btn-wayv-outline inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold transition"
-                  >
-                    Join the beta
-                  </a>
-                </div>
-              </div>
-
-              <!-- RIGHT: VISUAL -->
-              <div class="md:col-span-5 lg:col-span-6 flex justify-center md:justify-end">
-                <div class="tm-phone-stage tm-enter-phone">
-                  <img
-                    src="assets/images/tapmood-visual.svg"
-                    alt="TapMood on iPhone"
-                    class="block w-full drop-shadow-[0_24px_55px_rgba(0,0,0,0.16)]"
-                  />
-                </div>
-              </div>
-            </div>
+    <main class="pt-10 pb-32 px-4 sm:px-6">
+      
+      <section class="mx-auto max-w-[1200px] mb-6">
+        <div class="relative overflow-hidden rounded-[40px] bg-white h-[80vh] min-h-[600px] flex flex-col items-center justify-start pt-16 md:pt-20 text-center shadow-sm hover-scale cursor-default">
+          <h2 class="text-xl font-semibold text-orange-500 mb-2">TapMood</h2>
+          <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-4 text-[#1D1D1F] leading-tight">
+            Master your calm.
+          </h1>
+          <p class="text-2xl font-medium text-slate-500 mb-8 tracking-tight max-w-lg mx-auto">
+            Private mood tracking with on-device insights.
+          </p>
+          
+          <div class="flex gap-4 z-10 relative">
+            <a href="/tapmood.html" class="bg-[#0071E3] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#0077ED] transition">Learn more</a>
+            <a href="https://testflight.apple.com/join/CjqYMZ4J" class="text-[#0071E3] px-6 py-2 rounded-full font-medium text-sm border border-[#0071E3] hover:bg-[#0071E3] hover:text-white transition">Try the Beta</a>
           </div>
 
-          <div
-            class="pointer-events-none absolute inset-x-0 bottom-0 h-10"
-            style="background: linear-gradient(180deg, transparent, rgba(255,255,255,0.9));"
-          ></div>
-        </div>
-      </section>
-
-      <!-- THINK FASTER STATEMENT -->
-      <section class="site-section">
-        <div class="section-shell">
-          <div class="halo-card interactive-panel hover-lift">
-            <div class="halo-card__content grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
-              <div class="space-y-6">
-                <span class="badge">Built for calm speed</span>
-                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight">
-                  Think faster. Feel lighter.
-                </h2>
-                <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
-                  WayV is a studio for people who value quiet craft. We build tools that move like flagship devices:
-                  intentional motion, privacy by default, and polish you can feel.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                  <a href="/waveos.html" class="nav-cta">Discover WaveOS</a>
-                  <a
-                    href="/company.html"
-                    class="inline-flex items-center justify-center rounded-full border border-slate-300/90 bg-white/70 px-7 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
-                  >
-                    Meet the team
-                  </a>
-                </div>
-              </div>
-
-              <div class="grid-lux two text-sm text-slate-700">
-                <div class="soft-tile">
-                  <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Signal</p>
-                  <p class="mt-2 text-lg font-semibold text-slate-900">Interfaces that whisper</p>
-                  <p class="mt-2 text-slate-600">Subtle haptics, high-contrast typography, and motion that guides instead of shouting.</p>
-                </div>
-                <div class="soft-tile">
-                  <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Privacy</p>
-                  <p class="mt-2 text-lg font-semibold text-slate-900">Yours stays yours</p>
-                  <p class="mt-2 text-slate-600">On-device intelligence with transparent controls for every signal and insight.</p>
-                </div>
-                <div class="soft-tile">
-                  <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Support</p>
-                  <p class="mt-2 text-lg font-semibold text-slate-900">Real humans</p>
-                  <p class="mt-2 text-slate-600">Direct channels to the builders, fast updates, and release notes written with care.</p>
-                </div>
-                <div class="soft-tile">
-                  <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Craft</p>
-                  <p class="mt-2 text-lg font-semibold text-slate-900">Hardware-level polish</p>
-                  <p class="mt-2 text-slate-600">Precision spacing, layered light, and tactile feedback inspired by Apple and Samsung flagships.</p>
-                </div>
-              </div>
-            </div>
+          <div class="mt-12 w-full max-w-[380px] md:max-w-[420px]">
+             <img src="assets/images/tapmood-visual.svg" alt="TapMood App" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" />
           </div>
         </div>
       </section>
 
-      <!-- WAYV PHILOSOPHY -->
-      <section class="site-section">
-        <div class="section-shell">
-          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div class="halo-card hover-lift">
-              <div class="halo-card__content space-y-6">
-                <span class="badge">WayV Philosophy</span>
-                <h3 class="text-3xl md:text-4xl font-semibold text-slate-900">Technology should feel human.</h3>
-                <p class="text-lg text-slate-600 leading-relaxed">
-                  We design with generosity: breathing room, tactile response, and privacy that is never an afterthought.
-                  Every surface is tuned to feel like a calm flagship experience.
-                </p>
-                <div class="grid-lux three">
-                  <div class="soft-tile">
-                    <p class="text-sm font-semibold text-slate-900">Calm focus</p>
-                    <p class="mt-2 text-slate-600">Motion that guides you, not distracts you. Space that lets your work breathe.</p>
-                  </div>
-                  <div class="soft-tile">
-                    <p class="text-sm font-semibold text-slate-900">Private intelligence</p>
-                    <p class="mt-2 text-slate-600">On-device insights with explicit controls, so you always know what is happening.</p>
-                  </div>
-                  <div class="soft-tile">
-                    <p class="text-sm font-semibold text-slate-900">Thoughtful support</p>
-                    <p class="mt-2 text-slate-600">Builders on the other side of your email, shipping steady, calm releases.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section class="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-6 mb-6">
+        
+        <div class="relative overflow-hidden rounded-[40px] bg-white p-12 h-[580px] flex flex-col items-center justify-center text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/waveos.html'">
+          
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-white pointer-events-none"></div>
 
-            <div class="grid-lux two">
-              <div class="soft-card rounded-[28px] p-7 text-left">
-                <div class="flex items-center gap-3">
-                  <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white text-sm font-semibold">01</span>
-                  <p class="text-lg font-semibold">Flagship feel</p>
-                </div>
-                <p class="mt-3 text-sm text-slate-600 leading-relaxed">Layered gradients, light, and shadow crafted to feel like glass and metal.</p>
-              </div>
-
-              <div class="soft-card rounded-[28px] p-7 text-left">
-                <div class="flex items-center gap-3">
-                  <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white text-sm font-semibold">02</span>
-                  <p class="text-lg font-semibold">Instant clarity</p>
-                </div>
-                <p class="mt-3 text-sm text-slate-600 leading-relaxed">Copy, typography, and iconography tuned for readability on every screen size.</p>
-              </div>
-
-              <div class="soft-card rounded-[28px] p-7 text-left">
-                <div class="flex items-center gap-3">
-                  <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white text-sm font-semibold">03</span>
-                  <p class="text-lg font-semibold">Sonic calm</p>
-                </div>
-                <p class="mt-3 text-sm text-slate-600 leading-relaxed">Tone set for peace: supportive wording, clear calls to action, no noise.</p>
-              </div>
+          <div class="relative z-10 flex flex-col items-center">
+            <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="h-14 w-auto mb-6 object-contain" />
+            
+            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] mb-3">WaveOS</h2>
+            <p class="text-xl text-slate-500 font-medium max-w-xs">Think faster.</p>
+            
+            <div class="mt-8">
+              <span class="bg-[#0071E3] text-white px-6 py-2.5 rounded-full font-medium text-sm group-hover:bg-[#0077ED] transition">Learn more</span>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- PRODUCTS -->
-      <section class="site-section pb-32">
-        <div class="section-shell">
-          <div class="text-center space-y-3 pb-12">
-            <p class="badge">Built by WayV</p>
-            <h3 class="text-3xl md:text-4xl font-semibold text-slate-900">A family of focused tools</h3>
-            <p class="text-lg text-slate-600">Each product is crafted with the same attention to restraint, polish, and performance.</p>
+        <div class="relative overflow-hidden rounded-[40px] bg-black p-12 h-[580px] flex flex-col items-center justify-center text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/wavium.html'">
+          
+          <div class="relative z-10 flex flex-col items-center">
+            <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="h-20 w-20 mb-6 object-contain brightness-0 invert" />
+            
+            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-3">Wavium</h2>
+            <p class="text-xl text-gray-400 font-medium">Worlds, unlocked.</p>
+            
+            <div class="mt-8">
+              <span class="text-white border border-white/30 px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white hover:text-black transition">Visit the studio</span>
+            </div>
           </div>
-
-          <div class="grid gap-8 lg:grid-cols-2">
-            <a href="/waveos.html" class="group block rounded-[28px] overflow-hidden halo-card text-white">
-              <div class="relative p-10" style="background: linear-gradient(140deg, rgba(15,23,42,0.9), rgba(79,70,229,0.9));">
-                <div class="absolute inset-0 opacity-60" style="background: radial-gradient(980px 420px at 70% 24%, rgba(255,255,255,0.18), transparent 60%);"></div>
-                <div class="relative space-y-4">
-                  <img src="assets/images/waveos-logo.svg" alt="WaveOS" class="h-10" />
-                  <h4 class="text-2xl font-semibold">WaveOS</h4>
-                  <p class="text-slate-100/90 leading-relaxed max-w-md">An operating system tuned for clarity, motion, and intelligence that works locally, not loudly.</p>
-                  <p class="text-sm font-semibold text-white/90 group-hover:underline">Learn more →</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="/tapmood.html" class="group block rounded-[28px] overflow-hidden halo-card bg-white">
-              <div class="relative p-10" style="background: linear-gradient(180deg, #ffffff, #f7f8fb);">
-                <div class="absolute inset-0" style="background: radial-gradient(960px 360px at 24% 20%, rgba(0,0,0,0.03), transparent 60%), radial-gradient(920px 340px at 82% 74%, rgba(92,108,255,0.07), transparent 62%);"></div>
-                <div class="relative space-y-4">
-                  <img src="assets/images/tapmood-logo.svg" alt="TapMood" class="h-10" />
-                  <h4 class="text-2xl font-semibold text-slate-900">TapMood</h4>
-                  <p class="text-slate-600 leading-relaxed max-w-md">Mood tracking that feels like a guided ritual—calm prompts, tactile feedback, and insights that stay private.</p>
-                  <p class="text-sm font-semibold text-slate-900 group-hover:underline">Learn more →</p>
-                </div>
-              </div>
-            </a>
+          
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-[320px] h-[320px] rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-600 blur-[90px] opacity-40 group-hover:opacity-50 transition-opacity duration-700"></div>
           </div>
         </div>
+
       </section>
+
+      <section class="mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <a href="/company.html" class="block bg-white rounded-[32px] p-8 shadow-sm hover-scale transition group">
+          <div class="flex flex-col h-full justify-between min-h-[240px]">
+            <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Company</p>
+              <h3 class="text-2xl font-semibold text-[#1D1D1F] leading-tight">Developing the future.</h3>
+            </div>
+            <div class="flex justify-end">
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#0071E3] group-hover:text-white transition-colors">
+                <span class="text-xl">→</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/support.html" class="block bg-white rounded-[32px] p-8 shadow-sm hover-scale transition group">
+          <div class="flex flex-col h-full justify-between min-h-[240px]">
+             <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Support</p>
+              <h3 class="text-2xl font-semibold text-[#1D1D1F] leading-tight">Here to help.</h3>
+              <p class="mt-2 text-slate-500 text-sm">Get expert assistance for TapMood</p>
+            </div>
+             <div class="flex justify-end">
+               <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#0071E3] group-hover:text-white transition-colors">
+                <span class="text-xl">→</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/news.html" class="block bg-white rounded-[32px] p-8 shadow-sm hover-scale transition group">
+           <div class="flex flex-col h-full justify-between min-h-[240px]">
+            <div>
+              <p class="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">News & Updates</p>
+              <h3 class="text-2xl font-semibold text-[#1D1D1F] leading-tight">Latest builds.</h3>
+              <p class="mt-2 text-slate-500 text-sm">See what's new.</p>
+            </div>
+            <div class="flex justify-end">
+               <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#0071E3] group-hover:text-white transition-colors">
+                <span class="text-xl">→</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </section>
+
     </main>
 
     <div data-include="partials/footer.html"></div>
