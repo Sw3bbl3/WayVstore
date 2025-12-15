@@ -39,7 +39,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <div class="md:col-span-2 bg-white rounded-[32px] p-10 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[500px] relative overflow-hidden group hover-scale">
-            <div class="relative z-10">
+            <div class="relative z-20">
               <span class="text-xs font-bold text-teal-500 uppercase tracking-widest mb-3 block">Interface</span>
               <h3 class="text-3xl md:text-4xl font-semibold tracking-tight mb-3">Just swipe.</h3>
               <p class="text-lg text-slate-500 font-medium max-w-md">
@@ -47,10 +47,15 @@
               </p>
             </div>
             
-            <div class="mt-8 relative h-64 flex items-end justify-center">
-                <img src="assets/images/tapmood-visual.svg" alt="TapMood App Screen" class="relative z-10 h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:-translate-y-2">
+            <div class="mt-12 relative h-64 flex items-end justify-center gap-4">
                 
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+                <img src="assets/images/tapmood-visual-emotion.svg" alt="Emotion Selection" class="relative z-10 w-1/3 h-full object-contain drop-shadow-xl opacity-90 transition-transform duration-700 group-hover:-translate-y-2 group-hover:-rotate-3 origin-bottom-right">
+
+                <img src="assets/images/tapmood-visual.svg" alt="Home Screen" class="relative z-30 w-1/3 h-[110%] -mb-2 object-contain drop-shadow-2xl transition-transform duration-700 group-hover:-translate-y-4">
+
+                <img src="assets/images/tapmood-visual-journal.svg" alt="Journal View" class="relative z-10 w-1/3 h-full object-contain drop-shadow-xl opacity-90 transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-3 origin-bottom-left">
+                
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-50 rounded-full blur-3xl opacity-60 pointer-events-none z-0"></div>
             </div>
           </div>
 
@@ -86,6 +91,9 @@
           <a href="https://testflight.apple.com/join/CjqYMZ4J" class="bg-[#1D1D1F] text-white rounded-[32px] p-10 shadow-sm border border-slate-900 group hover-scale flex flex-col justify-center text-center relative overflow-hidden">
               <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-teal-500/10 to-transparent pointer-events-none"></div>
               <h3 class="text-xl font-semibold tracking-tight mb-2 relative z-10">Join the Beta.</h3>
+              <p class="text-gray-400 font-medium text-sm relative z-10">
+                 Available on TestFlight
+              </p>
           </a>
 
         </div>
