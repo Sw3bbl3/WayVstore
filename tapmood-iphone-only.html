@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TapMood Beta | iPhone Only</title>
+    <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+
+  <body class="bg-[#F5F5F7] text-[#1D1D1F]">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md"></div>
+
+    <main class="pt-28 pb-20 px-6">
+      <section class="max-w-3xl mx-auto text-center bg-white rounded-[32px] shadow-sm border border-slate-100 p-10">
+        <p class="text-sm font-semibold tracking-widest text-orange-500 uppercase mb-4">TapMood Beta</p>
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] mb-6">For iPhone users only</h1>
+        <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          Thanks for your interest in the TapMood beta. The current TestFlight build is available only on
+          iPhone. Please open this link from your iPhone to continue, or request access and we'll let you know
+          when other platforms are ready.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="mailto:wayvsoftware@gmail.com"
+            class="bg-[#1D1D1F] text-white px-6 py-3 rounded-full font-medium hover:bg-slate-800 transition"
+          >
+            Request Access
+          </a>
+          <a href="/" class="px-6 py-3 rounded-full font-medium border border-slate-200 hover:border-slate-300 transition">
+            Back to Home
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/navigation.js" defer></script>
+  </body>
+</html>
