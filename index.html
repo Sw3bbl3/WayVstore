@@ -22,7 +22,7 @@
     <main class="pt-10 pb-32 px-4 sm:px-6">
       
       <section class="mx-auto max-w-[1200px] mb-6">
-        <div class="relative overflow-hidden rounded-[40px] bg-white h-[80vh] min-h-[600px] flex flex-col items-center justify-start pt-16 md:pt-20 text-center shadow-sm hover-scale cursor-default">
+        <div class="relative overflow-hidden rounded-[40px] bg-white h-[80vh] min-h-[600px] flex flex-col items-center justify-start pt-16 md:pt-20 text-center shadow-sm hover-scale group cursor-default">
           <h2 class="text-xl font-semibold text-orange-500 mb-2">TapMood</h2>
           <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-4 text-[#1D1D1F] leading-tight">
             Master your calm.
@@ -37,44 +37,34 @@
           </div>
 
           <div class="mt-12 w-full max-w-[380px] md:max-w-[420px]">
-             <img src="assets/images/tapmood-visual.svg" alt="TapMood App" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]" />
+             <img src="assets/images/tapmood-visual.svg" alt="TapMood App" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-4" />
           </div>
         </div>
       </section>
 
       <section class="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-6 mb-6">
         
-        <div class="relative overflow-hidden rounded-[40px] bg-white p-12 h-[580px] flex flex-col items-center justify-center text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/waveos.html'">
+        <div class="relative overflow-hidden rounded-[40px] bg-white h-[580px] flex flex-col items-center justify-end pb-12 text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/waveos.html'">
           
-          <div class="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-white pointer-events-none"></div>
+          <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent pointer-events-none"></div>
 
-          <div class="relative z-10 flex flex-col items-center">
-            <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="h-14 w-auto mb-6 object-contain" />
-            
-            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] mb-3">WaveOS</h2>
-            <p class="text-xl text-slate-500 font-medium max-w-xs">Think faster.</p>
-            
-            <div class="mt-8">
-              <span class="bg-[#0071E3] text-white px-6 py-2.5 rounded-full font-medium text-sm group-hover:bg-[#0077ED] transition">Learn more</span>
-            </div>
+          <div class="relative z-10">
+            <span class="bg-[#0071E3] text-white px-6 py-2.5 rounded-full font-medium text-sm group-hover:bg-[#0077ED] transition shadow-lg">Learn more</span>
           </div>
         </div>
 
-        <div class="relative overflow-hidden rounded-[40px] bg-black p-12 h-[580px] flex flex-col items-center justify-center text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/wavium.html'">
+        <div class="relative overflow-hidden rounded-[40px] bg-black h-[580px] flex flex-col items-center justify-end pb-12 text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/wavium.html'">
           
-          <div class="relative z-10 flex flex-col items-center">
-            <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="h-20 w-20 mb-6 object-contain brightness-0 invert" />
-            
-            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-3">Wavium</h2>
-            <p class="text-xl text-gray-400 font-medium">Worlds, unlocked.</p>
-            
-            <div class="mt-8">
-              <span class="text-white border border-white/30 px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white hover:text-black transition">Visit the studio</span>
-            </div>
-          </div>
+          <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105 brightness-0 invert" />
           
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 mix-blend-overlay">
             <div class="w-[320px] h-[320px] rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-600 blur-[90px] opacity-40 group-hover:opacity-50 transition-opacity duration-700"></div>
+          </div>
+
+          <div class="relative z-20">
+            <span class="text-white border border-white/30 px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white hover:text-black transition backdrop-blur-md bg-black/20">Visit the studio</span>
           </div>
         </div>
 
