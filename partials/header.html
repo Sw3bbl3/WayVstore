@@ -6,7 +6,7 @@
         <span class="brand-wordmark">WayV</span>
       </a>
 
-      <nav class="nav-links" data-desktop-nav>
+      <nav class="nav-links hidden md:flex" data-desktop-nav>
         <a href="/" class="nav-link" data-nav-link>Home</a>
         <a href="/waveos.html" class="nav-link" data-nav-link>WaveOS</a>
         <a href="/tapmood.html" class="nav-link" data-nav-link>TapMood</a>
@@ -20,32 +20,35 @@
         <a href="https://testflight.apple.com/join/CjqYMZ4J" class="nav-cta nav-cta--ghost hidden md:inline-flex">Join Beta</a>
         
         <button
+          id="mobileMenuButton"
           type="button"
-          class="menu-toggle"
+          class="menu-toggle md:hidden"
           aria-expanded="false"
           aria-label="Toggle navigation menu"
           data-menu-toggle
         >
           <span class="sr-only">Toggle navigation menu</span>
-          <span aria-hidden="true" class="menu-toggle__bar"></span>
-          <span aria-hidden="true" class="menu-toggle__bar"></span>
-          <span aria-hidden="true" class="menu-toggle__bar"></span>
+          <div class="flex flex-col gap-1.5">
+            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
+            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
+            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
+          </div>
         </button>
       </div>
     </div>
 
-    <div class="nav-drawer" data-mobile-menu hidden>
-      <div class="nav-drawer__panel">
-        <nav class="nav-drawer__links">
-          <a href="/" class="nav-drawer__link" data-nav-link>Home</a>
-          <a href="/waveos.html" class="nav-drawer__link" data-nav-link>WaveOS</a>
-          <a href="/tapmood.html" class="nav-drawer__link" data-nav-link>TapMood</a>
-          <a href="/wavium.html" class="nav-drawer__link" data-nav-link>Wavium Interactive</a>
-          <a href="/news.html" class="nav-drawer__link" data-nav-link>News &amp; Updates</a>
-          <a href="/company.html" class="nav-drawer__link" data-nav-link>Company</a>
-          <a href="/support.html" class="nav-drawer__link" data-nav-link>Support</a>
+    <div id="mobileDrawer" class="nav-drawer hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-200 p-6 shadow-lg z-50" data-mobile-menu>
+      <div class="nav-drawer__panel flex flex-col gap-4">
+        <nav class="nav-drawer__links flex flex-col gap-4">
+          <a href="/" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Home</a>
+          <a href="/waveos.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>WaveOS</a>
+          <a href="/tapmood.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>TapMood</a>
+          <a href="/wavium.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Wavium Interactive</a>
+          <a href="/news.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>News &amp; Updates</a>
+          <a href="/company.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Company</a>
+          <a href="/support.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Support</a>
         </nav>
-        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="nav-drawer__cta">Join TapMood beta</a>
+        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="bg-blue-600 text-white text-center py-3 rounded-full font-medium mt-4">Join TapMood beta</a>
       </div>
     </div>
   </div>

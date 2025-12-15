@@ -64,13 +64,35 @@ function initTheme() {
 }
 
 function initMobileMenu() {
-  mobileButton?.addEventListener('click', () => {
-    mobileDrawer?.classList.toggle('open');
+  const mobileButton = document.getElementById('mobileMenuButton');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+
+  if (!mobileButton || !mobileDrawer) return;
+
+  mobileButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent the document click listener from firing immediately
+    const isHidden = mobileDrawer.classList.contains('hidden');
+    
+    if (isHidden) {
+      mobileDrawer.classList.remove('hidden');
+      // Small timeout to allow the browser to process the removal of 'hidden' before animating
+      setTimeout(() => {
+        mobileDrawer.classList.add('open');
+      }, 10);
+      mobileButton.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileDrawer.classList.remove('open');
+      mobileDrawer.classList.add('hidden');
+      mobileButton.setAttribute('aria-expanded', 'false');
+    }
   });
+
+  // Close when clicking outside
   document.addEventListener('click', (event) => {
-    if (!mobileDrawer || !mobileButton) return;
     if (!mobileDrawer.contains(event.target) && !mobileButton.contains(event.target)) {
       mobileDrawer.classList.remove('open');
+      mobileDrawer.classList.add('hidden');
+      mobileButton.setAttribute('aria-expanded', 'false');
     }
   });
 }
