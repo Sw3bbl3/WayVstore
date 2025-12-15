@@ -3,271 +3,111 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Wavium Interactive crafts immersive launch formats and live experiences powered by WayV's motion systems."
-    />
-    <title>Wavium Interactive | WayV</title>
+    <title>Wavium | WayV</title>
     <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
-
-    <link rel="canonical" href="https://wayvstore.com/wavium.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Wavium Interactive | WayV" />
-    <meta
-      property="og:description"
-      content="Wavium Interactive crafts immersive launch formats and live experiences powered by WayV's motion systems."
-    />
-    <meta property="og:image" content="https://wayvstore.com/assets/images/wavium-logo.svg" />
-    <meta property="og:url" content="https://wayvstore.com/wavium.html" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Wavium Interactive | WayV" />
-    <meta
-      name="twitter:description"
-      content="Wavium Interactive crafts immersive launch formats and live experiences powered by WayV's motion systems."
-    />
-    <meta name="twitter:image" content="https://wayvstore.com/assets/images/wavium-logo.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css" />
-
-    <style>
-      /* Smoll, page-local polish (safe even if app.css already has these) */
-      .wavium-mark {
-        filter: drop-shadow(0 14px 28px rgba(15, 23, 42, 0.14));
-        transform: translateZ(0);
-      }
-      .soft-card {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(226, 232, 240, 0.85);
-        box-shadow: 0 20px 60px rgba(2, 6, 23, 0.08);
-      }
-      .glass-panel {
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(226, 232, 240, 0.85);
-        box-shadow: 0 18px 70px rgba(2, 6, 23, 0.08);
-        backdrop-filter: blur(14px);
-      }
-      .hero-orb {
-        position: absolute;
-        inset: -240px auto auto -200px;
-        width: 540px;
-        height: 540px;
-        border-radius: 999px;
-        background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.12), rgba(255, 255, 255, 0));
-        filter: blur(2px);
-        pointer-events: none;
-      }
-      .fade-up {
-        animation: fadeUp 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-      .delay-1 {
-        animation-delay: 110ms;
-      }
-      .delay-2 {
-        animation-delay: 220ms;
-      }
-      .delay-3 {
-        animation-delay: 330ms;
-      }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
   </head>
 
-    <body class="page-shell bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 antialiased overflow-x-hidden">
-    <!-- TOP BAR -->
-    <div data-include="partials/header.html"></div>
+  <body class="bg-[#F5F5F7] text-[#1D1D1F] antialiased">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md"></div>
 
-    <main class="page-fade pt-32 pb-24 relative">
-      <div class="hero-orb"></div>
+    <main class="pt-20 pb-32 px-4 sm:px-6">
+      
+      <section class="mx-auto max-w-[1000px] text-center mb-20">
+        <div class="flex flex-col items-center">
+          <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="h-24 w-24 mb-8" />
+          
+          <div class="inline-block mb-6">
+             <span class="px-3 py-1 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-wider text-orange-500">
+               Early Development
+             </span>
+          </div>
 
-      <!-- HERO -->
-      <section class="px-6">
-        <div class="mx-auto max-w-[1200px] grid gap-12 lg:grid-cols-2 lg:items-center glass-panel rounded-3xl p-10 md:p-14 interactive-panel hover-lift">
-          <div class="space-y-7 fade-up">
-            <div class="flex items-center gap-4">
-              <div class="relative">
-                <div class="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-blue-100 via-white to-purple-100 blur-2xl opacity-90"></div>
-                <img src="assets/images/wavium-logo.svg" alt="Wavium Interactive" class="relative h-16 md:h-20 w-auto wavium-mark" />
-              </div>
+          <h1 class="text-6xl md:text-8xl font-semibold tracking-tighter mb-6 text-[#1D1D1F]">
+            Wavium Interactive.
+          </h1>
+          
+          <p class="text-2xl md:text-3xl font-medium text-slate-500 tracking-tight max-w-2xl mx-auto">
+            Our internal game studio. Building the future of play with Wave Engine.
+          </p>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-[1100px]">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="md:col-span-2 rounded-[40px] bg-white p-10 md:p-14 relative overflow-hidden group hover-scale shadow-sm border border-slate-100">
+            <div class="relative z-10 flex flex-col h-full justify-between min-h-[300px]">
               <div>
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Wavium Interactive</p>
-                <p class="mt-1 text-sm text-slate-600">WayV's interactive studio and engine lab</p>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">First Title</span>
+                <h3 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4">Shape Shooter.</h3>
+                <p class="text-xl text-slate-500 font-medium max-w-md">
+                  We are currently developing our first video game. A fast-paced arcade experience built to test the limits of our engine.
+                </p>
+              </div>
+              <div class="mt-8">
+                <span class="inline-flex items-center gap-2 bg-black text-white px-5 py-2 rounded-full text-sm font-semibold">
+                  In Production
+                </span>
               </div>
             </div>
-
-            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Cinematic play. Surgical performance.</h1>
-
-            <p class="text-lg text-slate-600 leading-relaxed">
-              Wavium Interactive builds story-driven games and the Wave Engine that powers them. Our focus is tight inputs, stable frame pacing, and tools that let the team ship fast without losing polish.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/news.html"
-                class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition glow-ring"
-              >
-                News &amp; Updates
-              </a>
-              <a
-                href="mailto:wayvsoftware@gmail.com"
-                class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition"
-              >
-                Contact the studio
-              </a>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-2 pt-2">
-              <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white text-xs px-3 py-1">
-                <span class="h-1.5 w-1.5 rounded-full bg-white/90"></span>
-                Wave Engine is in progress
-              </span>
-              <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 text-xs px-3 py-1 text-slate-600">
-                Updates shipping to News &amp; Updates shortly
-              </span>
-            </div>
+            <div class="absolute right-[-50px] bottom-[-50px] w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
           </div>
 
-          <!-- ENGINE SPOTLIGHT -->
-          <div class="relative fade-up delay-1">
-            <div class="absolute -inset-8 bg-gradient-to-br from-blue-100 via-white to-purple-100 rounded-[32px] blur-3xl opacity-80"></div>
-
-            <div class="relative rounded-[32px] bg-white border border-slate-200 p-6 shadow-xl soft-card interactive-panel hover-lift">
-              <div class="flex items-center justify-between gap-4">
-                <div class="space-y-1">
-                  <p class="text-sm text-slate-500">Engine spotlight</p>
-                  <p class="text-2xl font-semibold">Wave Engine</p>
-                </div>
-                <span class="shrink-0 rounded-full bg-slate-900 text-white text-xs px-3 py-1">In progress</span>
-              </div>
-
-              <p class="mt-4 text-slate-600 leading-relaxed text-sm">
-                Wave Engine is currently in development. We will be shipping build notes, milestones, and demo updates in the News &amp; Updates section shortly as new components land.
+          <div class="rounded-[40px] bg-white p-10 relative overflow-hidden group hover-scale shadow-sm border border-slate-100 md:row-span-2 flex flex-col cursor-pointer" onclick="window.location='/news.html'">
+            <div class="mb-auto">
+              <span class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 block">Dev Logs</span>
+              <h3 class="text-3xl font-semibold tracking-tight mb-3">Follow the build.</h3>
+              <p class="text-slate-500 font-medium leading-relaxed">
+                Since we are in the very early stages, all progress updates, engine milestones, and "Shape Shooter" previews are posted to our News section.
               </p>
+            </div>
+            
+            <div class="mt-12 bg-[#F5F5F7] rounded-3xl p-6">
+               <div class="flex items-center gap-3 mb-2">
+                 <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                 <p class="text-xs font-bold text-slate-500 uppercase">Latest Status</p>
+               </div>
+               <p class="text-sm font-semibold text-[#1D1D1F]">
+                 "Wave Engine physics prototype operational. Shape Shooter level 1 greyboxing started."
+               </p>
+            </div>
 
-              <div class="mt-6 grid gap-3 text-sm text-slate-600">
-                <div class="flex items-center gap-3">
-                  <span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>
-                  Deterministic timelines for consistent gameplay.
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>
-                  GPU-first lighting tuned for cinematic mood.
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>
-                  Creator tools built to ship updates fast.
-                </div>
-              </div>
-
-              <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="/news.html"
-                  class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition"
-                >
-                  Follow development
-                </a>
-                <a
-                  href="/company.html"
-                  class="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-2.5 text-sm font-medium hover:border-slate-400 transition"
-                >
-                  About WayV
-                </a>
-              </div>
+            <div class="mt-8">
+               <span class="text-blue-600 font-semibold flex items-center gap-2">
+                 Go to News <span class="text-xl">→</span>
+               </span>
             </div>
           </div>
+
+          <div class="rounded-[40px] bg-white p-10 relative overflow-hidden group hover-scale shadow-sm border border-slate-100">
+             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 block">Technology</span>
+             <h3 class="text-2xl font-semibold tracking-tight mb-2">Wave Engine.</h3>
+             <p class="text-slate-500 font-medium text-sm mb-6">
+               A proprietary engine built from scratch for high-fidelity 2D and 3D rendering.
+             </p>
+             <div class="flex gap-2">
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">C++</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">Vulkan</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">ECS</span>
+             </div>
+          </div>
+
+          <a href="mailto:wayvsoftware@gmail.com" class="rounded-[40px] bg-black text-white p-10 relative overflow-hidden group hover-scale shadow-sm flex flex-col justify-center text-center">
+             <h3 class="text-2xl font-semibold tracking-tight mb-2">Join the journey.</h3>
+             <p class="text-gray-400 font-medium text-sm">
+               Email us to learn more about our roadmap.
+             </p>
+          </a>
+
         </div>
       </section>
 
-      <!-- GAMES & TECH -->
-      <section class="mt-28 px-6">
-        <div class="mx-auto max-w-[1100px] space-y-12">
-          <div class="text-center space-y-3 fade-up">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Games &amp; tech</p>
-            <h2 class="text-3xl md:text-4xl font-semibold">Built by the studio. Powered by Wave Engine.</h2>
-            <p class="text-lg text-slate-600">
-              Every release benefits from the same responsive controls, clean rendering pipeline, and low-latency audio stack.
-            </p>
-          </div>
-
-          <div class="grid gap-8 md:grid-cols-3">
-            <div class="soft-card rounded-3xl p-6 fade-up delay-1">
-              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Games</p>
-              <h3 class="mt-3 text-xl font-semibold">Cinematic worlds</h3>
-              <p class="mt-3 text-slate-600">
-                Story-first adventures with tactile inputs, built to feel as polished as a premium hardware launch.
-              </p>
-            </div>
-
-            <div class="soft-card rounded-3xl p-6 fade-up delay-2">
-              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Engine</p>
-              <h3 class="mt-3 text-xl font-semibold">Wave Engine</h3>
-              <p class="mt-3 text-slate-600">
-                A hyper-efficient runtime in progress, syncing input, physics, lighting, and audio for smooth play across devices.
-              </p>
-            </div>
-
-            <div class="soft-card rounded-3xl p-6 fade-up delay-3">
-              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Pipeline</p>
-              <h3 class="mt-3 text-xl font-semibold">Creator-first tools</h3>
-              <p class="mt-3 text-slate-600">
-                Editors, presets, and production tooling designed for weekly iteration without creative drag.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- NEWS CALLOUT (replaces partnership section) -->
-      <section class="mt-28 px-6">
-        <div class="mx-auto max-w-[1100px] grid gap-8 lg:grid-cols-2 lg:items-center glass-panel rounded-3xl p-10 md:p-14 fade-up">
-          <div class="space-y-4">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">News &amp; Updates</p>
-            <h2 class="text-3xl md:text-4xl font-semibold">Build notes are coming.</h2>
-            <p class="text-lg text-slate-600 leading-relaxed">
-              Wave Engine is currently in progress, and we will be shipping updates to the News &amp; Updates section shortly. Expect milestones, performance wins, and previews from the studio.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 pt-2">
-              <a href="/news.html" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition glow-ring">
-                Open News &amp; Updates
-              </a>
-              <a href="mailto:wayvsoftware@gmail.com" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition">
-                Send a note
-              </a>
-            </div>
-          </div>
-
-          <div class="grid gap-4">
-            <div class="soft-card rounded-3xl p-6">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Next up</p>
-              <p class="mt-2 text-lg font-semibold">Wave Engine progress updates</p>
-              <p class="mt-2 text-sm text-slate-600">
-                Short posts focused on what shipped, what improved, and what is next.
-              </p>
-            </div>
-
-            <div class="soft-card rounded-3xl p-6">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Also</p>
-              <p class="mt-2 text-lg font-semibold">Studio previews</p>
-              <p class="mt-2 text-sm text-slate-600">
-                Prototype clips, tech breakdowns, and production experiments as they stabilize.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <div data-include="partials/footer.html"></div>
-    <script src="assets/js/page-animations.js" defer></script>
     <script src="assets/js/includes.js"></script>
-    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/navigation.js"></script>
   </body>
 </html>
