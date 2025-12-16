@@ -23,11 +23,11 @@
         <div class="founder-popup__content">
           <div class="founder-popup__message">
             <p class="founder-popup__name">Charles-Elliott Roger · Co-Founder of WayV</p>
-            <p class="founder-popup__text">I appreciate every person who chooses WayV. Your curiosity keeps us inventing.</p>
+            <p class="founder-popup__text">Thank you to everyone who believes in what we're building and takes part in the journey.</p>
           </div>
           <div class="founder-popup__message">
             <p class="founder-popup__name">Eliott Lacroix · Co-Founder of WayV</p>
-            <p class="founder-popup__text">Thanks for exploring what we're building. We hope these experiences spark something new for you.</p>
+            <p class="founder-popup__text">Yes.</p>
           </div>
         </div>
       </div>
