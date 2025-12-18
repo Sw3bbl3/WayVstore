@@ -13,6 +13,10 @@
       .glass-card { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); }
       .hover-scale { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
       .hover-scale:hover { transform: scale(1.02); }
+      
+      /* Countdown Animation */
+      .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(10px); }
+      @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
     </style>
   </head>
 
@@ -22,21 +26,52 @@
     <main class="mt-7 page-fade pt-16 pb-32 px-4 sm:px-6">
       
       <section class="mx-auto max-w-[1200px] mb-4 md:mb-6">
-        <div class="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white h-[65vh] md:h-[80vh] min-h-[500px] flex flex-col items-center justify-start pt-14 md:pt-20 text-center shadow-sm hover-scale group cursor-default">
-          <h2 class="text-lg md:text-xl font-semibold text-orange-500 mb-2">TapMood</h2>
-          <h1 class="text-4xl md:text-7xl font-semibold tracking-tighter mb-4 text-[#1D1D1F] leading-tight px-4">
-            Master your calm.
-          </h1>
-          <p class="text-lg md:text-2xl font-medium text-slate-500 mb-8 tracking-tight max-w-lg mx-auto px-6">
-            Private mood tracking with on-device insights.
-          </p>
+        <div class="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white h-[75vh] md:h-[85vh] min-h-[600px] flex flex-col items-center justify-start pt-14 md:pt-20 text-center shadow-sm hover-scale group cursor-default">
           
-          <div class="flex gap-4 z-10 relative">
-            <a href="/tapmood.html" class="bg-[#0071E3] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#0077ED] transition">Learn more</a>
-            <a href="https://testflight.apple.com/join/CjqYMZ4J" class="text-[#0071E3] px-6 py-2 rounded-full font-medium text-sm border border-[#0071E3] hover:bg-[#0071E3] hover:text-white transition">Try the Beta</a>
+          <div class="flex items-center gap-2 mb-4 fade-in-up" style="animation-delay: 0.1s;">
+             <span class="relative flex h-2 w-2">
+               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+               <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+             </span>
+             <h2 class="text-xs font-bold text-orange-600 uppercase tracking-widest">TapMood Launching Soon</h2>
           </div>
 
-          <div class="mt-8 md:mt-12 w-full max-w-[280px] md:max-w-[420px]">
+          <h1 class="text-4xl md:text-7xl font-semibold tracking-tighter mb-3 text-[#1D1D1F] leading-tight px-4 fade-in-up" style="animation-delay: 0.2s;">
+            Master your calm.
+          </h1>
+          
+          <p class="text-lg md:text-2xl font-medium text-slate-500 mb-8 tracking-tight max-w-lg mx-auto px-6 fade-in-up" style="animation-delay: 0.3s;">
+            Private mood tracking with on-device insights.
+          </p>
+
+          <div id="hero-countdown" class="flex items-center justify-center gap-4 md:gap-8 mb-8 fade-in-up" style="animation-delay: 0.4s;">
+             <div class="flex flex-col items-center">
+                <span id="d" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
+                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Days</span>
+             </div>
+             <div class="h-8 w-px bg-slate-200"></div>
+             <div class="flex flex-col items-center">
+                <span id="h" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
+                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Hrs</span>
+             </div>
+             <div class="h-8 w-px bg-slate-200"></div>
+             <div class="flex flex-col items-center">
+                <span id="m" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
+                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Mins</span>
+             </div>
+             <div class="h-8 w-px bg-slate-200"></div>
+             <div class="flex flex-col items-center">
+                <span id="s" class="text-2xl md:text-3xl font-bold tabular-nums text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-red-500">00</span>
+                <span class="text-[10px] font-bold uppercase text-orange-400 tracking-wider">Secs</span>
+             </div>
+          </div>
+          
+          <div class="flex gap-4 z-10 relative fade-in-up" style="animation-delay: 0.5s;">
+            <a href="/tapmood.html" class="bg-[#1D1D1F] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-800 transition shadow-lg shadow-slate-200/50">Learn more</a>
+            <a href="https://testflight.apple.com/join/CjqYMZ4J" class="text-[#1D1D1F] bg-slate-100 px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-200 transition">Try the Beta</a>
+          </div>
+
+          <div class="mt-8 md:mt-12 w-full max-w-[280px] md:max-w-[420px] fade-in-up" style="animation-delay: 0.6s;">
              <img src="assets/images/tapmood-visual.svg" alt="TapMood App" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-4" />
           </div>
         </div>
@@ -73,7 +108,6 @@
               <path fill-rule="evenodd" d="M4.5 2.25a.75.75 0 00-.75.75v18a.75.75 0 00.75.75h15a.75.75 0 00.75-.75v-18a.75.75 0 00-.75-.75h-15zM6 3.75h12v16.5H6V3.75zm3 3a.75.75 0 00-.75.75v1.5a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-1.5a.75.75 0 00-.75-.75H9zm0 4.5a.75.75 0 00-.75.75v1.5a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-1.5a.75.75 0 00-.75-.75H9zm3.75-4.5a.75.75 0 00-.75.75v1.5a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-1.5a.75.75 0 00-.75-.75h-1.5zm0 4.5a.75.75 0 00-.75.75v1.5a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-1.5a.75.75 0 00-.75-.75h-1.5z" clip-rule="evenodd" />
             </svg>
           </div>
-
           <div class="relative z-10 flex flex-col h-full justify-between min-h-[200px] md:min-h-[240px]">
             <div>
               <p class="text-[10px] md:text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2 md:mb-3">Company</p>
@@ -93,7 +127,6 @@
               <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 4.5z" clip-rule="evenodd" />
             </svg>
           </div>
-
           <div class="relative z-10 flex flex-col h-full justify-between min-h-[140px] md:min-h-[240px]">
             <div>
               <p class="text-[10px] md:text-xs font-bold text-teal-600 uppercase tracking-widest mb-1 md:mb-3">Support</p>
@@ -115,7 +148,6 @@
               <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
             </svg>
           </div>
-
           <div class="relative z-10 flex flex-col h-full justify-between min-h-[140px] md:min-h-[240px]">
             <div>
               <p class="text-[10px] md:text-xs font-bold text-rose-600 uppercase tracking-widest mb-1 md:mb-3">News</p>
@@ -137,5 +169,34 @@
     <script src="assets/js/page-animations.js" defer></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/navigation.js" defer></script>
+    <script>
+      const launch = new Date('2026-01-01T00:00:00Z');
+      const pad = (num) => String(num).padStart(2, '0');
+      
+      const updateHeroCountdown = () => {
+        const now = new Date();
+        const diff = launch - now;
+        
+        const dEl = document.getElementById('d');
+        const hEl = document.getElementById('h');
+        const mEl = document.getElementById('m');
+        const sEl = document.getElementById('s');
+
+        if (!dEl) return; // Guard in case element isn't found
+
+        if (diff <= 0) {
+          document.getElementById('hero-countdown').style.display = 'none';
+          return;
+        }
+
+        dEl.textContent = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+        hEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        mEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+        sEl.textContent = pad(Math.floor((diff % (1000 * 60)) / 1000));
+      };
+
+      setInterval(updateHeroCountdown, 1000);
+      updateHeroCountdown();
+    </script>
   </body>
 </html>
