@@ -1,0 +1,118 @@
+Terms of Service
+Effective Date: December 16, 2025
+
+Please read these Terms of Service ("Terms," "ToS") carefully before using the wayvstore.com website (the "Site") and any software, products, or services developed by WayV (collectively, the "Services").
+
+By accessing or using the Services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Services.
+
+1. General Agreement
+1.1 Parties
+These Terms constitute a legal agreement between WayV, a technology company based in Quebec, Canada ("WayV," "we," "us," or "our"), and you, the user or customer ("User," "you," or "your").
+
+1.2 Scope
+These Terms govern your use of the WayV Site, the informational content regarding WaveOS and Wavium Interactive, and any software applications, including TapMood.
+
+1.3 Updates
+We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice before any new terms take effect. By continuing to access or use our Services after those revisions become effective, you agree to be bound by the revised terms.
+
+2. Use of Services
+2.1 Eligibility
+You must be at least 13 years old to use the Services. If you are under 18, you represent that you have reviewed these Terms with your parent or legal guardian and that they agree to these Terms on your behalf.
+
+2.2 License Grant (Software)
+WayV grants you a limited, non-exclusive, non-transferable, revocable license to use the Services for your personal, non-commercial use, strictly in accordance with these Terms and any specific End-User License Agreement (EULA) provided with individual software products (e.g., TapMood).
+
+2.3 Acceptable Use Policy
+You agree not to misuse the Services. This includes, but is not limited to:
+
+Violating any applicable law or regulation in your jurisdiction (including but not limited to intellectual property and privacy laws).
+
+Attempting to interfere with, disrupt, or compromise the integrity or security of the Services or WayV's systems.
+
+Reverse engineering, decompiling, disassembling, or attempting to discover the source code of any WayV software.
+
+Using the Services for any fraudulent or illegal purpose.
+
+3. Products and Intellectual Property
+3.1 WayV Intellectual Property
+All content, features, and functionality on the Site and in the Services, including but not limited to text, graphics, logos, images, software code, operating systems (e.g., WaveOS), and designs, are the exclusive property of WayV or its licensors and are protected by international copyright, trademark, and other intellectual property laws.
+
+3.2 Product Status (Informational)
+WaveOS and Wavium Interactive are currently under active development and are presented on the Site for informational purposes only. You acknowledge that:
+
+The concepts, designs, and features displayed are subject to change without notice.
+
+WayV has no obligation to release any development-stage software, and access may be delayed, limited, or discontinued entirely.
+
+3.3 Feedback
+If you provide WayV with any suggestions, ideas, enhancement requests, or other feedback related to the Services ("Feedback"), you grant WayV a perpetual, irrevocable, worldwide, royalty-free license to use, reproduce, modify, and implement the Feedback for any purpose without any obligation to compensate you.
+
+4. Accounts, Subscriptions, and Payments
+4.1 WayV Website Accounts
+The WayV website (wayvstore.com) does not currently require user accounts.
+
+4.2 Product Accounts (e.g., TapMood)
+Some WayV products may require account registration or authentication.
+
+Third-Party Platforms: Any required accounts or subscriptions for products like TapMood are typically managed by third-party platforms (e.g., Apple App Store).
+
+Payments: All payments for subscriptions or products are processed through third-party platforms. WayV does not collect or store your credit card or financial information. Your relationship regarding payment processing is solely with the respective third-party platform.
+
+4.3 Subscription Renewal and Cancellation
+If a WayV product involves a subscription:
+
+You must manage the subscription, including cancellation, directly through the platform where you purchased it (e.g., Apple).
+
+WayV is not responsible for subscription errors or failures outside of our direct control.
+
+5. Third-Party Services and Links
+The Services may contain links to third-party websites or services (e.g., the Apple App Store, hosting services, analytics providers) that are not owned or controlled by WayV.
+
+WayV has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services.
+
+You acknowledge and agree that WayV shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.
+
+6. Termination
+We may terminate or suspend your access to the Services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+
+Upon termination, your right to use the Services will immediately cease. All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.
+
+7. Warranty Disclaimer
+YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK. THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS.
+
+WAYV MAKES NO EXPRESS OR IMPLIED WARRANTIES, REPRESENTATIONS, OR ENDORSEMENTS WHATSOEVER (INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT).
+
+WAYV DOES NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE; THAT DEFECTS WILL BE CORRECTED; OR THAT THE SITE OR THE SERVER THAT MAKES THE SERVICES AVAILABLE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+
+8. Limitation of Liability
+TO THE FULLEST EXTENT PERMISSIBLE BY APPLICABLE LAW, IN NO EVENT SHALL WAYV, NOR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
+
+YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICES;
+
+ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICES;
+
+ANY CONTENT OBTAINED FROM THE SERVICES; AND
+
+UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE) OR ANY OTHER LEGAL THEORY, WHETHER OR NOT WE HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+9. Governing Law and Jurisdiction
+9.1 Governing Law
+These Terms shall be governed and construed in accordance with the laws of the Province of Quebec, Canada, without regard to its conflict of law provisions.
+
+9.2 Dispute Resolution
+Any dispute, controversy, or claim arising out of or relating to these Terms, or the breach thereof, shall be submitted to the competent courts in the District of Montreal, Quebec, Canada. You irrevocably consent to the exclusive jurisdiction of the courts of Quebec for any dispute arising out of or relating to these Terms.
+
+10. Miscellaneous Provisions
+10.1 Severability
+If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.
+
+10.2 Waiver
+Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.
+
+10.3 Entire Agreement
+These Terms constitute the entire agreement between us regarding our Services and supersede and replace any prior agreements we might have had between us regarding the Services.
+
+11. Contact Us
+If you have any questions about these Terms of Service, please contact us:
+
+WayV Email: wayvsoftware@gmail.com

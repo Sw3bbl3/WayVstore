@@ -1,0 +1,245 @@
+Privacy Policy
+Last Updated: December 16, 2025
+
+At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications like TapMood, we are committed to protecting your personal information and being transparent about how we handle it.
+
+This Global Privacy Policy explains who we are, how we collect, share, and use personal information about you, and how you can exercise your privacy rights. This policy applies to our website (wayvstore.com) and all related services, applications, and products provided by WayV globally.
+
+1. Information We Collect
+We believe in data minimization. We only collect the data necessary to provide you with the best experience possible.
+
+A. Information You Provide Directly
+We collect information you provide to us voluntarily:
+
+Contact Information: If you email us (e.g., via wayvsoftware@gmail.com), we collect your email address, name, and the content of your message.
+
+Support Data: If you contact us for technical support regarding WaveOS or TapMood, we collect the details required to resolve your specific issue.
+
+B. Information Collected Automatically
+When you visit our website or use our apps, certain information is collected automatically via standard internet technologies:
+
+Device & Connection Data: IP address, browser type, operating system (e.g., iOS, Android, WaveOS), and device identifiers.
+
+Usage Data: Pages visited, time spent on the site, and interaction logs (e.g., crash reports).
+
+Location Data: Approximate location derived from your IP address (we do not collect precise GPS coordinates unless explicitly requested by an app feature and consented to by you).
+
+C. Cookies and Tracking Technologies
+We use cookies to ensure our website functions correctly.
+
+Essential Cookies: Necessary for the site to work (e.g., security, load balancing).
+
+Analytics: We may use third-party tools to understand aggregate usage patterns. You can manage your cookie preferences through your browser settings.
+
+2. How We Use Your Data
+We use your personal data for specific, lawful reasons:
+
+To Provide Our Services: Delivering the content, software, and functionality of WayV products.
+
+To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve TapMood features.
+
+To Communicate: Responding to your inquiries or support requests.
+
+Security & Fraud Prevention: verifying activity to protect our users and infrastructure.
+
+Legal Compliance: Complying with applicable laws, regulations, and legal processes.
+
+3. Our Stance on Selling Data
+WayV does not sell your personal information. We do not sell, rent, or trade your personal data to data brokers or third parties for marketing purposes.
+
+4. Legal Bases for Processing (EEA & UK Users)
+If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases in accordance with the GDPR:
+
+Contract: Processing is necessary to perform a contract with you (e.g., providing the services of the TapMood app).
+
+Legitimate Interests: Processing is necessary for our legitimate interests (e.g., securing our website, analyzing product usage to improve stability), provided these interests do not override your fundamental rights.
+
+Consent: Where required, we obtain your explicit consent (e.g., before collecting non-essential cookies). You may withdraw consent at any time.
+
+Legal Obligation: Processing is required to comply with the law.
+
+5. Sharing and Disclosure
+We process data primarily within WayV. However, we may share data in the following limited scenarios:
+
+Service Providers: We use trusted third parties to help us run our business (e.g., website hosting, cloud infrastructure, analytics providers). These parties are contractually bound to protect your data and only use it for the services they provide to us.
+
+App Platforms: If you download TapMood or other WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
+
+Legal Requirements: We may disclose information if required by law, court order, or government regulation.
+
+Business Transfers: If WayV is involved in a merger, acquisition, or asset sale, your information may be transferred. We will notify you via our website before your data becomes subject to a different policy.
+
+6. International Data Transfers
+WayV is headquartered in Canada (Quebec).
+
+For EU/UK Users: Canada has received an "Adequacy Decision" from the European Commission, meaning that Canadian privacy laws (PIPEDA) are considered to provide an adequate level of protection for personal data. This allows for the free flow of data from the EU to Canada.
+
+Global Users: By using our services, you acknowledge that your information will be transferred to and processed in Canada. We take all reasonable steps to ensure your data is treated securely and in accordance with this policy.
+
+7. Your Global Privacy Rights
+Depending on where you live, you may have specific rights regarding your personal information. WayV extends these rights to all our users globally where possible.
+
+Your Rights Include:
+Right to Access: You can request a copy of the personal data we hold about you.
+
+Right to Rectification: You can ask us to correct inaccurate or incomplete data.
+
+Right to Erasure ("Right to be Forgotten"): You can ask us to delete your personal data, subject to certain legal exceptions.
+
+Right to Restrict Processing: You can ask us to limit how we use your data.
+
+Right to Data Portability: You can request your data in a structured, commonly used format.
+
+Right to Withdraw Consent: If we process data based on your consent, you can withdraw it at any time.
+
+To exercise any of these rights, please contact us at wayvsoftware@gmail.com.
+
+8. Notice to U.S. Residents (California & Others)
+This section applies to residents of California (CCPA/CPRA) and other U.S. states with consumer privacy laws.
+
+Categories of Information Collected: We collect identifiers (IP address, email), internet activity (usage data), and device information.
+
+No Sale or Sharing: We do not "sell" or "share" your personal information as defined by the CCPA/CPRA (i.e., for cross-context behavioral advertising).
+
+Non-Discrimination: We will not discriminate against you for exercising your privacy rights.
+
+Shine the Light: California residents may request a list of third parties to whom we have disclosed personal information for direct marketing purposes (WayV does not engage in this practice).
+
+9. Data Retention
+We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy, including satisfying any legal, accounting, or reporting requirements. When data is no longer needed, it is securely deleted or anonymized.
+
+10. Security
+We use administrative, technical, and physical security measures to help protect your personal information. While we strive to use commercially acceptable means to protect your personal data, no method of transmission over the Internet is 100% secure.
+
+11. Children’s Privacy
+Our services are not intended for children under the age of 13 (or 16 in certain jurisdictions like the EEA). We do not knowingly collect personal data from children. If you believe we have inadvertently collected data from a child, please contact us immediately, and we will take steps to remove it.
+
+12. Updates to This Policy
+We may update our Privacy Policy from time to time to reflect changes in our products or legal requirements. We will notify you of any significant changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+Here is the updated Global Privacy Policy for WayV.
+
+This version is designed to be compliant with major international frameworks, including the GDPR (Europe/UK), CCPA/CPRA (California/USA), and PIPEDA/Law 25 (Canada), ensuring your website is ready for a global audience.
+
+Privacy Policy
+Last Updated: December 16, 2025
+
+At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications like TapMood, we are committed to protecting your personal information and being transparent about how we handle it.
+
+This Global Privacy Policy explains who we are, how we collect, share, and use personal information about you, and how you can exercise your privacy rights. This policy applies to our website (wayvstore.com) and all related services, applications, and products provided by WayV globally.
+
+1. Information We Collect
+We believe in data minimization. We only collect the data necessary to provide you with the best experience possible.
+
+A. Information You Provide Directly
+We collect information you provide to us voluntarily:
+
+Contact Information: If you email us (e.g., via wayvsoftware@gmail.com), we collect your email address, name, and the content of your message.
+
+Support Data: If you contact us for technical support regarding WaveOS or TapMood, we collect the details required to resolve your specific issue.
+
+B. Information Collected Automatically
+When you visit our website or use our apps, certain information is collected automatically via standard internet technologies:
+
+Device & Connection Data: IP address, browser type, operating system (e.g., iOS, Android, WaveOS), and device identifiers.
+
+Usage Data: Pages visited, time spent on the site, and interaction logs (e.g., crash reports).
+
+Location Data: Approximate location derived from your IP address (we do not collect precise GPS coordinates unless explicitly requested by an app feature and consented to by you).
+
+C. Cookies and Tracking Technologies
+We use cookies to ensure our website functions correctly.
+
+Essential Cookies: Necessary for the site to work (e.g., security, load balancing).
+
+Analytics: We may use third-party tools to understand aggregate usage patterns. You can manage your cookie preferences through your browser settings.
+
+2. How We Use Your Data
+We use your personal data for specific, lawful reasons:
+
+To Provide Our Services: Delivering the content, software, and functionality of WayV products.
+
+To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve TapMood features.
+
+To Communicate: Responding to your inquiries or support requests.
+
+Security & Fraud Prevention: verifying activity to protect our users and infrastructure.
+
+Legal Compliance: Complying with applicable laws, regulations, and legal processes.
+
+3. Our Stance on Selling Data
+WayV does not sell your personal information. We do not sell, rent, or trade your personal data to data brokers or third parties for marketing purposes.
+
+4. Legal Bases for Processing (EEA & UK Users)
+If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases in accordance with the GDPR:
+
+Contract: Processing is necessary to perform a contract with you (e.g., providing the services of the TapMood app).
+
+Legitimate Interests: Processing is necessary for our legitimate interests (e.g., securing our website, analyzing product usage to improve stability), provided these interests do not override your fundamental rights.
+
+Consent: Where required, we obtain your explicit consent (e.g., before collecting non-essential cookies). You may withdraw consent at any time.
+
+Legal Obligation: Processing is required to comply with the law.
+
+5. Sharing and Disclosure
+We process data primarily within WayV. However, we may share data in the following limited scenarios:
+
+Service Providers: We use trusted third parties to help us run our business (e.g., website hosting, cloud infrastructure, analytics providers). These parties are contractually bound to protect your data and only use it for the services they provide to us.
+
+App Platforms: If you download TapMood or other WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
+
+Legal Requirements: We may disclose information if required by law, court order, or government regulation.
+
+Business Transfers: If WayV is involved in a merger, acquisition, or asset sale, your information may be transferred. We will notify you via our website before your data becomes subject to a different policy.
+
+6. International Data Transfers
+WayV is headquartered in Canada (Quebec).
+
+For EU/UK Users: Canada has received an "Adequacy Decision" from the European Commission, meaning that Canadian privacy laws (PIPEDA) are considered to provide an adequate level of protection for personal data. This allows for the free flow of data from the EU to Canada.
+
+Global Users: By using our services, you acknowledge that your information will be transferred to and processed in Canada. We take all reasonable steps to ensure your data is treated securely and in accordance with this policy.
+
+7. Your Global Privacy Rights
+Depending on where you live, you may have specific rights regarding your personal information. WayV extends these rights to all our users globally where possible.
+
+Your Rights Include:
+Right to Access: You can request a copy of the personal data we hold about you.
+
+Right to Rectification: You can ask us to correct inaccurate or incomplete data.
+
+Right to Erasure ("Right to be Forgotten"): You can ask us to delete your personal data, subject to certain legal exceptions.
+
+Right to Restrict Processing: You can ask us to limit how we use your data.
+
+Right to Data Portability: You can request your data in a structured, commonly used format.
+
+Right to Withdraw Consent: If we process data based on your consent, you can withdraw it at any time.
+
+To exercise any of these rights, please contact us at wayvsoftware@gmail.com.
+
+8. Notice to U.S. Residents (California & Others)
+This section applies to residents of California (CCPA/CPRA) and other U.S. states with consumer privacy laws.
+
+Categories of Information Collected: We collect identifiers (IP address, email), internet activity (usage data), and device information.
+
+No Sale or Sharing: We do not "sell" or "share" your personal information as defined by the CCPA/CPRA (i.e., for cross-context behavioral advertising).
+
+Non-Discrimination: We will not discriminate against you for exercising your privacy rights.
+
+Shine the Light: California residents may request a list of third parties to whom we have disclosed personal information for direct marketing purposes (WayV does not engage in this practice).
+
+9. Data Retention
+We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy, including satisfying any legal, accounting, or reporting requirements. When data is no longer needed, it is securely deleted or anonymized.
+
+10. Security
+We use administrative, technical, and physical security measures to help protect your personal information. While we strive to use commercially acceptable means to protect your personal data, no method of transmission over the Internet is 100% secure.
+
+11. Children’s Privacy
+Our services are not intended for children under the age of 13 (or 16 in certain jurisdictions like the EEA). We do not knowingly collect personal data from children. If you believe we have inadvertently collected data from a child, please contact us immediately, and we will take steps to remove it.
+
+12. Updates to This Policy
+We may update our Privacy Policy from time to time to reflect changes in our products or legal requirements. We will notify you of any significant changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+
+13. Contact Us
+If you have questions about this Privacy Policy or how we handle your data, please contact our Privacy Team:
+
+WayV Email: wayvsoftware@gmail.com Jurisdiction: Quebec, Canada
