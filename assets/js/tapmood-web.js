@@ -5,11 +5,8 @@ const supabaseAnonKey = config.supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6I
 const elements = {
   guestView: document.getElementById('guest-view'),
   appView: document.getElementById('app-view'),
-  configCard: document.getElementById('config-card'),
-  configStatus: document.getElementById('config-status'),
   connectionStatus: document.getElementById('connection-status'),
   connectionStatusApp: document.getElementById('connection-status-app'),
-  authCard: document.getElementById('auth-card'),
   authForm: document.getElementById('auth-form'),
   authUsernameField: document.getElementById('auth-username-field'),
   authUsername: document.getElementById('auth-username'),
@@ -20,22 +17,34 @@ const elements = {
   authSubmit: document.getElementById('auth-submit'),
   authSignin: document.getElementById('auth-signin'),
   authSignup: document.getElementById('auth-signup'),
-  friendsCount: document.getElementById('friends-count'),
-  conversationsCount: document.getElementById('conversations-count'),
-  messagesCount: document.getElementById('messages-count'),
-  emotionsCount: document.getElementById('emotions-count'),
-  friendsList: document.getElementById('friends-list'),
-  friendsPreview: document.getElementById('friends-preview'),
-  conversationList: document.getElementById('conversation-list'),
-  messagesList: document.getElementById('messages-list'),
-  conversationTitle: document.getElementById('conversation-title'),
-  conversationSubtitle: document.getElementById('conversation-subtitle'),
-  emotionsList: document.getElementById('emotions-list'),
-  profileCard: document.getElementById('profile-card'),
   signOut: document.getElementById('sign-out'),
   refreshDashboard: document.getElementById('refresh-dashboard'),
-  pageTabs: document.querySelectorAll('[data-page]'),
-  pagePanels: document.querySelectorAll('[data-page-panel]'),
+  friendsCount: document.getElementById('friends-count'),
+  messagesCount: document.getElementById('messages-count'),
+  emotionsCount: document.getElementById('emotions-count'),
+  emotionsList: document.getElementById('emotions-list'),
+  moodForm: document.getElementById('mood-form'),
+  moodEmoji: document.getElementById('mood-emoji'),
+  moodLabel: document.getElementById('mood-label'),
+  moodIntensity: document.getElementById('mood-intensity'),
+  moodNote: document.getElementById('mood-note'),
+  moodStatus: document.getElementById('mood-status'),
+  messageForm: document.getElementById('message-form'),
+  messageRecipient: document.getElementById('message-recipient'),
+  messageText: document.getElementById('message-text'),
+  messageStatus: document.getElementById('message-status'),
+  messagesList: document.getElementById('messages-list'),
+  friendsList: document.getElementById('friends-list'),
+  friendForm: document.getElementById('friend-form'),
+  friendUsername: document.getElementById('friend-username'),
+  friendStatus: document.getElementById('friend-status'),
+  profileCard: document.getElementById('profile-card'),
+  profileForm: document.getElementById('profile-form'),
+  profileDisplayName: document.getElementById('profile-display-name'),
+  profileUsername: document.getElementById('profile-username'),
+  profileAvatar: document.getElementById('profile-avatar'),
+  profileBio: document.getElementById('profile-bio'),
+  profileStatus: document.getElementById('profile-status'),
 };
 
 const state = {
@@ -43,10 +52,9 @@ const state = {
   authMode: 'signin',
   session: null,
   profile: null,
-  conversations: [],
 };
 
-function setConnectionStatus(text, tone = 'text-slate-400') {
+function setConnectionStatus(text, tone = 'text-slate-400 bg-slate-100') {
   if (elements.connectionStatus) {
     elements.connectionStatus.textContent = text;
     elements.connectionStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
@@ -57,15 +65,16 @@ function setConnectionStatus(text, tone = 'text-slate-400') {
   }
 }
 
-function setConfigStatus(text, tone = 'text-emerald-700', background = 'bg-emerald-100') {
-  if (!elements.configStatus) return;
-  elements.configStatus.textContent = text;
-  elements.configStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${background} ${tone}`;
-}
-
 function setAuthMessage(text, tone = 'text-slate-500') {
+  if (!elements.authMessage) return;
   elements.authMessage.textContent = text;
   elements.authMessage.className = `text-sm ${tone}`;
+}
+
+function setStatusMessage(element, text, tone = 'text-slate-500') {
+  if (!element) return;
+  element.textContent = text;
+  element.className = `text-sm ${tone}`;
 }
 
 function setAuthMode(mode) {
@@ -90,37 +99,19 @@ function setAuthMode(mode) {
 }
 
 function showGuestView() {
-  if (elements.guestView) {
-    elements.guestView.classList.remove('hidden');
-  }
-  if (elements.appView) {
-    elements.appView.classList.add('hidden');
-  }
+  elements.guestView?.classList.remove('hidden');
+  elements.appView?.classList.add('hidden');
 }
 
 function showAppView() {
-  if (elements.guestView) {
-    elements.guestView.classList.add('hidden');
-  }
-  if (elements.appView) {
-    elements.appView.classList.remove('hidden');
-  }
+  elements.guestView?.classList.add('hidden');
+  elements.appView?.classList.remove('hidden');
 }
 
-function setActivePage(page) {
-  elements.pageTabs.forEach((tab) => {
-    const isActive = tab.dataset.page === page;
-    tab.classList.toggle('bg-slate-900', isActive);
-    tab.classList.toggle('text-white', isActive);
-    tab.classList.toggle('border', !isActive);
-    tab.classList.toggle('border-slate-200', !isActive);
-    tab.classList.toggle('text-slate-600', !isActive);
-    tab.classList.toggle('bg-white', !isActive);
-  });
-
-  elements.pagePanels.forEach((panel) => {
-    panel.classList.toggle('hidden', panel.dataset.pagePanel !== page);
-  });
+function setCounts({ friends = 0, messages = 0, emotions = 0 }) {
+  if (elements.friendsCount) elements.friendsCount.textContent = friends;
+  if (elements.messagesCount) elements.messagesCount.textContent = messages;
+  if (elements.emotionsCount) elements.emotionsCount.textContent = emotions;
 }
 
 function renderProfile(profile, user) {
@@ -151,57 +142,27 @@ function renderProfile(profile, user) {
 }
 
 function renderFriends(friends) {
-  const lists = [
-    { element: elements.friendsList, empty: 'No friends found yet.' },
-    { element: elements.friendsPreview, empty: 'No friends online yet.' },
-  ];
-
-  lists.forEach(({ element, empty }) => {
-    if (!element) return;
-    element.innerHTML = '';
-    if (!friends.length) {
-      element.innerHTML = `<li>${empty}</li>`;
-      return;
-    }
-
-    friends.forEach((friend) => {
-      const avatar = friend.avatar_url
-        ? `<img src="${friend.avatar_url}" alt="${friend.name}" class="h-8 w-8 rounded-full object-cover" />`
-        : `<div class="h-8 w-8 rounded-full bg-slate-200"></div>`;
-      const item = document.createElement('li');
-      item.className = 'flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
-      item.innerHTML = `
-        ${avatar}
-        <div>
-          <p class="font-semibold text-slate-700">${friend.name}</p>
-          <p class="text-xs text-slate-400">${friend.statusLabel}</p>
-        </div>
-      `;
-      element.appendChild(item);
-    });
-  });
-}
-
-function renderConversations(conversations) {
-  elements.conversationList.innerHTML = '';
-  if (!conversations.length) {
-    elements.conversationList.innerHTML = '<li>No conversations yet.</li>';
+  if (!elements.friendsList) return;
+  elements.friendsList.innerHTML = '';
+  if (!friends.length) {
+    elements.friendsList.innerHTML = '<li>No friends yet.</li>';
     return;
   }
 
-  conversations.forEach((conversation, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'w-full rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2 text-left transition hover:bg-slate-100';
-    button.dataset.conversationId = conversation.id;
-    button.innerHTML = `
-      <p class="text-sm font-semibold text-slate-700">${conversation.title}</p>
-      <p class="text-xs text-slate-400">${conversation.subtitle}</p>
+  friends.forEach((friend) => {
+    const avatar = friend.avatar_url
+      ? `<img src="${friend.avatar_url}" alt="${friend.name}" class="h-8 w-8 rounded-full object-cover" />`
+      : `<div class="h-8 w-8 rounded-full bg-slate-200"></div>`;
+    const item = document.createElement('li');
+    item.className = 'flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
+    item.innerHTML = `
+      ${avatar}
+      <div>
+        <p class="font-semibold text-slate-700">${friend.name}</p>
+        <p class="text-xs text-slate-400">${friend.statusLabel}</p>
+      </div>
     `;
-    if (index === 0) {
-      button.classList.add('border-teal-200', 'bg-teal-50');
-    }
-    elements.conversationList.appendChild(button);
+    elements.friendsList.appendChild(item);
   });
 }
 
@@ -213,13 +174,13 @@ function renderMessages(messages) {
   }
 
   messages.forEach((message) => {
-    const senderName = message.sender_profile?.display_name || message.sender_profile?.username || 'Unknown';
-    const time = new Date(message.created_at).toLocaleString();
+    const sender = message.sender_name || message.sender_code || 'Unknown';
+    const time = new Date(message.timestamp || message.created_at).toLocaleString();
     const item = document.createElement('div');
     item.className = 'rounded-2xl border border-slate-100 bg-white px-3 py-2';
     item.innerHTML = `
-      <p class="text-xs font-semibold text-slate-400">${senderName} • ${time}</p>
-      <p class="text-sm text-slate-600">${message.body}</p>
+      <p class="text-xs font-semibold text-slate-400">${sender} • ${time}</p>
+      <p class="text-sm text-slate-600">${message.text}</p>
     `;
     elements.messagesList.appendChild(item);
   });
@@ -228,7 +189,7 @@ function renderMessages(messages) {
 function renderEmotions(emotions) {
   elements.emotionsList.innerHTML = '';
   if (!emotions.length) {
-    elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">No emotions logged yet.</div>';
+    elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">No moods logged yet.</div>';
     return;
   }
 
@@ -237,7 +198,7 @@ function renderEmotions(emotions) {
     card.className = 'rounded-2xl border border-slate-100 bg-slate-50 p-4';
     card.innerHTML = `
       <div class="text-2xl">${emotion.emoji || '✨'}</div>
-      <p class="mt-2 text-sm font-semibold text-slate-700">${emotion.label || 'Emotion logged'}</p>
+      <p class="mt-2 text-sm font-semibold text-slate-700">${emotion.label || 'Mood update'}</p>
       <p class="text-xs text-slate-400">Intensity ${emotion.intensity || '—'} • ${new Date(emotion.created_at).toLocaleDateString()}</p>
       <p class="mt-2 text-xs text-slate-500">${emotion.note || 'No note added.'}</p>
     `;
@@ -245,23 +206,36 @@ function renderEmotions(emotions) {
   });
 }
 
-function setCounts({ friends = 0, conversations = 0, messages = 0, emotions = 0 }) {
-  elements.friendsCount.textContent = friends;
-  elements.conversationsCount.textContent = conversations;
-  elements.messagesCount.textContent = messages;
-  elements.emotionsCount.textContent = emotions;
-}
-
-async function loadProfile(user) {
+async function ensureProfile(user) {
   const { data, error } = await state.supabase
     .from('profiles')
-    .select('id, username, display_name, avatar_url')
+    .select('id, username, display_name, avatar_url, bio')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
   if (error) {
     setAuthMessage('Unable to load profile data.', 'text-amber-600');
     return null;
+  }
+
+  if (!data) {
+    const fallbackUsername = user.user_metadata?.username || user.email?.split('@')[0] || `user-${user.id.slice(0, 6)}`;
+    const { data: created, error: createError } = await state.supabase
+      .from('profiles')
+      .upsert({
+        id: user.id,
+        username: fallbackUsername,
+        display_name: fallbackUsername,
+      })
+      .select('id, username, display_name, avatar_url, bio')
+      .single();
+
+    if (createError) {
+      setAuthMessage('Unable to create profile data.', 'text-amber-600');
+      return null;
+    }
+
+    return created;
   }
 
   return data;
@@ -291,35 +265,21 @@ async function loadFriends(userId) {
   });
 }
 
-async function loadConversations(userId) {
-  const { data, error } = await state.supabase
-    .from('conversation_members')
-    .select('conversation_id, conversations(id, title, is_group, updated_at)')
-    .eq('user_id', userId)
-    .order('joined_at', { ascending: false });
+async function loadMessages(username, recipient = '') {
+  if (!username) return [];
+  let query = state.supabase
+    .from('chat_messages')
+    .select('id, sender_name, sender_code, recipient_code, text, timestamp')
+    .order('timestamp', { ascending: false })
+    .limit(20);
 
-  if (error) {
-    return [];
+  if (recipient) {
+    query = query.or(`and(sender_code.eq.${username},recipient_code.eq.${recipient}),and(sender_code.eq.${recipient},recipient_code.eq.${username})`);
+  } else {
+    query = query.or(`sender_code.eq.${username},recipient_code.eq.${username}`);
   }
 
-  return data.map((row) => {
-    const conversation = row.conversations || {};
-    return {
-      id: row.conversation_id,
-      title: conversation.title || (conversation.is_group ? 'Group chat' : 'Direct chat'),
-      subtitle: conversation.updated_at ? `Updated ${new Date(conversation.updated_at).toLocaleDateString()}` : 'Tap to view messages',
-    };
-  });
-}
-
-async function loadMessages(conversationId) {
-  const { data, error } = await state.supabase
-    .from('messages')
-    .select('id, body, created_at, sender, sender_profile:profiles!messages_sender_fkey(username, display_name, avatar_url)')
-    .eq('conversation_id', conversationId)
-    .order('created_at', { ascending: true })
-    .limit(40);
-
+  const { data, error } = await query;
   if (error) {
     return [];
   }
@@ -343,76 +303,39 @@ async function loadEmotions(userId) {
 }
 
 async function loadDashboard() {
-  if (!state.session?.user) {
-    return;
-  }
+  if (!state.session?.user) return;
 
   const user = state.session.user;
   setAuthMessage('Loading dashboard data...', 'text-slate-500');
 
-  const [profile, friends, conversations, emotions] = await Promise.all([
-    loadProfile(user),
+  const profile = await ensureProfile(user);
+  state.profile = profile;
+  renderProfile(profile, user);
+
+  if (profile) {
+    elements.profileDisplayName.value = profile.display_name || '';
+    elements.profileUsername.value = profile.username || '';
+    elements.profileAvatar.value = profile.avatar_url || '';
+    elements.profileBio.value = profile.bio || '';
+  }
+
+  const [friends, emotions, messages] = await Promise.all([
     loadFriends(user.id),
-    loadConversations(user.id),
     loadEmotions(user.id),
+    loadMessages(profile?.username),
   ]);
 
-  state.profile = profile;
-  state.conversations = conversations;
-
-  renderProfile(profile, user);
   renderFriends(friends);
-  renderConversations(conversations);
   renderEmotions(emotions);
-
-  if (elements.signOut) {
-    elements.signOut.classList.remove('hidden');
-  }
-
-  let messagesCount = 0;
-  if (conversations.length) {
-    const firstConversation = conversations[0];
-    const messages = await loadMessages(firstConversation.id);
-    messagesCount = messages.length;
-    renderMessages(messages);
-    elements.conversationTitle.textContent = firstConversation.title;
-    elements.conversationSubtitle.textContent = firstConversation.subtitle;
-  } else {
-    elements.messagesList.innerHTML = '<p>No messages yet.</p>';
-    elements.conversationTitle.textContent = 'Messages';
-    elements.conversationSubtitle.textContent = 'No conversation selected';
-  }
+  renderMessages(messages);
 
   setCounts({
     friends: friends.length,
-    conversations: conversations.length,
-    messages: messagesCount,
+    messages: messages.length,
     emotions: emotions.length,
   });
 
   setAuthMessage('Dashboard ready.', 'text-emerald-600');
-}
-
-async function handleConversationClick(event) {
-  const button = event.target.closest('button[data-conversation-id]');
-  if (!button) return;
-
-  const conversationId = button.dataset.conversationId;
-  const selected = state.conversations.find((conversation) => conversation.id === conversationId);
-  if (!selected) return;
-
-  document.querySelectorAll('#conversation-list button').forEach((node) => {
-    node.classList.remove('border-teal-200', 'bg-teal-50');
-  });
-  button.classList.add('border-teal-200', 'bg-teal-50');
-
-  elements.conversationTitle.textContent = selected.title;
-  elements.conversationSubtitle.textContent = selected.subtitle;
-  elements.messagesList.innerHTML = '<p>Loading messages...</p>';
-
-  const messages = await loadMessages(conversationId);
-  renderMessages(messages);
-  elements.messagesCount.textContent = messages.length;
 }
 
 async function handleAuthSubmit(event) {
@@ -468,22 +391,163 @@ function resetDashboard() {
   if (elements.friendsList) {
     elements.friendsList.innerHTML = '<li>Sign in to view friends.</li>';
   }
-  if (elements.friendsPreview) {
-    elements.friendsPreview.innerHTML = '<li>Sign in to view friends.</li>';
+  if (elements.messagesList) {
+    elements.messagesList.innerHTML = '<p>Sign in to view messages.</p>';
   }
-  elements.conversationList.innerHTML = '<li>Sign in to view conversations.</li>';
-  elements.messagesList.innerHTML = '<p>Messages will appear here once you select a conversation.</p>';
-  elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent emotions.</div>';
-  elements.conversationTitle.textContent = 'Messages';
-  elements.conversationSubtitle.textContent = 'No conversation selected';
+  if (elements.emotionsList) {
+    elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>';
+  }
   renderProfile(null, null);
-  if (elements.signOut) {
-    elements.signOut.classList.add('hidden');
-  }
+  setStatusMessage(elements.moodStatus, '');
+  setStatusMessage(elements.messageStatus, '');
+  setStatusMessage(elements.friendStatus, '');
+  setStatusMessage(elements.profileStatus, '');
 }
 
 async function handleRefresh() {
   if (!state.session?.user) return;
+  await loadDashboard();
+}
+
+async function handleMoodSubmit(event) {
+  event.preventDefault();
+  if (!state.session?.user || !state.profile) return;
+
+  const emoji = elements.moodEmoji.value.trim();
+  const label = elements.moodLabel.value.trim();
+  const intensity = Number(elements.moodIntensity.value || 0);
+  const note = elements.moodNote.value.trim();
+
+  if (!label) {
+    setStatusMessage(elements.moodStatus, 'Please enter a mood label.', 'text-amber-600');
+    return;
+  }
+
+  const payload = {
+    author: state.session.user.id,
+    emoji: emoji || '✨',
+    label,
+    intensity: intensity || null,
+    note,
+  };
+
+  setStatusMessage(elements.moodStatus, 'Sending mood...', 'text-slate-500');
+  const { error } = await state.supabase.from('emotions').insert(payload);
+  if (error) {
+    setStatusMessage(elements.moodStatus, error.message, 'text-rose-600');
+    return;
+  }
+
+  elements.moodForm.reset();
+  setStatusMessage(elements.moodStatus, 'Mood shared.', 'text-emerald-600');
+  await loadDashboard();
+}
+
+async function handleMessageSubmit(event) {
+  event.preventDefault();
+  if (!state.profile) return;
+
+  const recipient = elements.messageRecipient.value.trim();
+  const text = elements.messageText.value.trim();
+
+  if (!recipient || !text) {
+    setStatusMessage(elements.messageStatus, 'Add a recipient and message.', 'text-amber-600');
+    return;
+  }
+
+  setStatusMessage(elements.messageStatus, 'Sending message...', 'text-slate-500');
+  const { error } = await state.supabase.from('chat_messages').insert({
+    sender_name: state.profile.display_name || state.profile.username || 'TapMood user',
+    sender_code: state.profile.username,
+    recipient_code: recipient,
+    text,
+  });
+
+  if (error) {
+    setStatusMessage(elements.messageStatus, error.message, 'text-rose-600');
+    return;
+  }
+
+  elements.messageText.value = '';
+  setStatusMessage(elements.messageStatus, 'Message sent.', 'text-emerald-600');
+  const messages = await loadMessages(state.profile.username, recipient);
+  renderMessages(messages);
+  setCounts({
+    friends: Number(elements.friendsCount.textContent) || 0,
+    messages: messages.length,
+    emotions: Number(elements.emotionsCount.textContent) || 0,
+  });
+}
+
+async function handleFriendSubmit(event) {
+  event.preventDefault();
+  if (!state.session?.user || !state.profile) return;
+
+  const friendUsername = elements.friendUsername.value.trim();
+  if (!friendUsername) {
+    setStatusMessage(elements.friendStatus, 'Enter a username to add.', 'text-amber-600');
+    return;
+  }
+
+  if (friendUsername === state.profile.username) {
+    setStatusMessage(elements.friendStatus, 'You cannot add yourself.', 'text-amber-600');
+    return;
+  }
+
+  setStatusMessage(elements.friendStatus, 'Adding friend...', 'text-slate-500');
+  const { data, error } = await state.supabase
+    .from('profiles')
+    .select('id, username, display_name, avatar_url')
+    .eq('username', friendUsername)
+    .single();
+
+  if (error || !data) {
+    setStatusMessage(elements.friendStatus, 'User not found.', 'text-rose-600');
+    return;
+  }
+
+  const { error: insertError } = await state.supabase.from('friendships').insert({
+    requester: state.session.user.id,
+    addressee: data.id,
+    status: 'accepted',
+  });
+
+  if (insertError) {
+    setStatusMessage(elements.friendStatus, insertError.message, 'text-rose-600');
+    return;
+  }
+
+  elements.friendUsername.value = '';
+  setStatusMessage(elements.friendStatus, `You are now friends with ${data.display_name || data.username}.`, 'text-emerald-600');
+  await loadDashboard();
+}
+
+async function handleProfileSubmit(event) {
+  event.preventDefault();
+  if (!state.session?.user) return;
+
+  const payload = {
+    id: state.session.user.id,
+    display_name: elements.profileDisplayName.value.trim(),
+    username: elements.profileUsername.value.trim(),
+    avatar_url: elements.profileAvatar.value.trim(),
+    bio: elements.profileBio.value.trim(),
+  };
+
+  if (!payload.username) {
+    setStatusMessage(elements.profileStatus, 'Username cannot be empty.', 'text-amber-600');
+    return;
+  }
+
+  setStatusMessage(elements.profileStatus, 'Saving profile...', 'text-slate-500');
+  const { error } = await state.supabase.from('profiles').upsert(payload);
+
+  if (error) {
+    setStatusMessage(elements.profileStatus, error.message, 'text-rose-600');
+    return;
+  }
+
+  setStatusMessage(elements.profileStatus, 'Profile updated.', 'text-emerald-600');
   await loadDashboard();
 }
 
@@ -497,24 +561,27 @@ function attachListeners() {
   if (elements.refreshDashboard) {
     elements.refreshDashboard.addEventListener('click', handleRefresh);
   }
-  if (elements.conversationList) {
-    elements.conversationList.addEventListener('click', handleConversationClick);
+  if (elements.moodForm) {
+    elements.moodForm.addEventListener('submit', handleMoodSubmit);
   }
-  elements.pageTabs.forEach((tab) => {
-    tab.addEventListener('click', () => setActivePage(tab.dataset.page));
-  });
+  if (elements.messageForm) {
+    elements.messageForm.addEventListener('submit', handleMessageSubmit);
+  }
+  if (elements.friendForm) {
+    elements.friendForm.addEventListener('submit', handleFriendSubmit);
+  }
+  if (elements.profileForm) {
+    elements.profileForm.addEventListener('submit', handleProfileSubmit);
+  }
 }
 
 async function initializeSupabase() {
   if (!supabaseAnonKey) {
-    setConfigStatus('Missing key', 'text-amber-700', 'bg-amber-100');
     setConnectionStatus('Needs key', 'text-amber-700 bg-amber-100');
     resetDashboard();
     showGuestView();
     return;
   }
-
-  setConfigStatus('Ready', 'text-emerald-700', 'bg-emerald-100');
 
   if (!state.supabase) {
     state.supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
@@ -548,6 +615,5 @@ async function initializeSupabase() {
 }
 
 setAuthMode('signin');
-setActivePage('feed');
 attachListeners();
 initializeSupabase();
