@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WayV Social • Friends</title>
+    <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+
+  <body class="bg-[#F5F5F7] text-[#0F172A]">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300"></div>
+
+    <main class="page-fade pt-20 pb-28 px-4 sm:px-6">
+      <section class="mx-auto max-w-[1200px]">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">Friends</p>
+            <h1 class="text-3xl md:text-4xl font-semibold text-slate-900">Build your community.</h1>
+            <p class="text-slate-500 mt-2 max-w-xl">Manage requests, discover new people, and keep your circle close. Everything you need to grow your network lives here.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-medium shadow-sm hover:border-blue-400">Find people</button>
+            <button class="px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-medium shadow-lg shadow-slate-900/20">Invite friends</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr_280px] gap-6">
+          <aside class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white flex items-center justify-center font-semibold">MS</div>
+              <div>
+                <p class="font-semibold text-slate-900">Maya S.</p>
+                <p class="text-xs text-slate-500">@maya.studio</p>
+              </div>
+            </div>
+            <nav class="space-y-2 text-sm font-medium">
+              <a href="/social-home.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Home</a>
+              <a href="/social-messages.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Messages</a>
+              <a href="/social-friends.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-blue-600" aria-current="page">Friends</a>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Communities</button>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Events</button>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Saved</button>
+            </nav>
+            <div class="mt-6 p-4 rounded-2xl bg-slate-50">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Connections</p>
+              <p class="text-sm font-semibold text-slate-900 mt-2">312 friends total</p>
+              <p class="text-xs text-slate-500">12 new requests</p>
+            </div>
+          </aside>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Requests</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">12</p>
+                <p class="text-sm text-slate-500">Awaiting approval</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Active now</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">18</p>
+                <p class="text-sm text-slate-500">Friends online</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">New follows</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">27</p>
+                <p class="text-sm text-slate-500">This week</p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-slate-900">Friend requests</h2>
+                <button class="text-sm text-blue-600 font-medium">Manage all</button>
+              </div>
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <div class="h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">JR</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Jules Rivera</p>
+                      <p class="text-xs text-slate-500">Mutuals: 12 · New York</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button class="px-3 py-2 rounded-full bg-slate-900 text-white text-xs font-medium">Confirm</button>
+                    <button class="px-3 py-2 rounded-full border border-slate-200 text-xs font-medium">Remove</button>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <div class="h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">AL</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Amelia Liu</p>
+                      <p class="text-xs text-slate-500">Mutuals: 7 · Vancouver</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button class="px-3 py-2 rounded-full bg-slate-900 text-white text-xs font-medium">Confirm</button>
+                    <button class="px-3 py-2 rounded-full border border-slate-200 text-xs font-medium">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-slate-900">Active friends</h2>
+                <button class="text-sm text-blue-600 font-medium">See all</button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="flex items-center justify-between bg-slate-50 rounded-2xl p-4">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white flex items-center justify-center font-semibold">KT</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Kira T.</p>
+                      <p class="text-xs text-slate-500">Live · 2 shared groups</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Message</button>
+                </div>
+                <div class="flex items-center justify-between bg-slate-50 rounded-2xl p-4">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-rose-400 to-orange-400 text-white flex items-center justify-center font-semibold">DM</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Dylan M.</p>
+                      <p class="text-xs text-slate-500">Live · 4 shared groups</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Message</button>
+                </div>
+                <div class="flex items-center justify-between bg-slate-50 rounded-2xl p-4">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-400 to-blue-500 text-white flex items-center justify-center font-semibold">SA</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Sasha A.</p>
+                      <p class="text-xs text-slate-500">Live · 3 shared groups</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Message</button>
+                </div>
+                <div class="flex items-center justify-between bg-slate-50 rounded-2xl p-4">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-slate-500 to-slate-700 text-white flex items-center justify-center font-semibold">RW</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Rhea W.</p>
+                      <p class="text-xs text-slate-500">Live · 1 shared group</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="space-y-4">
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <h3 class="text-lg font-semibold text-slate-900">People you may know</h3>
+              <div class="mt-4 space-y-3 text-sm">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-semibold text-slate-900">Alex Kim</p>
+                    <p class="text-xs text-slate-500">Follows 3 mutuals</p>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Add</button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-semibold text-slate-900">Priya Shah</p>
+                    <p class="text-xs text-slate-500">Follows 2 mutuals</p>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Add</button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-semibold text-slate-900">Jun Seo</p>
+                    <p class="text-xs text-slate-500">Shared community: Creators</p>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Add</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <h3 class="text-lg font-semibold text-slate-900">Upcoming events</h3>
+              <div class="mt-4 space-y-3 text-sm">
+                <div>
+                  <p class="font-semibold text-slate-900">WayV Social Launch Night</p>
+                  <p class="text-xs text-slate-500">Fri · 7:00 PM</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Creator Roundtable</p>
+                  <p class="text-xs text-slate-500">Sat · 2:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-900 to-slate-700 text-white rounded-3xl p-5 shadow-lg">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Connect</p>
+              <p class="text-lg font-semibold mt-2">Grow your circle</p>
+              <p class="text-sm text-slate-300 mt-2">Invite teammates, classmates, and collaborators in one tap.</p>
+              <a href="/social-home.html" class="inline-flex items-center gap-2 mt-4 text-sm font-medium">Go to home →</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+    <script src="assets/js/page-animations.js" defer></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/navigation.js" defer></script>
+  </body>
+</html>

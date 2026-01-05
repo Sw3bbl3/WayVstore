@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WayV Social • Home</title>
+    <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+
+  <body class="bg-[#F5F5F7] text-[#0F172A]">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300"></div>
+
+    <main class="page-fade pt-20 pb-28 px-4 sm:px-6">
+      <section class="mx-auto max-w-[1200px]">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">WayV Social</p>
+            <h1 class="text-3xl md:text-4xl font-semibold text-slate-900">Welcome back, Maya.</h1>
+            <p class="text-slate-500 mt-2 max-w-xl">Your home base for posts, stories, and live conversations. Everything updates in real time so your data is always fresh.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-medium shadow-sm hover:border-blue-400">Create post</button>
+            <button class="px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-medium shadow-lg shadow-slate-900/20">Go live</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr_280px] gap-6">
+          <aside class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white flex items-center justify-center font-semibold">MS</div>
+              <div>
+                <p class="font-semibold text-slate-900">Maya S.</p>
+                <p class="text-xs text-slate-500">@maya.studio</p>
+              </div>
+            </div>
+            <nav class="space-y-2 text-sm font-medium">
+              <a href="/social-home.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-blue-600" aria-current="page">
+                Home
+                <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">New</span>
+              </a>
+              <a href="/social-messages.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Messages<span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4</span></a>
+              <a href="/social-friends.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Friends<span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12</span></a>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Groups</button>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Events</button>
+              <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-600">Saved</button>
+            </nav>
+            <div class="mt-6 p-4 rounded-2xl bg-slate-50">
+              <p class="text-xs uppercase text-slate-500 tracking-[0.2em]">Live status</p>
+              <p class="text-sm font-semibold text-slate-900 mt-2">Friends online: 18</p>
+              <p class="text-xs text-slate-500 mt-1">Last refreshed 2 min ago</p>
+            </div>
+          </aside>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Messages</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">24</p>
+                <p class="text-sm text-slate-500">New conversations today</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Stories</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">9</p>
+                <p class="text-sm text-slate-500">People you follow are live</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Events</p>
+                <p class="text-2xl font-semibold text-slate-900 mt-2">3</p>
+                <p class="text-sm text-slate-500">Starting in the next 24h</p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-slate-900">Stories</h2>
+                <button class="text-sm text-blue-600 font-medium">See all</button>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="rounded-2xl p-4 bg-gradient-to-br from-blue-500 to-indigo-500 text-white">
+                  <p class="text-xs uppercase tracking-[0.2em]">You</p>
+                  <p class="text-lg font-semibold mt-8">Add story</p>
+                </div>
+                <div class="rounded-2xl p-4 bg-slate-900 text-white">
+                  <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Jordan</p>
+                  <p class="text-base font-semibold mt-8">Studio night</p>
+                </div>
+                <div class="rounded-2xl p-4 bg-gradient-to-br from-rose-400 to-orange-400 text-white">
+                  <p class="text-xs uppercase tracking-[0.2em]">Lea</p>
+                  <p class="text-base font-semibold mt-8">Sunset run</p>
+                </div>
+                <div class="rounded-2xl p-4 bg-gradient-to-br from-emerald-400 to-teal-500 text-white">
+                  <p class="text-xs uppercase tracking-[0.2em]">Kai</p>
+                  <p class="text-base font-semibold mt-8">New synths</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <article class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">LN</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Lena North</p>
+                      <p class="text-xs text-slate-500">2 hours ago · Toronto</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-slate-400">Follow</button>
+                </div>
+                <p class="text-slate-600 mt-4">Testing the new WayV Social spaces today. Love the smooth timeline and the quick reactions—everything feels fast and personal.</p>
+                <div class="mt-4 grid grid-cols-3 gap-3">
+                  <div class="h-24 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100"></div>
+                  <div class="h-24 rounded-2xl bg-gradient-to-br from-indigo-200 to-blue-100"></div>
+                  <div class="h-24 rounded-2xl bg-gradient-to-br from-rose-200 to-orange-100"></div>
+                </div>
+                <div class="mt-4 flex items-center gap-4 text-sm text-slate-500">
+                  <span>👍 248</span>
+                  <span>💬 36</span>
+                  <span>↗ Share</span>
+                </div>
+              </article>
+
+              <article class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex items-center justify-center font-semibold">AC</div>
+                    <div>
+                      <p class="font-semibold text-slate-900">Ari C.</p>
+                      <p class="text-xs text-slate-500">Yesterday · Montreal</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-slate-400">Save</button>
+                </div>
+                <p class="text-slate-600 mt-4">Hosting a live room at 6PM about design systems. Drop your questions and I will cover them live!</p>
+                <div class="mt-4 flex items-center justify-between bg-slate-50 border border-slate-100 rounded-2xl p-4">
+                  <div>
+                    <p class="text-sm font-semibold text-slate-900">Design Systems Live</p>
+                    <p class="text-xs text-slate-500">Today · 6:00 PM</p>
+                  </div>
+                  <button class="px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-medium">Remind me</button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="space-y-4">
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <h3 class="text-lg font-semibold text-slate-900">People to know</h3>
+              <div class="mt-4 space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">JP</div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">Jae Park</p>
+                      <p class="text-xs text-slate-500">Product designer</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Follow</button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">MN</div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">Mina N.</p>
+                      <p class="text-xs text-slate-500">Music producer</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Connect</button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-semibold">RS</div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">Rosa Stone</p>
+                      <p class="text-xs text-slate-500">Community lead</p>
+                    </div>
+                  </div>
+                  <button class="text-xs font-medium text-blue-600">Add</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+              <h3 class="text-lg font-semibold text-slate-900">Trending now</h3>
+              <div class="mt-4 space-y-3 text-sm">
+                <div>
+                  <p class="font-semibold text-slate-900">#WayVLaunch</p>
+                  <p class="text-xs text-slate-500">4.2k posts · 12 live rooms</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">#NightStudio</p>
+                  <p class="text-xs text-slate-500">1.1k posts · 5 live rooms</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">#CreativeFlow</p>
+                  <p class="text-xs text-slate-500">890 posts · 2 live rooms</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-900 to-slate-700 text-white rounded-3xl p-5 shadow-lg">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Messaging</p>
+              <p class="text-lg font-semibold mt-2">All data synced</p>
+              <p class="text-sm text-slate-300 mt-2">Your message history and contacts are fully synced across web and mobile.</p>
+              <a href="/social-messages.html" class="inline-flex items-center gap-2 mt-4 text-sm font-medium">Open inbox →</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="partials/footer.html"></div>
+    <script src="assets/js/page-animations.js" defer></script>
+    <script src="assets/js/includes.js"></script>
+    <script src="assets/js/navigation.js" defer></script>
+  </body>
+</html>
