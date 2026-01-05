@@ -952,8 +952,7 @@ async function sendFriendRequest(person) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // The 'anon' key is for the API gateway, the 'Bearer' token is for the user
-        'apikey': supabaseAnonKey, 
+        // Use the user session token to authorize the Edge Function request.
         'Authorization': `Bearer ${state.session.access_token}`
       },
       body: JSON.stringify({
