@@ -1,5 +1,6 @@
 const config = window.tapmoodConfig || {};
-const storedAnonKey = localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eWx3ZXhmamh0enZlcHd2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwNTY3ODEsImV4cCI6MjA4MjYzMjc4MX0.78Jc7gu59eU5XOgZiVpkn4dq1GrX3uKCEsV_ffXCU3E');
+const supabaseAnonKeyStorageKey = 'tapmood_supabase_anon_key';
+const storedAnonKey = localStorage.getItem(supabaseAnonKeyStorageKey);
 const supabaseUrl = config.supabaseUrl || 'https://lxylwexfjhtzvepwvjal.supabase.co';
 let supabaseAnonKey = storedAnonKey || config.supabaseAnonKey || '';
 
@@ -411,7 +412,7 @@ function attachListeners() {
     event.preventDefault();
     const key = elements.anonKeyInput.value.trim();
     if (!key) return;
-    localStorage.setItem('tapmood_supabase_anon_key', key);
+    localStorage.setItem(supabaseAnonKeyStorageKey, key);
     supabaseAnonKey = key;
     initializeSupabase();
   });
