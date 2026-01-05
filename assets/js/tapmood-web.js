@@ -1,12 +1,22 @@
+/**
+ * TapMood Client Logic
+ * version: 1.2.0 (Stable)
+ * engineering: vanilla JS / Supabase v2
+ */
+
+// 1. Configuration & Constants
 const config = window.tapmoodConfig || {};
 const supabaseUrl = config.supabaseUrl || 'https://lxylwexfjhtzvepwvjal.supabase.co';
 const supabaseAnonKey = config.supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eWx3ZXhmamh0enZlcHd2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwNTY3ODEsImV4cCI6MjA4MjYzMjc4MX0.78Jc7gu59eU5XOgZiVpkn4dq1GrX3uKCEsV_ffXCU3E';
 
+// 2. DOM Element Reference Map
 const elements = {
   guestView: document.getElementById('guest-view'),
   appView: document.getElementById('app-view'),
   connectionStatus: document.getElementById('connection-status'),
   connectionStatusApp: document.getElementById('connection-status-app'),
+  
+  // Auth
   authForm: document.getElementById('auth-form'),
   authUsernameField: document.getElementById('auth-username-field'),
   authUsername: document.getElementById('auth-username'),
@@ -18,15 +28,21 @@ const elements = {
   authSignin: document.getElementById('auth-signin'),
   authSignup: document.getElementById('auth-signup'),
   signOut: document.getElementById('sign-out'),
+  
+  // Dashboard & Navigation
   notificationsToggle: document.getElementById('notifications-toggle'),
   notificationsPanel: document.getElementById('notifications-panel'),
   notificationsList: document.getElementById('notifications-list'),
   notificationsFriends: document.getElementById('notifications-friends'),
   notificationsBadge: document.getElementById('notifications-badge'),
   refreshDashboard: document.getElementById('refresh-dashboard'),
+  
+  // Stats
   friendsCount: document.getElementById('friends-count'),
   messagesCount: document.getElementById('messages-count'),
   emotionsCount: document.getElementById('emotions-count'),
+  
+  // Moods
   emotionsList: document.getElementById('emotions-list'),
   moodForm: document.getElementById('mood-form'),
   moodEmoji: document.getElementById('mood-emoji'),
@@ -34,18 +50,24 @@ const elements = {
   moodIntensity: document.getElementById('mood-intensity'),
   moodNote: document.getElementById('mood-note'),
   moodStatus: document.getElementById('mood-status'),
+  
+  // Messages
   messageForm: document.getElementById('message-form'),
   messageRecipient: document.getElementById('message-recipient'),
   messageText: document.getElementById('message-text'),
   messageStatus: document.getElementById('message-status'),
   messagesList: document.getElementById('messages-list'),
   messagesInbox: document.getElementById('messages-inbox'),
+  
+  // Friends
   friendsList: document.getElementById('friends-list'),
   friendSearch: document.getElementById('friend-search'),
   friendSearchResults: document.getElementById('friend-search-results'),
   friendStatus: document.getElementById('friend-status'),
   friendRequests: document.getElementById('friend-requests'),
   friendDiscover: document.getElementById('friend-discover'),
+  
+  // Profile
   profileCard: document.getElementById('profile-card'),
   profileForm: document.getElementById('profile-form'),
   profileDisplayName: document.getElementById('profile-display-name'),
@@ -53,6 +75,8 @@ const elements = {
   profileAvatar: document.getElementById('profile-avatar'),
   profileBio: document.getElementById('profile-bio'),
   profileStatus: document.getElementById('profile-status'),
+  
+  // Navigation & Structure
   activityFeed: document.getElementById('activity-feed'),
   navMessagesCount: document.getElementById('nav-messages-count'),
   navFriendsCount: document.getElementById('nav-friends-count'),
@@ -62,6 +86,7 @@ const elements = {
   pageSections: Array.from(document.querySelectorAll('[data-page]')),
 };
 
+// 3. State Management
 const state = {
   supabase: null,
   authMode: 'signin',
@@ -73,14 +98,17 @@ const state = {
   friends: [],
 };
 
+// --- UI Utility Functions ---
+
 function setConnectionStatus(text, tone = 'text-slate-400 bg-slate-100') {
+  const className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
   if (elements.connectionStatus) {
     elements.connectionStatus.textContent = text;
-    elements.connectionStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+    elements.connectionStatus.className = className;
   }
   if (elements.connectionStatusApp) {
     elements.connectionStatusApp.textContent = text;
-    elements.connectionStatusApp.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+    elements.connectionStatusApp.className = className;
   }
 }
 
@@ -156,6 +184,8 @@ function setActivePage(page) {
   });
 }
 
+// --- Render Functions ---
+
 function renderProfile(profile, user) {
   if (!profile || !user) {
     elements.profileCard.innerHTML = `
@@ -230,9 +260,10 @@ function renderFriendRequests(requests) {
           <p class="text-xs text-slate-400">@${request.username}</p>
         </div>
       </div>
-      <button type="button" data-request-id="${request.id}" class="rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Accept</button>
+      <button type="button" class="action-btn rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Accept</button>
     `;
-    row.querySelector('button')?.addEventListener('click', () => acceptFriendRequest(request.id));
+    const btn = row.querySelector('.action-btn');
+    if(btn) btn.onclick = () => acceptFriendRequest(request.id);
     elements.friendRequests.appendChild(row);
   });
 }
@@ -265,7 +296,7 @@ function renderNotificationFriends(friends) {
   if (!elements.notificationsFriends) return;
   elements.notificationsFriends.innerHTML = '';
   if (!friends.length) {
-    elements.notificationsFriends.innerHTML = '<p class="text-sm text-slate-500">No friends yet. Add some to see them here.</p>';
+    elements.notificationsFriends.innerHTML = '<p class="text-sm text-slate-500">No friends yet.</p>';
     return;
   }
 
@@ -283,14 +314,15 @@ function renderNotificationFriends(friends) {
           <p class="text-xs text-slate-400">${friend.statusLabel}</p>
         </div>
       </div>
-      <button type="button" class="rounded-full border border-slate-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-slate-500" data-friend-name="${friend.name}">Message</button>
+      <button type="button" class="msg-btn rounded-full border border-slate-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-slate-500">Message</button>
     `;
-    item.querySelector('button')?.addEventListener('click', () => {
+    const btn = item.querySelector('.msg-btn');
+    if(btn) btn.onclick = () => {
       setActivePage('messages');
       if (elements.messageRecipient) {
         elements.messageRecipient.value = friend.username || friend.name;
       }
-    });
+    };
     elements.notificationsFriends.appendChild(item);
   });
 }
@@ -347,13 +379,13 @@ function renderMessageInbox(messages, username) {
         </div>
         <p class="mt-1 text-sm font-semibold text-slate-700">${message.text || 'New message'}</p>
       `;
-      button.addEventListener('click', async () => {
+      button.onclick = async () => {
         if (elements.messageRecipient) {
           elements.messageRecipient.value = otherUser;
         }
         const threadMessages = await loadMessages(username, otherUser);
         renderMessages(threadMessages);
-      });
+      };
       elements.messagesInbox.appendChild(button);
     });
 }
@@ -452,9 +484,10 @@ function renderDiscoverPeople(people) {
         </div>
       </div>
       <p class="mt-2 text-xs text-slate-500">${person.bio || 'TapMood member'}</p>
-      <button type="button" class="mt-3 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500" data-profile-id="${person.id}">Send request</button>
+      <button type="button" class="add-btn mt-3 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Send request</button>
     `;
-    card.querySelector('button')?.addEventListener('click', () => sendFriendRequest(person));
+    const btn = card.querySelector('.add-btn');
+    if(btn) btn.onclick = () => sendFriendRequest(person);
     elements.friendDiscover.appendChild(card);
   });
 }
@@ -481,12 +514,15 @@ function renderFriendSearchResults(results) {
           <p class="text-xs text-slate-400">@${person.username}</p>
         </div>
       </div>
-      <button type="button" class="rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Add</button>
+      <button type="button" class="add-btn rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Add</button>
     `;
-    row.querySelector('button')?.addEventListener('click', () => sendFriendRequest(person));
+    const btn = row.querySelector('.add-btn');
+    if(btn) btn.onclick = () => sendFriendRequest(person);
     elements.friendSearchResults.appendChild(row);
   });
 }
+
+// --- Data & Logic Operations ---
 
 async function ensureProfile(user) {
   const { data, error } = await state.supabase
@@ -516,10 +552,8 @@ async function ensureProfile(user) {
       setAuthMessage('Unable to create profile data.', 'text-amber-600');
       return null;
     }
-
     return created;
   }
-
   return data;
 }
 
@@ -531,9 +565,7 @@ async function loadFriends(userId) {
     .or(`requester.eq.${userId},addressee.eq.${userId}`)
     .order('created_at', { ascending: false });
 
-  if (error) {
-    return [];
-  }
+  if (error) return [];
 
   return data.map((row) => {
     const isRequester = row.requester === userId;
@@ -556,9 +588,7 @@ async function loadFriendRequests(userId) {
     .eq('addressee', userId)
     .order('created_at', { ascending: false });
 
-  if (error) {
-    return [];
-  }
+  if (error) return [];
 
   return data.map((row) => ({
     id: row.id,
@@ -574,29 +604,20 @@ async function loadExcludedProfileIds(userId) {
     .select('requester, addressee')
     .or(`requester.eq.${userId},addressee.eq.${userId}`);
 
-  if (error || !data) {
-    return [userId];
-  }
-
   const ids = new Set([userId]);
-  data.forEach((row) => {
-    if (row.requester && row.requester !== userId) ids.add(row.requester);
-    if (row.addressee && row.addressee !== userId) ids.add(row.addressee);
-  });
-
+  if (!error && data) {
+    data.forEach((row) => {
+      if (row.requester && row.requester !== userId) ids.add(row.requester);
+      if (row.addressee && row.addressee !== userId) ids.add(row.addressee);
+    });
+  }
   return Array.from(ids);
 }
 
 async function loadSuggestedProfiles(userId) {
   const excluded = await loadExcludedProfileIds(userId);
-  let query = state.supabase
-    .from('profiles')
-    .select('id, username, display_name, avatar_url, bio')
-    .limit(6);
-
-  if (excluded.length) {
-    query = query.not('id', 'in', `(${excluded.join(',')})`);
-  }
+  let query = state.supabase.from('profiles').select('id, username, display_name, avatar_url, bio').limit(6);
+  if (excluded.length) query = query.not('id', 'in', `(${excluded.join(',')})`);
 
   const { data, error } = await query;
   if (error || !data) return [];
@@ -619,9 +640,7 @@ async function searchProfiles(queryText, userId) {
     .or(`username.ilike.%${queryText}%,display_name.ilike.%${queryText}%`)
     .limit(6);
 
-  if (excluded.length) {
-    query = query.not('id', 'in', `(${excluded.join(',')})`);
-  }
+  if (excluded.length) query = query.not('id', 'in', `(${excluded.join(',')})`);
 
   const { data, error } = await query;
   if (error || !data) return [];
@@ -655,7 +674,6 @@ async function loadNotifications({ userId, username }) {
   ]);
 
   const notifications = [];
-
   requests.forEach((request) => {
     notifications.push({
       type: 'friend request',
@@ -694,11 +712,7 @@ async function loadMessages(username, recipient = '') {
   }
 
   const { data, error } = await query;
-  if (error) {
-    return [];
-  }
-
-  return data;
+  return error ? [] : data;
 }
 
 async function loadEmotions(userId) {
@@ -709,11 +723,7 @@ async function loadEmotions(userId) {
     .order('created_at', { ascending: false })
     .limit(6);
 
-  if (error) {
-    return [];
-  }
-
-  return data;
+  return error ? [] : data;
 }
 
 async function loadDashboard() {
@@ -727,10 +737,10 @@ async function loadDashboard() {
   renderProfile(profile, user);
 
   if (profile) {
-    elements.profileDisplayName.value = profile.display_name || '';
-    elements.profileUsername.value = profile.username || '';
-    elements.profileAvatar.value = profile.avatar_url || '';
-    elements.profileBio.value = profile.bio || '';
+    if (elements.profileDisplayName) elements.profileDisplayName.value = profile.display_name || '';
+    if (elements.profileUsername) elements.profileUsername.value = profile.username || '';
+    if (elements.profileAvatar) elements.profileAvatar.value = profile.avatar_url || '';
+    if (elements.profileBio) elements.profileBio.value = profile.bio || '';
   }
 
   const [friends, emotions, messages, requests, suggestedPeople] = await Promise.all([
@@ -750,6 +760,7 @@ async function loadDashboard() {
   renderFriendRequests(requests);
   renderDiscoverPeople(suggestedPeople);
   renderNotificationFriends(friends);
+  
   if (profile?.username) {
     renderFriendSearchResults([]);
     await loadNotifications({ userId: user.id, username: profile.username });
@@ -763,6 +774,8 @@ async function loadDashboard() {
 
   setAuthMessage('Dashboard ready.', 'text-emerald-600');
 }
+
+// --- Interaction Handlers ---
 
 async function handleAuthSubmit(event) {
   event.preventDefault();
@@ -814,27 +827,19 @@ async function handleSignOut() {
 
 function resetDashboard() {
   setCounts({});
-  if (elements.friendsList) {
-    elements.friendsList.innerHTML = '<li>Sign in to view friends.</li>';
-  }
-  if (elements.messagesList) {
-    elements.messagesList.innerHTML = '<p>Sign in to view messages.</p>';
-  }
-  if (elements.messagesInbox) {
-    elements.messagesInbox.innerHTML = '<p>Sign in to view messages.</p>';
-  }
-  if (elements.emotionsList) {
-    elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>';
-  }
-  if (elements.activityFeed) {
-    elements.activityFeed.innerHTML = '<p>Sign in to see your live activity feed.</p>';
-  }
+  if (elements.friendsList) elements.friendsList.innerHTML = '<li>Sign in to view friends.</li>';
+  if (elements.messagesList) elements.messagesList.innerHTML = '<p>Sign in to view messages.</p>';
+  if (elements.messagesInbox) elements.messagesInbox.innerHTML = '<p>Sign in to view messages.</p>';
+  if (elements.emotionsList) elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>';
+  if (elements.activityFeed) elements.activityFeed.innerHTML = '<p>Sign in to see your live activity feed.</p>';
+  
   renderDiscoverPeople([]);
   renderFriendRequests([]);
   renderFriendSearchResults([]);
   renderNotifications([]);
   renderNotificationFriends([]);
   renderProfile(null, null);
+  
   setStatusMessage(elements.moodStatus, '');
   setStatusMessage(elements.messageStatus, '');
   setStatusMessage(elements.friendStatus, '');
@@ -848,300 +853,188 @@ async function handleRefresh() {
 
 async function handleMoodSubmit(event) {
   event.preventDefault();
-  if (!state.session?.user || !state.profile) return;
+  if (!state.session?.user) return;
 
-  const emoji = elements.moodEmoji.value.trim();
-  const label = elements.moodLabel.value.trim();
-  const intensity = Number(elements.moodIntensity.value || 0);
+  const emoji = elements.moodEmoji.value;
+  const label = elements.moodLabel.value;
+  const intensity = parseInt(elements.moodIntensity.value, 10);
   const note = elements.moodNote.value.trim();
 
-  if (!label) {
-    setStatusMessage(elements.moodStatus, 'Please enter a mood label.', 'text-amber-600');
-    return;
-  }
+  setStatusMessage(elements.moodStatus, 'Posting...', 'text-slate-500');
 
-  const payload = {
+  const { error } = await state.supabase.from('emotions').insert({
     author: state.session.user.id,
-    emoji: emoji || '✨',
+    emoji,
     label,
-    intensity: intensity || null,
-    note,
-  };
+    intensity,
+    note
+  });
 
-  setStatusMessage(elements.moodStatus, 'Sending mood...', 'text-slate-500');
-  const { error } = await state.supabase.from('emotions').insert(payload);
   if (error) {
-    setStatusMessage(elements.moodStatus, error.message, 'text-rose-600');
+    setStatusMessage(elements.moodStatus, 'Failed to post mood.', 'text-rose-600');
     return;
   }
 
-  elements.moodForm.reset();
-  setStatusMessage(elements.moodStatus, 'Mood shared.', 'text-emerald-600');
+  setStatusMessage(elements.moodStatus, 'Mood posted successfully!', 'text-emerald-600');
+  elements.moodNote.value = ''; // Clear note
+  
+  // Optimistic update or reload
   await loadDashboard();
 }
 
 async function handleMessageSubmit(event) {
   event.preventDefault();
-  if (!state.profile) return;
+  if (!state.session?.user || !state.profile) return;
 
-  const recipient = elements.messageRecipient.value.trim();
+  const recipientCode = elements.messageRecipient.value.trim();
   const text = elements.messageText.value.trim();
 
-  if (!recipient || !text) {
-    setStatusMessage(elements.messageStatus, 'Add a recipient and message.', 'text-amber-600');
+  if (!recipientCode || !text) {
+    setStatusMessage(elements.messageStatus, 'Recipient and message required.', 'text-amber-600');
     return;
   }
 
-  setStatusMessage(elements.messageStatus, 'Sending message...', 'text-slate-500');
+  setStatusMessage(elements.messageStatus, 'Sending...', 'text-slate-500');
+
   const { error } = await state.supabase.from('chat_messages').insert({
-    sender_name: state.profile.display_name || state.profile.username || 'TapMood user',
     sender_code: state.profile.username,
-    recipient_code: recipient,
-    text,
+    sender_name: state.profile.display_name,
+    recipient_code: recipientCode.replace('@', ''),
+    text: text,
+    timestamp: new Date().toISOString()
   });
 
   if (error) {
-    setStatusMessage(elements.messageStatus, error.message, 'text-rose-600');
+    setStatusMessage(elements.messageStatus, 'Failed to send.', 'text-rose-600');
     return;
   }
 
+  setStatusMessage(elements.messageStatus, 'Sent!', 'text-emerald-600');
   elements.messageText.value = '';
-  setStatusMessage(elements.messageStatus, 'Message sent.', 'text-emerald-600');
-  const messages = await loadMessages(state.profile.username, recipient);
-  renderMessages(messages);
-  renderMessageInbox(messages, state.profile.username);
-  setCounts({
-    friends: Number(elements.friendsCount.textContent) || 0,
-    messages: messages.length,
-    emotions: Number(elements.emotionsCount.textContent) || 0,
-  });
+  await loadDashboard();
 }
 
-async function sendFriendRequest(profile) {
-  if (!state.session?.user || !state.profile || !profile) return;
+async function handleProfileUpdate(event) {
+  event.preventDefault();
+  if (!state.session?.user) return;
 
-  const [{ data: userData, error: userError }, { data: sessionData, error: sessionError }] = await Promise.all([
-    state.supabase.auth.getUser(),
-    state.supabase.auth.getSession(),
-  ]);
-  if (userError || !userData?.user) {
-    setStatusMessage(elements.friendStatus, 'Unable to verify your session. Please sign in again.', 'text-rose-600');
-    return;
+  const updates = {
+    id: state.session.user.id,
+    display_name: elements.profileDisplayName.value.trim(),
+    username: elements.profileUsername.value.trim(),
+    bio: elements.profileBio.value.trim(),
+    avatar_url: elements.profileAvatar.value.trim(),
+    updated_at: new Date().toISOString()
+  };
+
+  setStatusMessage(elements.profileStatus, 'Saving...', 'text-slate-500');
+
+  const { error } = await state.supabase.from('profiles').upsert(updates);
+
+  if (error) {
+    setStatusMessage(elements.profileStatus, 'Update failed.', 'text-rose-600');
+  } else {
+    setStatusMessage(elements.profileStatus, 'Profile saved.', 'text-emerald-600');
+    await loadDashboard();
   }
-  if (sessionError || !sessionData?.session?.access_token) {
-    setStatusMessage(elements.friendStatus, 'Unable to authenticate your request. Please sign in again.', 'text-rose-600');
-    return;
+}
+
+async function sendFriendRequest(person) {
+  if (!state.session?.user) return;
+  
+  const { error } = await state.supabase.from('friendships').insert({
+    requester: state.session.user.id,
+    addressee: person.id,
+    status: 'pending'
+  });
+
+  if (!error) {
+    await loadDashboard();
+  } else {
+    console.error('Error sending request:', error);
   }
-
-  const requesterId = userData.user.id;
-  if (profile.username === state.profile.username) {
-    setStatusMessage(elements.friendStatus, 'You cannot add yourself.', 'text-amber-600');
-    return;
-  }
-
-  setStatusMessage(elements.friendStatus, 'Sending friend request...', 'text-slate-500');
-  const { data: existing } = await state.supabase
-    .from('friendships')
-    .select('id, status')
-    .or(`and(requester.eq.${requesterId},addressee.eq.${profile.id}),and(requester.eq.${profile.id},addressee.eq.${requesterId})`)
-    .maybeSingle();
-
-  if (existing) {
-    setStatusMessage(elements.friendStatus, 'You already have a connection with this user.', 'text-amber-600');
-    return;
-  }
-
-  try {
-    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionData.session.access_token}`,
-      },
-      body: JSON.stringify({ addressee: profile.id }),
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const errorMessage = result?.error || result?.message || 'Unable to send friend request.';
-      setStatusMessage(elements.friendStatus, errorMessage, 'text-rose-600');
-      return;
-    }
-  } catch (error) {
-    setStatusMessage(elements.friendStatus, error.message || 'Unable to send friend request.', 'text-rose-600');
-    return;
-  }
-
-  setStatusMessage(elements.friendStatus, `Request sent to ${profile.name}.`, 'text-emerald-600');
-  await loadDashboard();
 }
 
 async function acceptFriendRequest(requestId) {
   if (!state.session?.user) return;
-  const { error } = await state.supabase
-    .from('friendships')
+  
+  const { error } = await state.supabase.from('friendships')
     .update({ status: 'accepted' })
     .eq('id', requestId);
 
-  if (error) {
-    setStatusMessage(elements.friendStatus, error.message, 'text-rose-600');
-    return;
-  }
-
-  setStatusMessage(elements.friendStatus, 'Friend request accepted.', 'text-emerald-600');
-  await loadDashboard();
-}
-
-async function handleProfileSubmit(event) {
-  event.preventDefault();
-  if (!state.session?.user) return;
-
-  const payload = {
-    id: state.session.user.id,
-    display_name: elements.profileDisplayName.value.trim(),
-    username: elements.profileUsername.value.trim(),
-    avatar_url: elements.profileAvatar.value.trim(),
-    bio: elements.profileBio.value.trim(),
-  };
-
-  if (!payload.username) {
-    setStatusMessage(elements.profileStatus, 'Username cannot be empty.', 'text-amber-600');
-    return;
-  }
-
-  setStatusMessage(elements.profileStatus, 'Saving profile...', 'text-slate-500');
-  const { error } = await state.supabase.from('profiles').upsert(payload);
-
-  if (error) {
-    setStatusMessage(elements.profileStatus, error.message, 'text-rose-600');
-    return;
-  }
-
-  setStatusMessage(elements.profileStatus, 'Profile updated.', 'text-emerald-600');
-  await loadDashboard();
-}
-
-function attachListeners() {
-  elements.authSignin.addEventListener('click', () => setAuthMode('signin'));
-  elements.authSignup.addEventListener('click', () => setAuthMode('signup'));
-  elements.authForm.addEventListener('submit', handleAuthSubmit);
-  if (elements.signOut) {
-    elements.signOut.addEventListener('click', handleSignOut);
-  }
-  if (elements.refreshDashboard) {
-    elements.refreshDashboard.addEventListener('click', handleRefresh);
-  }
-  if (elements.moodForm) {
-    elements.moodForm.addEventListener('submit', handleMoodSubmit);
-  }
-  if (elements.messageForm) {
-    elements.messageForm.addEventListener('submit', handleMessageSubmit);
-  }
-  if (elements.friendSearch) {
-    elements.friendSearch.addEventListener('input', async (event) => {
-      if (!state.session?.user) return;
-      const queryText = event.target.value.trim();
-      if (!queryText) {
-        renderFriendSearchResults([]);
-        return;
-      }
-      const results = await searchProfiles(queryText, state.session.user.id);
-      renderFriendSearchResults(results);
-    });
-  }
-  if (elements.notificationsToggle && elements.notificationsPanel) {
-    elements.notificationsToggle.addEventListener('click', () => {
-      elements.notificationsPanel.classList.toggle('hidden');
-    });
-    document.addEventListener('click', (event) => {
-      if (!elements.notificationsPanel.contains(event.target) && !elements.notificationsToggle.contains(event.target)) {
-        elements.notificationsPanel.classList.add('hidden');
-      }
-    });
-  }
-  if (elements.profileForm) {
-    elements.profileForm.addEventListener('submit', handleProfileSubmit);
-  }
-  elements.pageToggleButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const pageTarget = button.dataset.pageTarget;
-      if (pageTarget) {
-        setActivePage(pageTarget);
-      }
-    });
-  });
-}
-
-async function initializeSupabase() {
-  if (!supabaseAnonKey) {
-    setConnectionStatus('Needs key', 'text-amber-700 bg-amber-100');
-    resetDashboard();
-    showGuestView();
-    return;
-  }
-
-  if (!state.supabase) {
-    state.supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
-  }
-
-  setConnectionStatus('Connected', 'text-emerald-700 bg-emerald-100');
-
-  const { data } = await state.supabase.auth.getSession();
-  state.session = data.session;
-
-  if (state.session?.user) {
-    setAuthMessage(`Welcome back, ${state.session.user.email}`, 'text-emerald-600');
-    showAppView();
-    setActivePage(state.activePage);
+  if (!error) {
     await loadDashboard();
-    if (state.profile?.username) {
-      subscribeToNotifications(state.profile.username, state.session.user.id);
-    }
-  } else {
-    setAuthMessage('Sign in to view your TapMood data.', 'text-slate-500');
-    resetDashboard();
-    showGuestView();
+  }
+}
+
+let searchTimeout;
+function handleFriendSearch(event) {
+  const query = event.target.value.trim();
+  clearTimeout(searchTimeout);
+  
+  if(query.length < 2) {
+    renderFriendSearchResults([]);
+    return;
   }
 
-  state.supabase.auth.onAuthStateChange(async (_event, session) => {
+  searchTimeout = setTimeout(async () => {
+    if(!state.session?.user) return;
+    const results = await searchProfiles(query, state.session.user.id);
+    renderFriendSearchResults(results);
+  }, 400); // 400ms debounce
+}
+
+// --- Initialization ---
+
+function init() {
+  if (typeof supabase === 'undefined') {
+    console.error('Supabase JS library not found.');
+    setConnectionStatus('Supabase Missing', 'text-rose-600 bg-rose-100');
+    return;
+  }
+
+  // Initialize Client
+  state.supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+  // Bind Auth Events
+  elements.authSignin?.addEventListener('click', () => setAuthMode('signin'));
+  elements.authSignup?.addEventListener('click', () => setAuthMode('signup'));
+  elements.authForm?.addEventListener('submit', handleAuthSubmit);
+  elements.signOut?.addEventListener('click', handleSignOut);
+  
+  // Bind Dashboard Events
+  elements.refreshDashboard?.addEventListener('click', handleRefresh);
+  elements.moodForm?.addEventListener('submit', handleMoodSubmit);
+  elements.messageForm?.addEventListener('submit', handleMessageSubmit);
+  elements.profileForm?.addEventListener('submit', handleProfileUpdate);
+  elements.friendSearch?.addEventListener('input', handleFriendSearch);
+  
+  // UI Toggles
+  elements.notificationsToggle?.addEventListener('click', () => {
+    elements.notificationsPanel?.classList.toggle('hidden');
+  });
+
+  elements.pageToggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.pageTarget;
+      if(target) setActivePage(target);
+    });
+  });
+
+  // Supabase Auth State Listener
+  state.supabase.auth.onAuthStateChange((event, session) => {
     state.session = session;
-    if (session?.user) {
+    if (session) {
+      setConnectionStatus('Connected', 'text-emerald-600 bg-emerald-100');
       showAppView();
-      setActivePage(state.activePage);
-      await loadDashboard();
-      if (state.profile?.username) {
-        subscribeToNotifications(state.profile.username, session.user.id);
-      }
+      loadDashboard();
     } else {
-      resetDashboard();
+      setConnectionStatus('Offline', 'text-slate-400 bg-slate-100');
       showGuestView();
+      resetDashboard();
     }
   });
 }
 
-function subscribeToNotifications(username, userId) {
-  if (!state.supabase || !username || !userId) return;
-  if (state.notificationChannel) {
-    state.supabase.removeChannel(state.notificationChannel);
-  }
-
-  state.notificationChannel = state.supabase
-    .channel(`tapmood-notifications-${userId}`)
-    .on(
-      'postgres_changes',
-      { event: 'INSERT', schema: 'public', table: 'friendships', filter: `addressee=eq.${userId}` },
-      () => loadNotifications({ userId, username })
-    )
-    .on(
-      'postgres_changes',
-      { event: 'INSERT', schema: 'public', table: 'chat_messages', filter: `recipient_code=eq.${username}` },
-      () => loadNotifications({ userId, username })
-    )
-    .subscribe();
-}
-
-setAuthMode('signin');
-setActivePage(state.activePage);
-renderDiscoverPeople([]);
-renderFriendSearchResults([]);
-attachListeners();
-initializeSupabase();
+// Start
+document.addEventListener('DOMContentLoaded', init);
