@@ -68,6 +68,12 @@ const el = {
   messageStatus: document.getElementById("message-status"),
   messagesList: document.getElementById("messages-list"),
   messagesInbox: document.getElementById("messages-inbox"),
+  messagesFriends: document.getElementById("messages-friends"),
+  inboxSearch: document.getElementById("inbox-search"),
+  messageThreadName: document.getElementById("message-thread-name"),
+  messageThreadStatus: document.getElementById("message-thread-status"),
+  messageThreadAvatar: document.getElementById("message-thread-avatar"),
+  messageTypingStatus: document.getElementById("message-typing-status"),
 
   // Friends
   friendsList: document.getElementById("friends-list"),
@@ -120,6 +126,14 @@ const state = {
 
   // inbox
   selectedThreadUser: "",
+  inboxFilter: "",
+  typing: {
+    peers: {},
+    timers: new Map(),
+    localTimer: null,
+    lastSentAt: 0,
+    lastTo: "",
+  },
 
   // notification list
   notifications: [],
@@ -172,6 +186,36 @@ function timeAgo(iso) {
   if (h < 24) return `${h}h ago`;
   const days = Math.floor(h / 24);
   return `${days}d ago`;
+}
+
+function getInitials(name) {
+  const safe = safeText(name).trim();
+  if (!safe) return "TM";
+  return safe
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
+}
+
+function renderAvatar({ name, username, avatar_url }, size = "h-10 w-10") {
+  if (avatar_url) {
+    return `<img src="${avatar_url}" alt="${safeText(
+      name || username || "Friend"
+    )}" class="${size} rounded-2xl object-cover" />`;
+  }
+  return `<div class="${size} flex items-center justify-center rounded-2xl bg-slate-200 text-[11px] font-semibold text-slate-600">${getInitials(
+    name || username || "Friend"
+  )}</div>`;
+}
+
+function findFriendByUsername(username) {
+  if (!username) return null;
+  const normalized = username.replace("@", "").trim().toLowerCase();
+  return state.friends.find(
+    (friend) => safeText(friend.username).toLowerCase() === normalized
+  );
 }
 
 function setConnectionStatus(text, tone = "text-slate-400 bg-slate-100") {
@@ -236,6 +280,124 @@ function toast(msg, kind = "info") {
     t.style.transition = "opacity 220ms ease, transform 220ms ease";
     setTimeout(() => t.remove(), 240);
   }, 2200);
+}
+
+function getLastMessageForThread(username) {
+  if (!username || !state.messages.length || !state.profile?.username) return null;
+  const myUsername = state.profile.username;
+  let last = null;
+  state.messages.forEach((m) => {
+    const sender = safeText(m.sender_code || "");
+    const recipient = safeText(m.recipient_code || "");
+    const other = sender === myUsername ? recipient : sender || recipient;
+    if (other !== username) return;
+    const mt = new Date(m.timestamp || m.created_at || 0).getTime();
+    const lt = last ? new Date(last.timestamp || last.created_at || 0).getTime() : 0;
+    if (!last || mt > lt) last = m;
+  });
+  return last;
+}
+
+function updateThreadHeader() {
+  if (!el.messageThreadName || !el.messageThreadStatus || !el.messageThreadAvatar) return;
+
+  const otherUser = state.selectedThreadUser;
+  if (!otherUser) {
+    el.messageThreadName.textContent = "Select a conversation";
+    el.messageThreadStatus.textContent = "Tap a friend to open chat.";
+    el.messageThreadAvatar.innerHTML = "TM";
+    if (el.messageTypingStatus) el.messageTypingStatus.textContent = "";
+    return;
+  }
+
+  const friend = findFriendByUsername(otherUser);
+  const displayName = friend?.name || otherUser;
+  const avatarMarkup = renderAvatar(
+    {
+      name: friend?.name || otherUser,
+      username: friend?.username || otherUser,
+      avatar_url: friend?.avatar_url || "",
+    },
+    "h-12 w-12"
+  );
+
+  el.messageThreadName.textContent = displayName;
+  el.messageThreadAvatar.innerHTML = avatarMarkup;
+
+  const typing = state.typing.peers?.[otherUser];
+  if (typing) {
+    el.messageThreadStatus.textContent = "Typing now…";
+    if (el.messageTypingStatus) el.messageTypingStatus.textContent = "Typing";
+    return;
+  }
+
+  const lastMessage = getLastMessageForThread(otherUser);
+  if (lastMessage?.timestamp || lastMessage?.created_at) {
+    const when = lastMessage.timestamp || lastMessage.created_at;
+    el.messageThreadStatus.textContent = `Last active ${timeAgo(when)}`;
+  } else {
+    el.messageThreadStatus.textContent = "Say hello to start the conversation.";
+  }
+  if (el.messageTypingStatus) el.messageTypingStatus.textContent = "";
+}
+
+function setTypingIndicator(user, isTyping) {
+  if (!user) return;
+  if (isTyping) {
+    state.typing.peers[user] = true;
+  } else {
+    delete state.typing.peers[user];
+  }
+  updateThreadHeader();
+  if (state.profile?.username) {
+    renderMessageInbox(state.messages, state.profile.username);
+  }
+}
+
+function sendTypingEvent(isTyping, overrideUser) {
+  if (!state.rt.channel || !state.profile?.username) return;
+  const toUser = overrideUser || state.selectedThreadUser;
+  if (!toUser) return;
+
+  const now = Date.now();
+  if (isTyping && now - state.typing.lastSentAt < 800) return;
+
+  state.typing.lastSentAt = now;
+  state.typing.lastTo = toUser;
+
+  state.rt.channel.send({
+    type: "broadcast",
+    event: "typing",
+    payload: {
+      from: state.profile.username,
+      to: toUser,
+      typing: Boolean(isTyping),
+    },
+  });
+}
+
+function handleTypingInput() {
+  const text = el.messageText?.value || "";
+  const hasText = text.trim().length > 0;
+  sendTypingEvent(hasText);
+
+  if (state.typing.localTimer) clearTimeout(state.typing.localTimer);
+  state.typing.localTimer = setTimeout(() => {
+    sendTypingEvent(false);
+  }, 1600);
+}
+
+function setActiveThread(otherUser) {
+  const clean = safeText(otherUser || "").replace("@", "").trim();
+  if (!clean) return;
+
+  if (state.selectedThreadUser && state.selectedThreadUser !== clean) {
+    sendTypingEvent(false, state.selectedThreadUser);
+  }
+
+  state.selectedThreadUser = clean;
+  if (el.messageRecipient) el.messageRecipient.value = clean;
+  updateThreadHeader();
 }
 
 function showGuestView() {
@@ -313,6 +475,7 @@ function setActivePage(page) {
   // small UX touch
   if (page === "messages" && el.messageRecipient) {
     el.messageRecipient.focus({ preventScroll: true });
+    updateThreadHeader();
   }
 }
 
@@ -401,7 +564,7 @@ function renderFriends(friends) {
     if (btn) {
       btn.addEventListener("click", async () => {
         setActivePage("messages");
-        if (el.messageRecipient) el.messageRecipient.value = handle || name;
+        setActiveThread(handle || name);
         await loadThreadIfPossible(handle || name);
       });
     }
@@ -531,7 +694,7 @@ function renderNotificationFriends(friends) {
       btn.addEventListener("click", async () => {
         closeNotifications();
         setActivePage("messages");
-        if (el.messageRecipient) el.messageRecipient.value = handle || name;
+        setActiveThread(handle || name);
         await loadThreadIfPossible(handle || name);
       });
     }
@@ -540,13 +703,14 @@ function renderNotificationFriends(friends) {
   });
 }
 
-function renderMessages(messages) {
+function renderMessages(messages, myUsername) {
   if (!el.messagesList) return;
   el.messagesList.innerHTML = "";
 
   if (!messages.length) {
     el.messagesList.innerHTML =
-      '<p class="text-slate-500">No messages yet.</p>';
+      '<p class="text-slate-500">No messages yet. Start the conversation below.</p>';
+    updateThreadHeader();
     return;
   }
 
@@ -554,26 +718,32 @@ function renderMessages(messages) {
     .slice()
     .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
     .forEach((message) => {
-      const sender = safeText(message.sender_name || message.sender_code || "Unknown");
+      const senderCode = safeText(message.sender_code || "");
+      const senderName = safeText(message.sender_name || senderCode || "Unknown");
       const when = message.timestamp || message.created_at;
+      const isMine = senderCode && myUsername ? senderCode === myUsername : false;
       const item = document.createElement("div");
-      item.className =
-        "rounded-2xl border border-slate-100 bg-white px-3 py-2";
+      item.className = `flex ${isMine ? "justify-end" : "justify-start"}`;
       item.innerHTML = `
-        <div class="flex items-center justify-between gap-2">
-          <p class="text-xs font-semibold text-slate-500">${sender}</p>
-          <p class="text-[11px] font-semibold text-slate-400">${timeAgo(
-            when
-          )}</p>
+        <div class="max-w-[85%] rounded-2xl px-4 py-3 shadow-sm ${
+          isMine
+            ? "bg-slate-900 text-white"
+            : "bg-white text-slate-800 border border-slate-100"
+        }">
+          <div class="flex items-center justify-between gap-3 text-[11px] font-semibold ${
+            isMine ? "text-slate-200" : "text-slate-400"
+          }">
+            <span class="truncate">${isMine ? "You" : senderName}</span>
+            <span>${timeAgo(when)}</span>
+          </div>
+          <p class="mt-1 whitespace-pre-wrap text-sm">${safeText(message.text)}</p>
         </div>
-        <p class="mt-1 whitespace-pre-wrap text-sm text-slate-700">${safeText(
-          message.text
-        )}</p>
       `;
       el.messagesList.appendChild(item);
     });
 
   el.messagesList.scrollTop = el.messagesList.scrollHeight;
+  updateThreadHeader();
 }
 
 function renderMessageInbox(messages, myUsername) {
@@ -607,33 +777,90 @@ function renderMessageInbox(messages, myUsername) {
     return bt - at;
   });
 
+  const filter = state.inboxFilter.trim().toLowerCase();
+
   sorted.forEach(([otherUser, lastMsg]) => {
+    if (filter && !otherUser.toLowerCase().includes(filter)) return;
+
     const active = otherUser === state.selectedThreadUser;
+    const friend = findFriendByUsername(otherUser);
+    const typing = state.typing.peers?.[otherUser];
 
     const button = document.createElement("button");
     button.type = "button";
     button.className = active
-      ? "flex w-full flex-col rounded-2xl border border-slate-200 bg-white px-3 py-2 text-left shadow-sm"
-      : "flex w-full flex-col rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2 text-left transition hover:border-slate-200 hover:bg-white";
+      ? "flex w-full gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-left shadow-sm"
+      : "flex w-full gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-3 text-left transition hover:border-slate-200 hover:bg-white";
 
     button.innerHTML = `
-      <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-400">
-        <span class="truncate">${safeText(otherUser)}</span>
-        <span class="shrink-0">${timeAgo(lastMsg.timestamp)}</span>
+      ${renderAvatar(
+        {
+          name: friend?.name || otherUser,
+          username: friend?.username || otherUser,
+          avatar_url: friend?.avatar_url || "",
+        },
+        "h-10 w-10"
+      )}
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <span class="truncate">${safeText(friend?.name || otherUser)}</span>
+          <span class="shrink-0">${timeAgo(lastMsg.timestamp)}</span>
+        </div>
+        <p class="mt-1 truncate text-sm font-semibold ${
+          typing ? "text-indigo-500" : "text-slate-700"
+        }">${typing ? "Typing…" : safeText(lastMsg.text || "New message")}</p>
       </div>
-      <p class="mt-1 truncate text-sm font-semibold text-slate-700">${safeText(
-        lastMsg.text || "New message"
-      )}</p>
     `;
 
     button.addEventListener("click", async () => {
-      state.selectedThreadUser = otherUser;
-      if (el.messageRecipient) el.messageRecipient.value = otherUser;
+      setActiveThread(otherUser);
       renderMessageInbox(state.messages, myUsername);
       await loadThreadIfPossible(otherUser);
     });
 
     el.messagesInbox.appendChild(button);
+  });
+}
+
+function renderMessageFriends(friends) {
+  if (!el.messagesFriends) return;
+  el.messagesFriends.innerHTML = "";
+
+  if (!friends.length) {
+    el.messagesFriends.innerHTML =
+      '<p class="text-sm text-slate-500">No friends yet. Add someone to start chatting.</p>';
+    return;
+  }
+
+  friends.slice(0, 6).forEach((friend) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className =
+      "flex w-full items-center gap-3 rounded-2xl border border-slate-100 bg-white px-3 py-3 text-left transition hover:border-slate-200 hover:bg-white";
+    card.innerHTML = `
+      ${renderAvatar(friend, "h-10 w-10")}
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-sm font-semibold text-slate-700">${safeText(
+          friend.name || friend.username || "Friend"
+        )}</p>
+        <p class="truncate text-xs text-slate-400">@${safeText(
+          friend.username || "friend"
+        )}</p>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-400">Chat</span>
+    `;
+
+    card.addEventListener("click", async () => {
+      const username = safeText(friend.username || friend.name);
+      if (!username) return;
+      state.selectedThreadUser = username;
+      if (el.messageRecipient) el.messageRecipient.value = username;
+      updateThreadHeader();
+      renderMessageInbox(state.messages, state.profile?.username || "");
+      await loadThreadIfPossible(username);
+    });
+
+    el.messagesFriends.appendChild(card);
   });
 }
 
@@ -1070,6 +1297,11 @@ function stopRealtime() {
     state.supabase.removeChannel(state.rt.channel);
     state.rt.channel = null;
   }
+  Object.keys(state.typing.peers || {}).forEach((user) => {
+    setTypingIndicator(user, false);
+  });
+  state.typing.timers.forEach((timer) => clearTimeout(timer));
+  state.typing.timers.clear();
 }
 
 function startRealtime() {
@@ -1084,6 +1316,26 @@ function startRealtime() {
   // Note: Realtime requires you to have enabled it on tables in Supabase.
   const channel = state.supabase
     .channel(`tapmood:${userId}`)
+    .on("broadcast", { event: "typing" }, ({ payload }) => {
+      const from = safeText(payload?.from || "");
+      const to = safeText(payload?.to || "");
+      const typing = Boolean(payload?.typing);
+      if (!from || !to) return;
+      if (to !== myUsername || from === myUsername) return;
+
+      setTypingIndicator(from, typing);
+
+      if (state.typing.timers.has(from)) {
+        clearTimeout(state.typing.timers.get(from));
+      }
+      if (typing) {
+        const timer = setTimeout(() => {
+          setTypingIndicator(from, false);
+          state.typing.timers.delete(from);
+        }, 3200);
+        state.typing.timers.set(from, timer);
+      }
+    })
     // friend requests and acceptances that touch you
     .on(
       "postgres_changes",
@@ -1156,9 +1408,10 @@ async function loadThreadIfPossible(otherUser) {
   const other = (otherUser || "").replace("@", "").trim();
   if (!other) return;
 
+  setActiveThread(other);
   setStatusMessage(el.messageStatus, "Loading thread...", "text-slate-500");
   const thread = await loadThread(myUsername, other);
-  renderMessages(thread);
+  renderMessages(thread, myUsername);
   setStatusMessage(el.messageStatus, "", "text-slate-500");
 }
 
@@ -1201,6 +1454,7 @@ async function loadDashboard() {
     renderFriends(friends);
     renderEmotions(emotions);
     renderMessageInbox(messages, profile?.username);
+    renderMessageFriends(friends);
     renderActivityFeed({ friends, emotions, messages });
     renderFriendRequests(requests);
     renderDiscoverPeople(suggested);
@@ -1209,16 +1463,16 @@ async function loadDashboard() {
     // default thread selection
     if (!state.selectedThreadUser) {
       const firstThread = pickFirstThreadUser(messages, profile?.username);
-      if (firstThread) state.selectedThreadUser = firstThread;
+      if (firstThread) setActiveThread(firstThread);
     }
 
     // if we have a selected thread, load it
     if (state.selectedThreadUser && profile?.username) {
       const thread = await loadThread(profile.username, state.selectedThreadUser);
       if (runId !== state.runId) return;
-      renderMessages(thread);
+      renderMessages(thread, profile.username);
     } else {
-      renderMessages([]);
+      renderMessages([], profile?.username);
     }
 
     // notifications
@@ -1290,6 +1544,7 @@ async function softRefresh(flags = {}) {
   if (flags.friends) {
     renderFriends(state.friends);
     renderNotificationFriends(state.friends);
+    renderMessageFriends(state.friends);
   }
   if (flags.requests) renderFriendRequests(state.requests);
   if (flags.emotions) renderEmotions(state.emotions);
@@ -1297,7 +1552,7 @@ async function softRefresh(flags = {}) {
     renderMessageInbox(state.messages, myUsername);
     if (state.selectedThreadUser) {
       const thread = await loadThread(myUsername, state.selectedThreadUser);
-      renderMessages(thread);
+      renderMessages(thread, myUsername);
     }
   }
   if (flags.suggested) renderDiscoverPeople(state.suggested);
@@ -1395,6 +1650,7 @@ function resetDashboard() {
   if (el.friendsList) el.friendsList.innerHTML = "<li>Sign in to view friends.</li>";
   if (el.messagesList) el.messagesList.innerHTML = "<p>Sign in to view messages.</p>";
   if (el.messagesInbox) el.messagesInbox.innerHTML = "<p>Sign in to view messages.</p>";
+  if (el.messagesFriends) el.messagesFriends.innerHTML = "<p>Sign in to view friends.</p>";
   if (el.emotionsList)
     el.emotionsList.innerHTML =
       '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>';
@@ -1419,6 +1675,11 @@ function resetDashboard() {
   state.suggested = [];
   state.notifications = [];
   state.selectedThreadUser = "";
+  state.inboxFilter = "";
+  state.typing.peers = {};
+  state.typing.timers.forEach((timer) => clearTimeout(timer));
+  state.typing.timers.clear();
+  updateThreadHeader();
 }
 
 async function handleRefresh() {
@@ -1501,6 +1762,7 @@ async function handleMessageSubmit(event) {
 
   state.busy.msgSend = true;
   setStatusMessage(el.messageStatus, "Sending...", "text-slate-500");
+  sendTypingEvent(false, recipientCode);
 
   try {
     // optimistic: append to current thread UI if it matches
@@ -1513,10 +1775,10 @@ async function handleMessageSubmit(event) {
       timestamp: nowIso(),
     };
 
-    if (!state.selectedThreadUser) state.selectedThreadUser = recipientCode;
+    if (!state.selectedThreadUser) setActiveThread(recipientCode);
     if (state.selectedThreadUser === recipientCode) {
       const current = await loadThread(state.profile.username, recipientCode);
-      renderMessages([...current.slice().reverse(), optimistic].slice(-80));
+      renderMessages([...current, optimistic].slice(-80), state.profile.username);
     }
 
     const { error } = await state.supabase.from("chat_messages").insert({
@@ -1534,7 +1796,7 @@ async function handleMessageSubmit(event) {
     if (el.messageText) el.messageText.value = "";
 
     await softRefresh({ messages: true, activity: true, notifications: true });
-    state.selectedThreadUser = recipientCode;
+    setActiveThread(recipientCode);
   } catch (e) {
     console.error(e);
     setStatusMessage(el.messageStatus, "Failed to send.", "text-rose-600");
@@ -1722,8 +1984,17 @@ async function init() {
   el.refreshDashboard?.addEventListener("click", handleRefresh);
   el.moodForm?.addEventListener("submit", handleMoodSubmit);
   el.messageForm?.addEventListener("submit", handleMessageSubmit);
+  el.messageText?.addEventListener("input", handleTypingInput);
+  el.messageRecipient?.addEventListener("change", (event) => {
+    const value = safeText(event.target.value || "").trim();
+    if (value) setActiveThread(value);
+  });
   el.profileForm?.addEventListener("submit", handleProfileUpdate);
   el.friendSearch?.addEventListener("input", handleFriendSearch);
+  el.inboxSearch?.addEventListener("input", (event) => {
+    state.inboxFilter = safeText(event.target.value || "");
+    if (state.profile?.username) renderMessageInbox(state.messages, state.profile.username);
+  });
 
   // Notifications panel
   el.notificationsToggle?.addEventListener("click", () => {
