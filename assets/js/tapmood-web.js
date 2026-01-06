@@ -939,35 +939,59 @@ async function handleProfileUpdate(event) {
   }
 }
 
-async function sendFriendRequest(payload, accessToken) {
-  if (!accessToken) throw new Error('Not authenticated');
-
-  const res = await fetch('https://lxylwexfjhtzvepwvjal.supabase.co/functions/v1/create-friend-request', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(payload),
-    credentials: 'omit'
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: res.statusText }));
-    throw new Error(err.message || 'Failed to send request');
+async function sendFriendRequest(person) {
+  // Guard clause: Ensure session exists before proceeding
+  if (!state.session?.access_token) {
+    console.error('Authentication Error: No active session found.');
+    setStatusMessage(elements.friendStatus, 'Please sign in to add friends.', 'text-rose-600');
+    throw new Error('Not authenticated');
   }
-  return await res.json();
+
+  setStatusMessage(elements.friendStatus, 'Sending request...', 'text-slate-500');
+
+  try {
+    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': supabaseAnonKey,
+        'Authorization': `Bearer ${state.session.access_token}`
+      },
+      body: JSON.stringify({
+        receiver_id: person.id 
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to send request');
+    }
+
+    setStatusMessage(elements.friendStatus, 'Request sent successfully!', 'text-emerald-600');
+    
+    // Refresh the discover and search views
+    await loadDashboard(); 
+  } catch (error) {
+    console.error('sendFriendRequest Failure:', error);
+    setStatusMessage(elements.friendStatus, error.message, 'text-rose-600');
+  }
 }
 
 async function acceptFriendRequest(requestId) {
-  if (!state.session?.user) return;
-  
-  const { error } = await state.supabase.from('friendships')
-    .update({ status: 'accepted' })
-    .eq('id', requestId);
+  if (!state.supabase) return;
 
-  if (!error) {
+  try {
+    const { error } = await state.supabase
+      .from('friendships')
+      .update({ status: 'accepted' })
+      .eq('id', requestId);
+
+    if (error) throw error;
+
+    // Trigger dashboard refresh to update friends list and counts
     await loadDashboard();
+  } catch (error) {
+    console.error('Error accepting request:', error.message);
   }
 }
 
