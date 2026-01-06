@@ -1032,7 +1032,18 @@ async function init() {
   }
 
   // Initialize Client
-  state.supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+  state.supabase = supabase.createClient(
+    supabaseUrl,
+    supabaseAnonKey,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+      },
+    }
+  );
+
   setConnectionStatus('Checking', 'text-amber-600 bg-amber-100');
 
   // Bind Auth Events
