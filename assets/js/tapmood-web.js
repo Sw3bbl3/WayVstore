@@ -111,6 +111,13 @@ const el = {
   notificationsList: $("notifications-list"),
   notificationsBadge: $("notifications-badge"),
 
+  messagesFriends: $("messages-friends"),
+  friendsCount: $("friends-count"),
+  messagesCount: $("messages-count"),
+  profileCard: $("profile-card"),
+  profileRefresh: $("profile-refresh"),
+  friendsRefresh: $("friends-refresh"),
+
   profileForm: $("profile-form"),
   profileUsername: $("profile-username"),
   profileDisplayName: $("profile-display-name"),
@@ -321,6 +328,7 @@ function startRealtime() {
         ) {
           state.messages.unshift(m);
           renderInbox();
+          renderStats();
           if (state.selectedThreadUser) {
             const t = await loadThread(
               username,
@@ -384,6 +392,163 @@ function renderMessages(list) {
   });
 }
 
+function renderProfile() {
+  if (!state.profile) return;
+
+  if (el.profileDisplayName) {
+    el.profileDisplayName.value =
+      safe(state.profile.display_name);
+  }
+  if (el.profileUsername) {
+    el.profileUsername.value = safe(state.profile.username);
+  }
+  if (el.profileAvatar) {
+    el.profileAvatar.value = safe(state.profile.avatar_url);
+  }
+  if (el.profileBio) {
+    el.profileBio.value = safe(state.profile.bio);
+  }
+
+  if (el.profileCard) {
+    const avatar =
+      state.profile.avatar_url
+        ? `<img src="${state.profile.avatar_url}" alt="" class="h-12 w-12 rounded-full object-cover" />`
+        : `<div class="h-12 w-12 rounded-full bg-slate-200"></div>`;
+    el.profileCard.innerHTML = `
+      ${avatar}
+      <div>
+        <p class="font-semibold">${safe(
+          state.profile.display_name ||
+            state.profile.username
+        )}</p>
+        <p class="text-slate-600">@${safe(
+          state.profile.username
+        )}</p>
+      </div>
+    `;
+  }
+}
+
+function renderFriends() {
+  if (!el.friendsList) return;
+  el.friendsList.innerHTML = "";
+  if (!state.friends.length) {
+    const li = document.createElement("li");
+    li.className = "text-slate-500";
+    li.textContent = "No friends yet.";
+    el.friendsList.appendChild(li);
+  } else {
+    state.friends.forEach((friend) => {
+      const li = document.createElement("li");
+      li.className =
+        "flex items-center justify-between rounded-2xl border border-slate-100 bg-white p-3";
+      li.innerHTML = `
+        <div class="flex items-center gap-3">
+          ${
+            friend.avatar_url
+              ? `<img src="${friend.avatar_url}" alt="" class="h-10 w-10 rounded-full object-cover" />`
+              : `<div class="h-10 w-10 rounded-full bg-slate-200"></div>`
+          }
+          <div>
+            <p class="font-semibold text-slate-800">${safe(
+              friend.name
+            )}</p>
+            <p class="text-xs text-slate-500">@${safe(
+              friend.username
+            )}</p>
+          </div>
+        </div>
+        <button class="tm-btn tm-btn-ghost px-3 py-1.5 text-xs">Message</button>
+      `;
+      el.friendsList.appendChild(li);
+    });
+  }
+
+  if (el.messagesFriends) {
+    el.messagesFriends.innerHTML = "";
+    if (!state.friends.length) {
+      const empty = document.createElement("div");
+      empty.className = "text-slate-500";
+      empty.textContent = "No friends to message yet.";
+      el.messagesFriends.appendChild(empty);
+    } else {
+      state.friends.slice(0, 4).forEach((friend) => {
+        const card = document.createElement("button");
+        card.className =
+          "rounded-2xl border border-slate-100 bg-white p-3 text-left hover:border-slate-200";
+        card.innerHTML = `
+          <p class="font-semibold text-slate-800">${safe(
+            friend.name
+          )}</p>
+          <p class="text-xs text-slate-500">@${safe(
+            friend.username
+          )}</p>
+        `;
+        card.addEventListener("click", async () => {
+          state.selectedThreadUser = friend.username;
+          const t = await loadThread(
+            state.profile.username,
+            friend.username
+          );
+          renderMessages(t);
+        });
+        el.messagesFriends.appendChild(card);
+      });
+    }
+  }
+
+  if (el.friendsCount) {
+    el.friendsCount.textContent = String(state.friends.length);
+  }
+}
+
+function renderEmotions() {
+  if (!el.emotionsList) return;
+  el.emotionsList.innerHTML = "";
+  if (!state.emotions.length) {
+    el.emotionsList.classList.remove("hidden");
+    const empty = document.createElement("div");
+    empty.className =
+      "col-span-full rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 text-center text-slate-500";
+    empty.textContent = "No moods yet. Post one to get started.";
+    el.emotionsList.appendChild(empty);
+    return;
+  }
+
+  el.emotionsList.classList.remove("hidden");
+  state.emotions.forEach((mood) => {
+    const card = document.createElement("div");
+    card.className =
+      "rounded-2xl border border-slate-100 bg-white p-4";
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <p class="text-lg font-semibold">${safe(mood.emoji)}</p>
+        <span class="text-xs text-slate-400">${timeAgo(
+          mood.created_at
+        )}</span>
+      </div>
+      <p class="mt-2 text-sm font-semibold text-slate-800">${safe(
+        mood.label || "Mood update"
+      )}</p>
+      <p class="mt-1 text-xs text-slate-500">${safe(
+        mood.note || ""
+      )}</p>
+      <p class="mt-3 text-xs text-slate-400">Intensity ${safe(
+        mood.intensity || "-"
+      )}</p>
+    `;
+    el.emotionsList.appendChild(card);
+  });
+}
+
+function renderStats() {
+  if (el.messagesCount) {
+    el.messagesCount.textContent = String(
+      state.messages.length
+    );
+  }
+}
+
 /* ---------------------------- Dashboard ---------------------------- */
 
 async function loadDashboard() {
@@ -407,6 +572,10 @@ async function loadDashboard() {
     state.emotions = emotions;
 
     renderInbox();
+    renderProfile();
+    renderFriends();
+    renderEmotions();
+    renderStats();
     startRealtime();
   } catch (err) {
     console.error("Dashboard load failed:", err);
@@ -505,6 +674,75 @@ async function init() {
   if (el.signOut) {
     el.signOut.addEventListener("click", async () => {
       await state.supabase.auth.signOut();
+    });
+  }
+
+  if (el.refreshDashboard) {
+    el.refreshDashboard.addEventListener("click", () => {
+      if (state.session) loadDashboard();
+    });
+  }
+
+  if (el.friendsRefresh) {
+    el.friendsRefresh.addEventListener("click", () => {
+      if (state.session) loadDashboard();
+    });
+  }
+
+  if (el.profileRefresh) {
+    el.profileRefresh.addEventListener("click", () => {
+      if (state.session) loadDashboard();
+    });
+  }
+
+  if (el.profileForm) {
+    el.profileForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!state.session || !state.profile) return;
+      if (state.busy.profile) return;
+      state.busy.profile = true;
+      if (el.profileStatus) {
+        el.profileStatus.textContent = "Saving…";
+      }
+
+      const updates = {
+        display_name:
+          el.profileDisplayName?.value?.trim() ||
+          state.profile.display_name,
+        username:
+          el.profileUsername?.value?.trim() ||
+          state.profile.username,
+        avatar_url:
+          el.profileAvatar?.value?.trim() ||
+          state.profile.avatar_url,
+        bio:
+          el.profileBio?.value?.trim() ||
+          state.profile.bio,
+        updated_at: nowIso(),
+      };
+
+      const { data, error } = await state.supabase
+        .from("profiles")
+        .update(updates)
+        .eq("id", state.profile.id)
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Profile update failed:", error);
+        if (el.profileStatus) {
+          el.profileStatus.textContent =
+            "Could not save profile.";
+        }
+      } else {
+        state.profile = data;
+        renderProfile();
+        if (el.profileStatus) {
+          el.profileStatus.textContent = "Profile saved.";
+        }
+      }
+
+      state.busy.profile = false;
     });
   }
 
