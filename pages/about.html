@@ -30,33 +30,8 @@
     </style>
 </head>
 <body>
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="flex items-center space-x-2 group">
-                    <div class="bg-gradient-to-tr from-wayv-accent to-wayv-primary p-2 rounded-lg"><i data-lucide="terminal" class="h-6 w-6 text-white"></i></div>
-                    <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
-                </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="products.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Products</a>
-                    <a href="community.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Community</a>
-                    <a href="about.html" class="nav-link active text-sm font-medium">About</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
-                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">Get Started</button>
-                </div>
-                <div class="md:hidden"><button id="mobile-menu-btn" class="text-slate-300 p-2"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border-b border-white/10 absolute w-full left-0 top-full">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="products.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Products</a>
-                <a href="community.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Community</a>
-                <a href="about.html" class="block px-3 py-3 text-white bg-white/10 rounded-md">About</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Header Include -->
+    <div id="header-include"></div>
 
     <div class="pt-24 min-h-screen">
         <div class="relative border-b border-white/5 bg-wayv-card/30 pb-20">
@@ -107,11 +82,8 @@
         </div>
     </div>
 
-    <footer class="bg-wayv-dark border-t border-white/5 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-            <p class="text-slate-600 text-sm">© 2025 WayV Technology Inc. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer Include -->
+    <div id="footer-include"></div>
     <script>
         lucide.createIcons();
         const navbar = document.getElementById('navbar');
