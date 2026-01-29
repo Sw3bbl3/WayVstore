@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/app.css" />
+    <script src="assets/js/main.js" defer></script>
     <style>
       /* Apple-like font smoothing */
       body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -20,64 +21,80 @@
     </style>
   </head>
 
-  <body class="bg-[#F5F5F7] text-[#1D1D1F]">
-    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300"></div>
+  <body class="bg-black text-[#F5F5F7] transition-colors duration-700">
+    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 dark:bg-[#181C2A]/80 backdrop-blur-md transition-all duration-300"></div>
+
+
+    <!-- Animated Logo Intro -->
+    <!-- Animated Hero Section -->
+    <section class="w-full min-h-screen flex flex-col items-center justify-center bg-black p-0 m-0 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-blue-900/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-2/3 h-2/3 bg-gradient-to-tr from-purple-900/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-[900px] h-[900px] opacity-10 animate-spin-slow" viewBox="0 0 900 900" fill="none"><circle cx="450" cy="450" r="420" stroke="#6366F1" stroke-width="16" stroke-dasharray="60 60"/></svg>
+        </div>
+      </div>
+      <div class="relative z-10 flex flex-col items-center justify-center">
+        <video id="wayvIntroVideo" src="assets/images/sw3bbl3_logo_transparent-_1.mp4" autoplay muted playsinline loop class="w-72 h-72 md:w-[420px] md:h-[420px] object-contain drop-shadow-2xl animate__animated animate__pulse animate__infinite"></video>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mt-8 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 animate__animated animate__fadeInUp">Surf the wave.</h1>
+        <p class="text-lg md:text-2xl font-medium text-slate-300 mb-8 max-w-2xl mx-auto px-6 animate__animated animate__fadeInUp animate__delay-1s">Follow your road and try to not drown in it.<br><span class="text-indigo-300 font-semibold">Open source tools for creators, artists, and dreamers.</span></p>
+        <div class="flex flex-wrap gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
+          <a href="#projects" class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-3 rounded-full font-medium text-sm hover:scale-105 transition shadow-lg shadow-indigo-900/30 animate__animated animate__pulse animate__infinite">Explore Projects</a>
+          <a href="https://github.com/WayVstore" target="_blank" rel="noopener" class="text-white bg-slate-800 px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-700 transition border border-slate-700">GitHub</a>
+        </div>
+      </div>
+    </section>
 
     <main class="mt-7 page-fade pt-16 pb-32 px-4 sm:px-6">
       
-      <section class="mx-auto max-w-[1200px] mb-4 md:mb-6">
-        <div class="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white h-[75vh] md:h-[85vh] min-h-[600px] flex flex-col items-center justify-start pt-14 md:pt-20 text-center shadow-sm hover-scale group cursor-default">
-          
-          <div class="flex items-center gap-2 mb-4 fade-in-up" style="animation-delay: 0.1s;">
-             <span class="relative flex h-2 w-2">
-               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-               <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-             </span>
-             <h2 class="text-xs font-bold text-orange-600 uppercase tracking-widest">TapMood Pending Approval</h2>
-          </div>
+    <script>
+      // Animated logo intro logic with smooth fade and scale
+      window.addEventListener('DOMContentLoaded', () => {
+        const intro = document.getElementById('wayvIntro');
+        const video = document.getElementById('wayvIntroVideo');
+        if (intro && video) {
+          function hideIntro() {
+            intro.style.transition = 'opacity 1s cubic-bezier(.4,2,.3,1), transform 1s cubic-bezier(.4,2,.3,1)';
+            intro.style.opacity = 0;
+            intro.style.transform = 'scale(1.08)';
+            setTimeout(() => intro.style.display = 'none', 1000);
+          }
+          video.onended = hideIntro;
+          // Fallback: hide after 3.5s if video doesn't end
+          setTimeout(hideIntro, 3500);
+        }
+      });
+    </script>
 
-          <h1 class="text-4xl md:text-7xl font-semibold tracking-tighter mb-3 text-[#1D1D1F] leading-tight px-4 fade-in-up" style="animation-delay: 0.2s;">
-            Master your calm.
-          </h1>
-          
-          <p class="text-lg md:text-2xl font-medium text-slate-500 mb-8 tracking-tight max-w-lg mx-auto px-6 fade-in-up" style="animation-delay: 0.3s;">
-            Private mood tracking with on-device insights. Release delayed during App Store review. We'll launch as soon as we can.
-          </p>
-          
-          <div class="flex flex-wrap gap-4 z-10 relative fade-in-up" style="animation-delay: 0.5s;">
-            <a href="/tapmood.html" class="bg-[#1D1D1F] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-800 transition shadow-lg shadow-slate-200/50">Learn more</a>
-            <a href="/tapmood-web.html" class="bg-white text-[#1D1D1F] px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-100 transition shadow-lg shadow-slate-200/50">Open TapMood Web</a>
-            <a href="https://testflight.apple.com/join/CjqYMZ4J" class="text-[#1D1D1F] bg-slate-100 px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-200 transition">Try the Beta</a>
+      <section id="projects" class="mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-24 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="relative bg-black rounded-[40px] p-10 shadow-2xl border border-slate-800 flex flex-col justify-between min-h-[340px] group hover:scale-[1.03] hover:shadow-indigo-900/40 transition cursor-pointer" onclick="window.location='/waveos.html'">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="w-12 h-12" />
+            <span class="px-3 py-1 rounded-full border border-blue-700 bg-blue-900/60 text-xs font-bold uppercase tracking-wider text-blue-200">Aurora</span>
           </div>
-
-          <div class="mt-8 md:mt-12 w-full max-w-[280px] md:max-w-[420px] fade-in-up" style="animation-delay: 0.6s;">
-             <img src="assets/images/tapmood-visual.svg" alt="TapMood App" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-4" />
+          <h2 class="text-3xl font-bold mb-2 text-white">WaveOS Aurora</h2>
+          <p class="text-lg text-slate-300 mb-4">A next-generation open source operating system focused on local intelligence, speed, and privacy.</p>
+          <div class="flex items-center gap-2 mt-auto">
+            <span class="inline-flex items-center gap-2 bg-orange-900/60 text-orange-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase border border-orange-700 animate-pulse">Prototyping</span>
+            <span class="inline-flex items-center gap-2 bg-blue-900/60 text-blue-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase border border-blue-700">Open Source</span>
+          </div>
+        </div>
+        <div class="relative bg-black rounded-[40px] p-10 shadow-2xl border border-slate-800 flex flex-col justify-between min-h-[340px] group hover:scale-[1.03] hover:shadow-purple-900/40 transition cursor-pointer" onclick="window.location='/wave-engine.html'">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-12 h-12" />
+            <span class="px-3 py-1 rounded-full border border-purple-700 bg-purple-900/60 text-xs font-bold uppercase tracking-wider text-purple-200">Engine</span>
+          </div>
+          <h2 class="text-3xl font-bold mb-2 text-white">Wave Engine</h2>
+          <p class="text-lg text-slate-300 mb-4">A high-performance, open source rendering and simulation engine for games, art, and interactive experiences.</p>
+          <div class="flex items-center gap-2 mt-auto">
+            <span class="inline-flex items-center gap-2 bg-purple-900/60 text-purple-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase border border-purple-700 animate-pulse">Development</span>
+            <span class="inline-flex items-center gap-2 bg-indigo-900/60 text-indigo-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase border border-indigo-700 animate-pulse">UI Design</span>
+            <span class="inline-flex items-center gap-2 bg-blue-900/60 text-blue-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase border border-blue-700">Open Source</span>
           </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-[1200px] grid grid-cols-2 gap-3 md:gap-6 mb-4 md:mb-6">
-        
-        <div class="aspect-square relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white flex flex-col items-center justify-end pb-0 md:pb-12 text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/waveos.html'">
-          <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="relative z-10 mb-6 md:mb-0">
-            <span class="hidden md:inline-block bg-[#0071E3] text-white px-6 py-2.5 rounded-full font-medium text-sm group-hover:bg-[#0077ED] transition shadow-lg whitespace-nowrap">Learn more</span>
-          </div>
-        </div>
-
-        <div class="aspect-square relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white flex flex-col items-center justify-end pb-0 md:pb-12 text-center shadow-sm hover-scale group cursor-pointer" onclick="window.location='/wavium.html'">
-          <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-transform duration-700 group-hover:scale-105" />
-          
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 mix-blend-overlay">
-            <div class="w-[70%] h-[70%] rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-600 blur-[40px] md:blur-[90px] opacity-40 group-hover:opacity-50 transition-opacity duration-700"></div>
-          </div>
-
-          <div class="relative z-20 mb-6 md:mb-0">
-             <span class="hidden md:inline-block bg-[#0071E3] text-white px-6 py-2.5 rounded-full font-medium text-sm group-hover:bg-[#0077ED] transition shadow-lg whitespace-nowrap">Visit studio</span>
-          </div>
-        </div>
-
-      </section>
 
       <section class="mx-auto max-w-[1200px] grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
 

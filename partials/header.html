@@ -1,58 +1,40 @@
-<header class="nav-shell glass-nav">
-  <div class="nav-inner">
-    <div class="nav-bar">
-      <a href="/" class="brand brand-compact" data-wayv-button>
-        <img src="assets/images/wayv-logo.svg" alt="WayV" class="brand-mark" />
-        <span class="brand-wordmark">WayV</span>
+<header class="w-full fixed top-0 left-0 z-50 bg-black/80 backdrop-blur-2xl border-b border-slate-800 shadow-lg">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-10">
+    <div class="flex items-center justify-between h-20 relative">
+      <a href="/" class="flex items-center gap-3 group">
+        <span class="relative flex items-center justify-center w-12 h-12">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="w-10 h-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-300" />
+          <span class="absolute -inset-1 rounded-full bg-gradient-to-tr from-blue-600/30 via-purple-600/20 to-pink-500/10 blur-2xl opacity-60"></span>
+        </span>
+        <span class="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 drop-shadow-lg">WayV</span>
       </a>
-
-      <nav class="nav-links hidden md:flex" data-desktop-nav>
-        <a href="/waveos.html" class="nav-link" data-nav-link>WaveOS</a>
-        <a href="/wave-engine.html" class="nav-link" data-nav-link>Wave Engine</a>
-        <a href="/tapmood.html" class="nav-link" data-nav-link>TapMood</a>
-        <a href="/wavium.html" class="nav-link" data-nav-link>Wavium</a>
-        <a href="/news.html" class="nav-link" data-nav-link>News</a>
-        <a href="/support.html" class="nav-link" data-nav-link>Support</a>
+      <nav class="hidden md:flex items-center gap-2 lg:gap-6">
+        <a href="/waveos.html" class="px-4 py-2 rounded-full font-semibold text-slate-200 hover:bg-blue-900/30 hover:text-blue-300 transition">WaveOS</a>
+        <a href="/wave-engine.html" class="px-4 py-2 rounded-full font-semibold text-slate-200 hover:bg-purple-900/30 hover:text-purple-300 transition">Wave Engine</a>
+        <a href="/wavium.html" class="px-4 py-2 rounded-full font-semibold text-slate-200 hover:bg-pink-900/30 hover:text-pink-300 transition">Wavium</a>
+        <a href="/news.html" class="px-4 py-2 rounded-full font-semibold text-slate-200 hover:bg-indigo-900/30 hover:text-indigo-300 transition">News</a>
+        <a href="/support.html" class="px-4 py-2 rounded-full font-semibold text-slate-200 hover:bg-teal-900/30 hover:text-teal-300 transition">Support</a>
       </nav>
-
-      <div class="nav-actions">
-        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="nav-cta nav-cta--ghost hidden md:inline-flex">Join Beta</a>
-        
-        <button
-          id="mobileMenuButton"
-          type="button"
-          class="menu-toggle md:hidden"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu"
-          data-menu-toggle
-        >
+      <div class="flex items-center gap-2">
+        <a href="https://github.com/WayVstore" target="_blank" rel="noopener" class="hidden md:inline-flex px-5 py-2 rounded-full font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg hover:scale-105 transition">GitHub</a>
+        <button id="mobileMenuButton" type="button" class="md:hidden flex flex-col gap-1.5 w-12 h-12 items-center justify-center rounded-full bg-slate-900/80 border border-slate-700 shadow-lg" aria-expanded="false" aria-label="Toggle navigation menu" data-menu-toggle>
           <span class="sr-only">Toggle navigation menu</span>
-          <div class="flex flex-col gap-1.5">
-            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
-            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
-            <span aria-hidden="true" class="block w-6 h-0.5 bg-current"></span>
-          </div>
+          <span aria-hidden="true" class="block w-6 h-0.5 bg-white rounded-full"></span>
+          <span aria-hidden="true" class="block w-6 h-0.5 bg-white rounded-full"></span>
+          <span aria-hidden="true" class="block w-6 h-0.5 bg-white rounded-full"></span>
         </button>
       </div>
     </div>
-
-    <div
-      id="mobileDrawer"
-      class="nav-drawer absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-200 p-6 shadow-lg z-50"
-      data-mobile-menu
-      hidden
-      aria-hidden="true"
-    >
+    <div id="mobileDrawer" class="nav-drawer absolute top-full left-0 w-full bg-black/95 backdrop-blur-2xl border-b border-slate-800 p-6 shadow-2xl z-50" data-mobile-menu hidden aria-hidden="true">
       <div class="nav-drawer__panel flex flex-col gap-4">
         <nav class="nav-drawer__links flex flex-col gap-4">
-          <a href="/waveos.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>WaveOS</a>
-          <a href="/wave-engine.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Wave Engine</a>
-          <a href="/tapmood.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>TapMood</a>
-          <a href="/wavium.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Wavium Interactive</a>
-          <a href="/news.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>News &amp; Updates</a>
-          <a href="/support.html" class="text-lg font-medium text-gray-800 hover:text-blue-600" data-nav-link>Support</a>
+          <a href="/waveos.html" class="text-lg font-semibold text-slate-200 hover:text-blue-400 transition" data-nav-link>WaveOS</a>
+          <a href="/wave-engine.html" class="text-lg font-semibold text-slate-200 hover:text-purple-400 transition" data-nav-link>Wave Engine</a>
+          <a href="/wavium.html" class="text-lg font-semibold text-slate-200 hover:text-pink-400 transition" data-nav-link>Wavium Interactive</a>
+          <a href="/news.html" class="text-lg font-semibold text-slate-200 hover:text-indigo-400 transition" data-nav-link>News & Updates</a>
+          <a href="/support.html" class="text-lg font-semibold text-slate-200 hover:text-teal-400 transition" data-nav-link>Support</a>
         </nav>
-        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="bg-blue-600 text-white text-center py-3 rounded-full font-medium mt-4">Join TapMood beta</a>
+        <a href="https://github.com/WayVstore" class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white text-center py-3 rounded-full font-bold mt-4 shadow-lg">GitHub</a>
       </div>
     </div>
   </div>
