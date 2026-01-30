@@ -41,30 +41,73 @@
                 <p class="text-xl text-slate-400 max-w-2xl mx-auto">Latest updates, releases, and stories from the WayV ecosystem.</p>
             </div>
             <div class="space-y-10">
-                <!-- News Post 2 -->
-                <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                    <div class="flex items-center mb-4 text-wayv-accent font-mono text-xs">
-                        <i data-lucide="star" class="w-4 h-4 mr-2"></i> Jan 15, 2026
-                    </div>
-                    <h2 class="text-2xl font-bold text-white mb-2">Wavium UI Kit Now Open Source</h2>
-                    <p class="text-slate-300 mb-4">Wavium UI, our modern dashboard and app component library, is now fully open source. Build beautiful apps faster with 100+ ready-to-use components.</p>
-                    <a href="#" class="text-wayv-accent font-semibold hover:underline">Explore Wavium UI</a>
-                </article>
-                <!-- News Post 3 -->
-                <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                    <div class="flex items-center mb-4 text-wayv-glow font-mono text-xs">
-                        <i data-lucide="users" class="w-4 h-4 mr-2"></i> Dec 20, 2025
-                    </div>
-                    <h2 class="text-2xl font-bold text-white mb-2">WayV Community Hits 40,000 Members</h2>
-                    <p class="text-slate-300 mb-4">Thank you to everyone who has joined, contributed, and built with us. The community is the heart of WayV, and we're just getting started!</p>
-                    <a href="#" class="text-wayv-accent font-semibold hover:underline">Join the Community</a>
-                </article>
+              <!-- News Post 1 -->
+              <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer" onclick="openNewsModal(1)">
+                <div class="flex items-center mb-4 text-wayv-accent font-mono text-xs">
+                  <i data-lucide="rocket" class="w-4 h-4 mr-2"></i> Jan 30, 2026
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">Wave Engine: Development Underway</h2>
+                <p class="text-slate-300 mb-4">We're currently building Wave Engine, our next-generation, high-performance game engine. Stay tuned for updates and early access opportunities!</p>
+              </article>
+              <!-- News Post 2 -->
+              <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer" onclick="openNewsModal(2)">
+                <div class="flex items-center mb-4 text-wayv-primary font-mono text-xs">
+                  <i data-lucide="unlock" class="w-4 h-4 mr-2"></i> Jan 30, 2026
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">WayV Is Now Open Source</h2>
+                <p class="text-slate-300 mb-4">We're excited to announce that WayV is now an open source company! Join us on GitHub and help shape the future of creative technology.</p>
+                <a href="https://github.com/WayV-Inc" target="_blank" class="text-wayv-accent font-semibold hover:underline">Visit WayV-Inc on GitHub</a>
+              </article>
+            </div>
+            <!-- News Modal -->
+            <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+              <div class="bg-wayv-card/90 border border-wayv-accent/30 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative animate-slide-up">
+                <button onclick="closeNewsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i data-lucide='x' class='w-6 h-6'></i></button>
+                <div id="news-modal-content"></div>
+              </div>
+            </div>
             </div>
         </div>
     </div>
 
     <!-- Footer Include -->
     <div id="footer-include"></div>
-    <script>lucide.createIcons();</script>
+    <script>
+      lucide.createIcons();
+      // News modal logic
+      const newsData = [
+        {
+          title: "Wave Engine: Development Underway",
+          date: "Jan 30, 2026",
+          icon: "rocket",
+          color: "wayv-accent",
+          content: `<p class='mb-4 text-slate-300'>We're currently building <strong>Wave Engine</strong>, our next-generation, high-performance game engine. The team is focused on blazing speed, modularity, and developer experience. Early access and dev logs will be available soon—stay tuned for more updates and opportunities to get involved!</p>`
+        },
+        {
+          title: "WayV Is Now Open Source",
+          date: "Jan 30, 2026",
+          icon: "unlock",
+          color: "wayv-primary",
+          content: `<p class='mb-4 text-slate-300'>We're excited to announce that <strong>WayV</strong> is now an open source company! All our core projects, including Wave Engine and Wavium UI, are available on GitHub. We invite you to contribute, collaborate, and help shape the future of creative technology.</p><a href='https://github.com/WayV-Inc' target='_blank' class='text-wayv-accent font-semibold hover:underline'>Visit WayV-Inc on GitHub</a>`
+        }
+      ];
+      function openNewsModal(idx) {
+        const modal = document.getElementById('news-modal');
+        const content = document.getElementById('news-modal-content');
+        const news = newsData[idx-1];
+        content.innerHTML = `
+          <div class='flex items-center mb-4 font-mono text-xs text-${news.color}'>
+            <i data-lucide='${news.icon}' class='w-5 h-5 mr-2'></i> ${news.date}
+          </div>
+          <h2 class='text-2xl font-bold text-white mb-4'>${news.title}</h2>
+          ${news.content}
+        `;
+        modal.classList.remove('hidden');
+        lucide.createIcons();
+      }
+      function closeNewsModal() {
+        document.getElementById('news-modal').classList.add('hidden');
+      }
+    </script>
 </body>
 </html>

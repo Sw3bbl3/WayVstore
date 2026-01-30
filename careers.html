@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers at WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/include.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="header-include"></div>
+    <main class="pt-24 pb-16 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20 animate-slide-up">
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">Careers & Collaboration at <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">WayV</span></h1>
+          <p class="text-xl text-slate-400 max-w-3xl mx-auto">Join a movement of creators, learn from the best, and help build the future of open source. Your journey starts here.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 justify-center items-stretch">
+          <!-- GitHub Card -->
+          <div class="flex-1 min-w-[320px] max-w-md bg-wayv-card/80 border border-wayv-accent/40 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-wayv-accent/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-wayv-accent/20 rounded-full blur-2xl z-0"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <i data-lucide="github" class="h-16 w-16 text-wayv-accent mb-6 drop-shadow-xl"></i>
+              <h2 class="text-2xl font-bold text-white mb-2">Contribute on GitHub</h2>
+              <p class="text-slate-300 text-base mb-4 text-center">Code, docs, design, or ideas—every contribution matters. Collaborate with a friendly, ambitious team and see your work make real impact.</p>
+              <a href="https://github.com/WayV-Inc" target="_blank" class="px-6 py-2 bg-wayv-accent text-white rounded-lg font-medium hover:bg-wayv-primary transition-colors">Start on GitHub</a>
+            </div>
+          </div>
+          <!-- Email Card -->
+          <div class="flex-1 min-w-[320px] max-w-md bg-wayv-card/80 border border-wayv-accent/40 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-wayv-accent/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-wayv-primary/20 rounded-full blur-2xl z-0"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <i data-lucide="mail" class="h-16 w-16 text-wayv-accent mb-6 drop-shadow-xl"></i>
+              <h2 class="text-2xl font-bold text-white mb-2">Connect Directly</h2>
+              <p class="text-slate-300 text-base mb-4 text-center">Have questions, want to help, or just want to chat? Email us and let's talk about how you can get involved.</p>
+              <a href="mailto:wayvsoftware@gmail.com" class="px-6 py-2 bg-wayv-accent text-white rounded-lg font-medium hover:bg-wayv-primary transition-colors">Email WayV</a>
+            </div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 justify-center items-stretch mt-16">
+          <!-- Community Card -->
+          <div class="flex-1 min-w-[320px] max-w-md bg-wayv-card/80 border border-wayv-accent/40 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-wayv-accent/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-teal-400/20 rounded-full blur-2xl z-0"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <i data-lucide="users" class="h-16 w-16 text-wayv-accent mb-6 drop-shadow-xl"></i>
+              <h2 class="text-2xl font-bold text-white mb-2">Grow & Learn</h2>
+              <p class="text-slate-300 text-base mb-4 text-center">Work with experienced devs, learn new skills, and build a portfolio that stands out. We value mentorship and growth for all contributors.</p>
+              <a href="/community.html" class="px-6 py-2 bg-wayv-accent text-white rounded-lg font-medium hover:bg-wayv-primary transition-colors">Join the Community</a>
+            </div>
+          </div>
+          <!-- Future Card -->
+          <div class="flex-1 min-w-[320px] max-w-md bg-wayv-card/80 border border-wayv-accent/40 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-wayv-accent/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-fuchsia-400/20 rounded-full blur-2xl z-0"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <i data-lucide="star" class="h-16 w-16 text-wayv-accent mb-6 drop-shadow-xl"></i>
+              <h2 class="text-2xl font-bold text-white mb-2">Shape Your Future</h2>
+              <p class="text-slate-300 text-base mb-4 text-center">Outstanding contributors will be first in line for future paid roles and leadership opportunities as WayV grows. Start as a volunteer, grow into a leader.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-20">
+          <p class="text-2xl text-wayv-accent font-bold animate-pulse">Ready to make your mark? The future of open source starts with you.</p>
+        </div>
+      </div>
+    </main>
+    <div id="footer-include"></div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
