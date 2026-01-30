@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (document.getElementById('header-include')) {
-    loadInclude('header-include', 'assets/js/header.html', setupMobileMenu);
+    loadInclude('header-include', '/assets/js/header.html', setupMobileMenu);
   }
   if (document.getElementById('footer-include')) {
-    loadInclude('footer-include', 'assets/js/footer.html');
+    loadInclude('footer-include', '/assets/js/footer.html');
   }
 });

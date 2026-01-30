@@ -6,7 +6,7 @@
     <title>Products | WayV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="assets/js/include.js"></script>
+    <script src="/assets/js/include.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
@@ -114,7 +114,7 @@
             if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
             else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
         });
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+        // Hamburger menu logic is handled in /assets/js/include.js
     </script>
 </body>
 </html>
