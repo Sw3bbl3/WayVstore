@@ -1,4 +1,14 @@
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
+<link rel="stylesheet" href="/assets/css/header-glass.css">
+<!-- Mobile Menu for small screens (placed above nav for overlay) -->
+<div id="mobile-menu" class="hidden md:hidden fullscreen opacity-0 scale-y-95 pointer-events-none transition-all duration-300 origin-top">
+  <button class="close-x" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <div class="menu-links">
+     <a href="/ecosystem.html">Ecosystem</a>
+     <a href="/community.html">Community</a>
+     <a href="/about.html">About</a>
+  </div>
+</div>
+<nav id="navbar" class="glass fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent py-5">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
       <a href="/index.html" class="flex items-center space-x-2 group">
@@ -20,11 +30,3 @@
     </div>
   </div>
 </nav>
-<!-- Mobile Menu for small screens -->
-<div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border border-white/10 fixed left-0 top-[64px] w-full max-w-md mx-auto right-0 z-[999] shadow-2xl rounded-b-3xl opacity-0 scale-y-95 pointer-events-none transition-all duration-300 origin-top">
-  <div class="px-4 pt-4 pb-6 space-y-2">
-     <a href="/ecosystem.html" class="block px-3 py-3 text-lg font-semibold text-slate-300 hover:text-white hover:bg-wayv-primary/10 rounded-xl transition-all duration-200">Ecosystem</a>
-     <a href="/community.html" class="block px-3 py-3 text-lg font-semibold text-slate-300 hover:text-white hover:bg-wayv-primary/10 rounded-xl transition-all duration-200">Community</a>
-     <a href="/about.html" class="block px-3 py-3 text-lg font-semibold text-slate-300 hover:text-white hover:bg-wayv-primary/10 rounded-xl transition-all duration-200">About</a>
-  </div>
-</div>
