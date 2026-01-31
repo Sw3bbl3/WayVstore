@@ -39,26 +39,51 @@
 </head>
 <body>
     <div id="header-include"></div>
-        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center">
+        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center animate-fade-in">
             <div class="max-w-2xl w-full mx-auto">
-                <div class="bg-white/10 border border-cyan-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0"></div>
+                <div class="bg-white/10 border border-cyan-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden group transition-transform duration-500 ease-out hover:scale-[1.025] hover:shadow-cyan-500/30 animate-slide-up">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0 animate-blob"></div>
                     <div class="relative z-10 flex flex-col items-center">
-                        <img src="../assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-24 w-24 mb-6 drop-shadow-xl" />
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center">Wavium Interactive Group</h1>
-                        <p class="text-lg text-slate-300 mb-6 text-center">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant communityall powered by open source WayV technology.</p>
+                        <img src="../assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-24 w-24 mb-6 drop-shadow-xl animate-fade-in" />
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center animate-slide-up">Wavium Interactive Group</h1>
+                        <p class="text-lg text-slate-300 mb-6 text-center animate-fade-in delay-200">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant community—all powered by open source WayV technology.</p>
                         <ul class="text-slate-400 text-base space-y-2 mb-8 text-left w-full max-w-md">
-                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly game jams & events</li>
-                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
-                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven tools</li>
-                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Support for indie studios & solo devs</li>
+                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly game jams & events</li>
+                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
+                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven tools</li>
+                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Support for indie studios & solo devs</li>
                         </ul>
-                        <a href="/community.html" class="px-6 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Join the Community</a>
+                        <a href="/community.html" class="px-6 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/40 scale-100 hover:scale-105 animate-fade-in delay-300">Join the Community</a>
                     </div>
                 </div>
             </div>
         </main>
     <div id="footer-include"></div>
-    <script>lucide.createIcons();</script>
+        <script>
+            lucide.createIcons();
+            // Animate on scroll (simple fade/slide for cards/sections)
+            function animateOnScroll() {
+                const animatedEls = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                animatedEls.forEach(el => observer.observe(el));
+            }
+            document.addEventListener('DOMContentLoaded', animateOnScroll);
+        </script>
+        <style>
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes blob { 0% { transform: scale(1) translate(0,0); } 33% { transform: scale(1.1) translate(20px,-20px); } 66% { transform: scale(0.95) translate(-10px,10px); } 100% { transform: scale(1) translate(0,0); } }
+            .animate-fade-in { opacity: 0; transition: opacity 0.7s; }
+            .animate-fade-in.in-view { opacity: 1; animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
+            .animate-slide-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s, transform 0.7s; }
+            .animate-slide-up.in-view { opacity: 1; transform: translateY(0); animation: slideUp 1.1s cubic-bezier(.4,0,.2,1) both; }
+            .animate-blob { animation: blob 7s infinite ease-in-out; }
+        </style>
 </body>
 </html>
