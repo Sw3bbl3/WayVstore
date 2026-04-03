@@ -30,7 +30,7 @@ html, body {
   background:
     radial-gradient(circle at 8% -10%, rgba(56, 189, 248, 0.2), transparent 36%),
     radial-gradient(circle at 92% -18%, rgba(99, 102, 241, 0.2), transparent 40%),
-    var(--bg);
+    var(--bg) !important;
   color: var(--text) !important;
   transition: background-color .35s ease, color .35s ease;
 }
