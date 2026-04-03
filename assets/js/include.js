@@ -1,3 +1,22 @@
+function ensureGlobalThemeAssets() {
+  if (!document.getElementById('wayv-theme-style')) {
+    const themeStyle = document.createElement('link');
+    themeStyle.id = 'wayv-theme-style';
+    themeStyle.rel = 'stylesheet';
+    themeStyle.href = '/assets/css/theme-system.css';
+    document.head.appendChild(themeStyle);
+  }
+
+  if (!document.getElementById('wayv-theme-script')) {
+    const themeScript = document.createElement('script');
+    themeScript.id = 'wayv-theme-script';
+    themeScript.src = '/assets/js/theme.js';
+    document.head.appendChild(themeScript);
+  }
+}
+
+ensureGlobalThemeAssets();
+
 // Dynamically loads header and footer into the page
 function loadInclude(id, file, callback) {
   fetch(file)
@@ -5,6 +24,7 @@ function loadInclude(id, file, callback) {
     .then(data => {
       document.getElementById(id).innerHTML = data;
       if (window.lucide) lucide.createIcons();
+      if (window.WayVTheme) window.WayVTheme.bindThemeControls();
       if (typeof callback === 'function') callback();
     });
 }
@@ -83,4 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('footer-include')) {
     loadInclude('footer-include', '/assets/js/footer.html');
   }
+
+  if (window.WayVTheme) window.WayVTheme.bindThemeControls();
 });
