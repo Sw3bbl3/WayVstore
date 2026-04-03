@@ -1,157 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/assets/js/include.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <title>About | WayV</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg" />
-    <meta name="description" content="Learn about WayV: our mission, values, and commitment to open source, high-performance creative technology." />
-    <meta name="keywords" content="WayV, about, open source, mission, values, developer tools, community, creative technology" />
-    <meta name="author" content="WayV Inc." />
-    <meta property="og:title" content="About | WayV" />
-    <meta property="og:description" content="Learn about WayV: our mission, values, and commitment to open source, high-performance creative technology." />
-    <meta property="og:image" content="/assets/images/wayv-logo.svg" />
-    <meta property="og:url" content="https://wayv.dev/about.html" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="About | WayV" />
-    <meta name="twitter:description" content="Learn about WayV: our mission, values, and commitment to open source, high-performance creative technology." />
-    <meta name="twitter:image" content="/assets/images/wayv-logo.svg" />
-    <meta name="theme-color" content="#6366f1" />
-    <meta name="robots" content="index, follow" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
-          },
-        },
-      }
-    </script>
-    <style>
-            body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
-            #navbar { left: 0; right: 0; }
-            @media (max-width: 768px) {
-                #navbar { padding-left: 0.5rem; padding-right: 0.5rem; }
-                .nav-link { font-size: 1rem; }
-                #mobile-menu { top: 56px !important; max-width: 100vw !important; border-radius: 0 0 1.5rem 1.5rem; }
-            }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0B0C15; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      .nav-link { position: relative; }
-      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
-      .nav-link:hover::after { width: 100%; }
-      .nav-link.active { color: white; }
-      .nav-link.active::after { width: 100%; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>About | WayV</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <meta name="description" content="Learn about WayV's mission and the team building open creative technology.">
+  <meta name="theme-color" content="#337dff">
 </head>
 <body>
-    <!-- Header Include -->
-    <div id="header-include"></div>
+  <div id="header-include"></div>
 
-    <div class="pt-24 min-h-screen">
-        <div class="relative border-b border-white/5 bg-wayv-card/30 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-5xl font-bold text-white mb-6">Empowering Creativity, Openly</h1>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                    <span class="text-wayv-primary font-semibold">WayV</span> is an open source company dedicated to building innovative tools and services for creative minds. Our mission is to empower creators, artists, and forward-thinkers by providing accessible, high-quality technology that inspires new ideas and enables creative freedom.<br><br>
-                    We believe that true progress happens in the open. By fostering a transparent, collaborative environment, we help shape the future of creativity and technology together with our community. Whether you are a developer, designer, or visionary, our platform is designed to help you unlock your full creative potential.
-                </p>
-            </div>
-        </div>
+  <main class="page-main">
+    <section class="page-shell page-hero hero-panel section-stack" data-reveal>
+      <p class="eyebrow">About WayV</p>
+      <h1 class="display-title">We build open creative technology with production-grade ambition.</h1>
+      <p class="lead">WayV exists to give creators and developers tools that feel powerful, accessible, and future-ready. We prioritize open collaboration, high-performance foundations, and design clarity that scales.</p>
+      <div class="grid-3" style="margin-top:0.4rem;">
+        <div class="kpi"><strong>Open Source</strong><span>Transparent progress and contribution-friendly architecture.</span></div>
+        <div class="kpi"><strong>Creator Focus</strong><span>Tools shaped around real workflows, not feature noise.</span></div>
+        <div class="kpi"><strong>Long Horizon</strong><span>Systems designed for extensibility and durable adoption.</span></div>
+      </div>
+    </section>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid md:grid-cols-3 gap-12 mb-32">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 hover:rotate-6 transition-transform"><i data-lucide="lightbulb" class="w-8 h-8 text-yellow-400"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Creativity Unleashed</h3>
-                    <p class="text-slate-400">We design tools that spark imagination and help creators bring their boldest ideas to life.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 -rotate-3 hover:-rotate-6 transition-transform"><i data-lucide="users" class="w-8 h-8 text-blue-400"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Open Source, Open Minds</h3>
-                    <p class="text-slate-400">Our commitment to open source means everyone can contribute, learn, and grow with us.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 hover:rotate-6 transition-transform"><i data-lucide="rocket" class="w-8 h-8 text-cyan-400"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Forward Thinking</h3>
-                    <p class="text-slate-400">We push boundaries to create future-ready solutions for the next generation of creators.</p>
-                </div>
-            </div>
+    <section class="page-shell section-block" data-reveal>
+      <div class="grid-3">
+        <article class="info-card section-stack">
+          <i data-lucide="lightbulb" class="w-6 h-6" style="color:var(--accent);"></i>
+          <h2 style="margin:0; color:var(--heading);">Creativity Unleashed</h2>
+          <p class="muted" style="margin:0;">We design platforms that help creators move from first idea to polished release faster.</p>
+        </article>
+        <article class="info-card section-stack">
+          <i data-lucide="users" class="w-6 h-6" style="color:var(--accent);"></i>
+          <h2 style="margin:0; color:var(--heading);">Open Community</h2>
+          <p class="muted" style="margin:0;">Our roadmap and architecture stay visible so contributors can influence outcomes.</p>
+        </article>
+        <article class="info-card section-stack">
+          <i data-lucide="rocket" class="w-6 h-6" style="color:var(--accent);"></i>
+          <h2 style="margin:0; color:var(--heading);">Forward Strategy</h2>
+          <p class="muted" style="margin:0;">We align product decisions around durability, performance, and ecosystem interoperability.</p>
+        </article>
+      </div>
+    </section>
 
-            <div class="mb-32">
-                <h2 class="text-3xl font-bold text-white mb-12">The Team</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="group">
-                        <div class="relative overflow-hidden rounded-xl mb-4">
-                            <img src="assets/images/sw3bbl3.png" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110" alt="Charles-Elliott Roger">
-                        </div>
-                        <h4 class="text-lg font-bold text-white">Charles-Elliott Roger</h4>
-                        <p class="text-sm text-slate-500">CEO &amp; Co-Founder</p>
-                    </div>
-                    <div class="group">
-                        <div class="relative overflow-hidden rounded-xl mb-4">
-                            <img src="assets/images/kaivexx.png" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110" alt="Eliott Lacroix">
-                        </div>
-                        <h4 class="text-lg font-bold text-white">Eliott Lacroix</h4>
-                        <p class="text-sm text-slate-500">CTO &amp; Co-Founder</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="page-shell section-block" data-reveal>
+      <div class="section-stack" style="margin-bottom:1rem;">
+        <p class="eyebrow">Team</p>
+        <h2 class="section-title">Core founders</h2>
+      </div>
+      <div class="grid-2">
+        <article class="feature-card section-stack" style="align-items:center; text-align:center;">
+          <div class="split-media" style="width:100%; max-width:280px; aspect-ratio:1/1; border-radius:18px;">
+            <img src="/assets/images/sw3bbl3.png" alt="Charles-Elliott Roger">
+          </div>
+          <h3 style="margin:0; color:var(--heading);">Charles-Elliott Roger</h3>
+          <p class="muted" style="margin:0;">CEO and Co-Founder</p>
+        </article>
 
-    <!-- Footer Include -->
-    <div id="footer-include"></div>
-    <script>
-        lucide.createIcons();
-                const navbar = document.getElementById('navbar');
-                window.addEventListener('scroll', () => {
-                        if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
-                        else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
-                });
-                // Mobile Menu Logic
-                const menuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (menuBtn && mobileMenu) {
-                    menuBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const isOpen = mobileMenu.classList.contains('opacity-100');
-                        if (!isOpen) {
-                            mobileMenu.classList.remove('hidden');
-                            setTimeout(() => {
-                                mobileMenu.classList.add('opacity-100');
-                                mobileMenu.classList.remove('opacity-0', 'scale-y-95');
-                                mobileMenu.classList.add('scale-y-100');
-                                mobileMenu.style.pointerEvents = 'auto';
-                            }, 10);
-                        } else {
-                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
-                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
-                            mobileMenu.style.pointerEvents = 'none';
-                            setTimeout(() => {
-                                mobileMenu.classList.add('hidden');
-                            }, 300);
-                        }
-                    });
-                    // Close menu when clicking outside
-                    document.addEventListener('click', (e) => {
-                        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
-                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
-                            mobileMenu.style.pointerEvents = 'none';
-                            setTimeout(() => {
-                                mobileMenu.classList.add('hidden');
-                            }, 300);
-                        }
-                    });
-                }
-    </script>
+        <article class="feature-card section-stack" style="align-items:center; text-align:center;">
+          <div class="split-media" style="width:100%; max-width:280px; aspect-ratio:1/1; border-radius:18px;">
+            <img src="/assets/images/kaivexx.png" alt="Eliott Lacroix">
+          </div>
+          <h3 style="margin:0; color:var(--heading);">Eliott Lacroix</h3>
+          <p class="muted" style="margin:0;">CTO and Co-Founder</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
 </body>
 </html>

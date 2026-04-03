@@ -1,128 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="https://unpkg.com/lucide@latest"></script>
-	<script src="/assets/js/include.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-	<title>Ecosystem | WayV</title>
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-	<!-- SEO & Social Meta Tags -->
-	<meta name="description" content="Explore the WayV ecosystem: professional open source tools for game development, audio production, and creative technology.">
-	<meta name="keywords" content="WayV, ecosystem, open source, developer tools, Wave Engine, Orion DAW, Wavium Interactive, high performance">
-	<meta name="author" content="WayV Inc.">
-	<meta property="og:title" content="Ecosystem | WayV">
-	<meta property="og:description" content="Explore the WayV ecosystem: professional open source tools for game development, audio production, and creative technology.">
-	<meta property="og:image" content="/assets/images/wayv-logo.svg">
-	<meta property="og:url" content="https://wayv.dev/ecosystem.html">
-	<meta property="og:type" content="website">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Ecosystem | WayV">
-	<meta name="twitter:description" content="Explore the WayV ecosystem: professional open source tools for game development, audio production, and creative technology.">
-	<meta name="twitter:image" content="/assets/images/wayv-logo.svg">
-	<meta name="theme-color" content="#6366f1">
-	<meta name="robots" content="index, follow">
-	<script>
-	  tailwind.config = {
-		theme: {
-		  extend: {
-			fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-			colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
-			animation: { 'slide-up': 'slideUp 0.8s ease-out' },
-			keyframes: { slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } } }
-		  },
-		},
-	  }
-	</script>
-	<style>
-	  body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
-	  ::-webkit-scrollbar { width: 8px; }
-	  ::-webkit-scrollbar-track { background: #0B0C15; }
-	  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-	  .nav-link { position: relative; }
-	  .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
-	  .nav-link:hover::after { width: 100%; }
-	  .nav-link.active { color: white; }
-	  .nav-link.active::after { width: 100%; }
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/assets/js/include.js"></script>
+  <link rel="stylesheet" href="/assets/css/ecosystem-carousel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>Ecosystem | WayV</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <meta name="description" content="Explore the WayV ecosystem and navigate every product through an animated interactive carousel.">
+  <meta name="theme-color" content="#337dff">
 </head>
 <body>
-	<!-- Header Include -->
-	<div id="header-include"></div>
+  <div id="header-include"></div>
 
+  <main class="page-main">
+    <section class="page-shell page-hero section-stack" data-reveal>
+      <p class="eyebrow">WayV Ecosystem</p>
+      <h1 class="display-title">Everything we build, connected through one creator workflow.</h1>
+      <p class="lead" style="max-width:72ch;">Navigate the ecosystem with the animated carousel. It loops automatically, supports arrows, dots, keyboard, and mobile swipe, and links directly into each product page.</p>
+    </section>
 
-	<link rel="stylesheet" href="/assets/css/ecosystem-carousel.css">
-	<section class="max-w-3xl mx-auto text-center pt-32 pb-12 animate-slide-up">
-		<h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">The WayV Ecosystem</h1>
-		<p class="text-xl text-slate-300 mb-8">Our mission is to empower creators, developers, and studios with a unified suite of open, high-performance tools and creative platforms. The WayV ecosystem is designed to break down barriers between technology, art, and community—enabling anyone to build, collaborate, and launch world-class interactive experiences.</p>
-		<div class="text-lg text-slate-400 mb-8">
-			<strong>What is the WayV Ecosystem?</strong><br>
-			<span class="block mt-2">It’s a collection of products and communities that work together to make game development, creative coding, and digital art more accessible, powerful, and fun. We believe in open source, transparency, and supporting creators at every level.</span>
-		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mt-12">
-			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
-				<img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-20 h-20 mb-4" />
-				<h2 class="text-2xl font-bold text-white mb-2">Wave Engine</h2>
-				<p class="text-slate-300 text-base">A next-gen, data-oriented game engine built in Rust for safety and speed. Designed for games, simulations, and creative tech.</p>
-				<a href="/wave-engine.html" class="mt-4 px-5 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-colors">Learn More</a>
-			</div>
+    <section class="page-shell section-block" data-reveal>
+      <div class="ecosystem-carousel" data-carousel aria-label="WayV ecosystem carousel">
+        <div class="ecosystem-carousel-header">
+          <span class="badge"><i data-lucide="orbit" class="w-4 h-4"></i> Animated Product Carousel</span>
+          <div class="ecosystem-carousel-actions">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous slide"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Next slide"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+        </div>
 
-			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
-				<img src="/assets/images/wayv-logo.svg" alt="Orion DAW Logo" class="w-20 h-20 mb-4" />
-				<h2 class="text-2xl font-bold text-white mb-2">Orion</h2>
-				<p class="text-slate-300 text-base">A modern open-source DAW in active development, focused on low-latency audio, clean UX, and extensibility.</p>
-				<a href="/orion.html" class="mt-4 px-5 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">Learn More</a>
-			</div>
-			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
-				<img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="w-20 h-20 mb-4" />
-				<h2 class="text-2xl font-bold text-white mb-2">Wavium Interactive Group</h2>
-				<p class="text-slate-300 text-base">A creator-funded collective for indie studios and solo devs. Community, mentorship, and shared open tools for everyone.</p>
-				<a href="/wavium-interactive.html" class="mt-4 px-5 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Learn More</a>
-			</div>
-			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
-				<img src="/assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="w-20 h-20 mb-4" />
-				<h2 class="text-2xl font-bold text-white mb-2">WayV Originals</h2>
-				<p class="text-slate-300 text-base">Our own studio for flagship games, prototypes, and creative experiments. Inspiring the community and pushing boundaries.</p>
-				<a href="/wayv-originals.html" class="mt-4 px-5 py-2 bg-fuchsia-600 text-white rounded-lg font-medium hover:bg-fuchsia-700 transition-colors">See Projects</a>
-			</div>
-		</div>
-	</section>
+        <div class="ecosystem-track-wrap" tabindex="0" aria-live="polite" data-carousel-viewport>
+          <div class="ecosystem-track" data-carousel-track>
+            <article class="slide-card ecosystem-slide" data-slide data-link="/wave-engine.html">
+              <img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine logo" class="ecosystem-slide-logo">
+              <h2>Wave Engine</h2>
+              <p>Data-oriented engine foundations built for high-performance interactive apps.</p>
+              <a href="/wave-engine.html" class="btn btn-secondary">Open page</a>
+            </article>
 
-	<!-- Footer Include -->
-	<div id="footer-include"></div>
+            <article class="slide-card ecosystem-slide" data-slide data-link="/orion.html">
+              <img src="/assets/images/Orion_logo.png" alt="Orion logo" class="ecosystem-slide-logo">
+              <h2>Orion</h2>
+              <p>Now released free. Open-source DAW focused on low-latency audio and clean UX.</p>
+              <a href="/orion.html" class="btn btn-primary">Get Orion free</a>
+            </article>
 
-	<script>
-		lucide.createIcons();
-		// Ecosystem carousel logic
-		const cards = Array.from(document.querySelectorAll('.ecosystem-carousel-card'));
-		let current = 0;
-		function updateCarousel(idx) {
-			cards.forEach((card, i) => {
-				card.classList.toggle('active', i === idx);
-				card.style.zIndex = i === idx ? 10 : 2;
-				card.style.pointerEvents = i === idx ? 'auto' : 'none';
-			});
-		}
-		function goto(idx) {
-			if (idx < 0) idx = cards.length - 1;
-			if (idx >= cards.length) idx = 0;
-			current = idx;
-			updateCarousel(current);
-		}
-		document.getElementById('carousel-prev').onclick = () => goto(current - 1);
-		document.getElementById('carousel-next').onclick = () => goto(current + 1);
-		cards.forEach((card, i) => {
-			card.onclick = () => { if (i === current) window.location.href = card.getAttribute('data-link'); };
-		});
-		document.addEventListener('keydown', e => {
-			if (['ArrowLeft','a'].includes(e.key)) goto(current - 1);
-			if (['ArrowRight','d'].includes(e.key)) goto(current + 1);
-			if (['Enter',' '].includes(e.key)) cards[current].click();
-		});
-		goto(0);
-	</script>
+            <article class="slide-card ecosystem-slide" data-slide data-link="/wavium-interactive.html">
+              <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive logo" class="ecosystem-slide-logo">
+              <h2>Wavium Interactive</h2>
+              <p>Creator-funded collective for mentorship, collaboration, and community growth.</p>
+              <a href="/wavium-interactive.html" class="btn btn-secondary">Open page</a>
+            </article>
+
+            <article class="slide-card ecosystem-slide" data-slide data-link="/wayv-originals.html">
+              <img src="/assets/images/wayv-logo.svg" alt="WayV Originals logo" class="ecosystem-slide-logo">
+              <h2>WayV Originals</h2>
+              <p>Internal releases and flagship experiences built with WayV technology.</p>
+              <a href="/wayv-originals.html" class="btn btn-secondary">Open page</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="ecosystem-dots" role="tablist" aria-label="Select ecosystem slide" data-carousel-dots></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
+  <script src="/assets/js/ecosystem-carousel.js"></script>
 </body>
 </html>

@@ -1,50 +1,57 @@
 <link rel="stylesheet" href="/assets/css/header-glass.css">
-<!-- Mobile Menu for small screens (placed above nav for overlay) -->
-<div id="mobile-menu" class="hidden md:hidden fullscreen opacity-0 scale-y-95 pointer-events-none transition-all duration-300 origin-top">
+<div id="mobile-menu" class="fullscreen hidden" aria-hidden="true">
   <button class="close-x" id="mobile-menu-close" aria-label="Close menu">&times;</button>
-    <div class="menu-links">
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-        <i data-lucide="sun" data-theme-icon="sun" class="w-4 h-4"></i>
-        <i data-lucide="moon" data-theme-icon="moon" class="w-4 h-4 hidden"></i>
-        <span data-theme-label>Dark</span> Mode
-      </button>
-      <a href="/ecosystem.html">Ecosystem</a>
-      <a href="/wave-engine.html">Wave Engine</a>
-      <a href="/orion.html">Orion DAW</a>
-      <a href="/wavium-interactive.html">Wavium Interactive</a>
-      <a href="/wayv-originals.html">WayV Originals</a>
-      <a href="/community.html">Community</a>
-      <a href="/about.html">About</a>
-    </div>
+  <div class="menu-links">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+      <i data-lucide="sun" data-theme-icon="sun"></i>
+      <i data-lucide="moon" data-theme-icon="moon" class="hidden"></i>
+      <span data-theme-label>Dark</span> Mode
+    </button>
+    <a href="/index.html">Home</a>
+    <a href="/ecosystem.html">Ecosystem</a>
+    <a href="/wave-engine.html">Wave Engine</a>
+    <a href="/orion.html">Orion</a>
+    <a href="/wavium-interactive.html">Wavium Interactive</a>
+    <a href="/wayv-originals.html">WayV Originals</a>
+    <a href="/news.html">News</a>
+    <a href="/community.html">Community</a>
+    <a href="/about.html">About</a>
+    <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener">GitHub</a>
+  </div>
 </div>
-<nav id="navbar" class="glass fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent py-5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-2 group">
-        <div>
-            <img src="/assets/images/wayv-logo.svg" alt="WayV Logo" class="h-8 w-8 object-contain" />
-        </div>
-        <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
-      </a>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="/ecosystem.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white" id="nav-ecosystem">Ecosystem</a>
-          <a href="/wave-engine.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Wave Engine</a>
-          <a href="/orion.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Orion DAW</a>
-          <a href="/wavium-interactive.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Wavium Interactive</a>
-          <a href="/wayv-originals.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">WayV Originals</a>
-          <a href="/news.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white" id="nav-news">News</a>
-          <a href="/community.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white" id="nav-community">Community</a>
-          <a href="/about.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white" id="nav-about">About</a>
-        </div>
-      <div class="hidden md:flex items-center space-x-3">
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-          <i data-lucide="sun" data-theme-icon="sun" class="w-4 h-4"></i>
-          <i data-lucide="moon" data-theme-icon="moon" class="w-4 h-4 hidden"></i>
-          <span data-theme-label>Dark</span>
-        </button>
-        <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
-      </div>
-      <div class="md:hidden"><button id="mobile-menu-btn" class="text-slate-300 p-2"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
+
+<nav id="navbar" class="glass" role="navigation" aria-label="Main navigation">
+  <div class="page-shell header-inner">
+    <a href="/index.html" class="brand">
+      <img src="/assets/images/wayv-logo.svg" alt="WayV" class="brand-logo" />
+      <span class="brand-wordmark">WayV</span>
+    </a>
+
+    <div class="desktop-nav">
+      <a href="/ecosystem.html" class="nav-link muted">Ecosystem</a>
+      <a href="/wave-engine.html" class="nav-link muted">Wave Engine</a>
+      <a href="/orion.html" class="nav-link muted">Orion</a>
+      <a href="/wavium-interactive.html" class="nav-link muted">Wavium</a>
+      <a href="/wayv-originals.html" class="nav-link muted">Originals</a>
+      <a href="/news.html" class="nav-link muted">News</a>
+      <a href="/community.html" class="nav-link muted">Community</a>
+      <a href="/about.html" class="nav-link muted">About</a>
     </div>
+
+    <div class="desktop-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <i data-lucide="sun" data-theme-icon="sun"></i>
+        <i data-lucide="moon" data-theme-icon="moon" class="hidden"></i>
+        <span data-theme-label>Dark</span>
+      </button>
+      <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-secondary header-github">
+        <i data-lucide="github"></i>
+        GitHub
+      </a>
+    </div>
+
+    <button id="mobile-menu-btn" class="mobile-menu-btn btn btn-secondary" aria-label="Open menu">
+      <i data-lucide="menu"></i>
+    </button>
   </div>
 </nav>

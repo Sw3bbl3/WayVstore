@@ -5,118 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="assets/js/include.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <title>WayV | Open Creative Technology</title>
+  <script src="/assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>WayV | Orion Released Free</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <meta name="description" content="WayV builds professional open-source tools for creative technology. Explore Wave Engine, Orion, and the broader WayV ecosystem.">
-  <meta name="theme-color" content="#6366f1">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            wayv: {
-              dark: '#090b14',
-              card: '#141726',
-              muted: '#99a3bd',
-              primary: '#6366f1',
-              accent: '#06b6d4',
-            }
-          }
-        },
-      },
-    }
-  </script>
-  <style>
-    body { background: #090b14; color: #fff; overflow-x: hidden; }
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #06b6d4; transition: width .2s ease; }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #090b14; }
-    ::-webkit-scrollbar-thumb { background: #31384a; border-radius: 4px; }
-  </style>
+  <meta name="description" content="WayV builds open creative technology. Orion is now released for free alongside Wave Engine and the broader WayV ecosystem.">
+  <meta name="theme-color" content="#337dff">
 </head>
 <body>
   <div id="header-include"></div>
 
-  <main>
-    <section class="pt-36 pb-24 bg-gradient-to-b from-wayv-dark via-wayv-card/40 to-transparent border-b border-white/5">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p class="text-sm uppercase tracking-[0.2em] text-wayv-accent font-semibold mb-5">WayV Technology</p>
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Professional, open-source tools for creators and developers.</h1>
-            <p class="text-lg text-slate-300 mb-8 max-w-xl">We build modern creative platforms with a focus on performance, clean user experience, and long-term extensibility.</p>
-            <div class="flex flex-wrap gap-4">
-              <a href="/ecosystem.html" class="px-6 py-3 rounded-xl bg-wayv-primary hover:bg-indigo-500 text-white font-semibold transition">Explore Ecosystem</a>
-              <a href="/orion.html" class="px-6 py-3 rounded-xl border border-white/20 hover:border-wayv-accent text-white font-semibold transition">Discover Orion</a>
+  <main class="page-main">
+    <section class="page-shell page-hero">
+      <div class="hero-layout">
+        <div class="section-stack" data-reveal>
+          <span class="badge"><i data-lucide="sparkles" class="w-4 h-4"></i> Orion is now released for free</span>
+          <p class="eyebrow">WayV Creative Stack</p>
+          <h1 class="display-title">Build music, games, and interactive worlds with one premium open ecosystem.</h1>
+          <p class="lead">We are launching Orion as a free modern DAW and pairing it with our engine and studio platforms so creators can move from idea to release faster.</p>
+          <div class="btn-row">
+            <a href="/orion.html" class="btn btn-primary">Get Orion Free <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            <a href="/ecosystem.html" class="btn btn-secondary">Explore Ecosystem</a>
+          </div>
+          <div class="grid-3" style="margin-top:1.2rem;">
+            <div class="kpi">
+              <strong>0$</strong>
+              <span>Orion launch price</span>
+            </div>
+            <div class="kpi">
+              <strong>Open</strong>
+              <span>Community-first roadmap</span>
+            </div>
+            <div class="kpi">
+              <strong>Cross-domain</strong>
+              <span>Audio + engine + studio workflow</span>
             </div>
           </div>
-          <div class="bg-wayv-card/80 border border-white/10 rounded-2xl p-7 shadow-2xl">
-            <p class="text-sm text-wayv-accent font-mono mb-4">Latest Announcement</p>
-            <h2 class="text-2xl font-bold mb-3">Introducing Orion</h2>
-            <p class="text-slate-300 mb-5">Orion is our modern open-source DAW, currently in active development. It is designed around low-latency audio, clarity, and a modular architecture.</p>
-            <a href="/news.html" class="inline-flex items-center text-wayv-accent font-semibold hover:underline">Read the announcement <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
-          </div>
         </div>
+
+        <article class="hero-panel section-stack" data-reveal>
+          <div class="logo-pill">
+            <img src="/assets/images/Orion_logo.png" alt="Orion logo" />
+            <span>Orion DAW</span>
+          </div>
+          <h2 class="section-title" style="font-size:1.8rem;">New release spotlight</h2>
+          <p class="muted" style="margin:0; line-height:1.7;">Orion is live and free. Designed around low-latency audio, clean production flow, and a modular architecture ready for long-term extension.</p>
+          <div class="split-media" style="min-height:280px;">
+            <img src="/assets/images/Orion-Screenshot.png" alt="Screenshot of Orion" />
+          </div>
+          <a href="/news.html" class="btn btn-secondary" style="width:max-content;">Read launch update <i data-lucide="newspaper" class="w-4 h-4"></i></a>
+        </article>
       </div>
     </section>
 
-    <section class="py-20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Products</h2>
-          <p class="text-slate-300">A focused portfolio for game development, music production, and collaborative creative work.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-          <a href="/wave-engine.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-violet-400/50 transition">
-            <h3 class="text-xl font-bold mb-2">Wave Engine</h3>
-            <p class="text-slate-300 text-sm">A high-performance engine stack for interactive applications and games.</p>
-          </a>
-          <a href="/orion.html" class="bg-wayv-card/80 border border-wayv-accent/30 rounded-2xl p-6 hover:border-wayv-accent transition">
-            <h3 class="text-xl font-bold mb-2">Orion DAW</h3>
-            <p class="text-slate-300 text-sm">Modern open-source DAW platform built for audio performance and creator workflows.</p>
-          </a>
-          <a href="/wavium-interactive.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-emerald-400/50 transition">
-            <h3 class="text-xl font-bold mb-2">Wavium Interactive</h3>
-            <p class="text-slate-300 text-sm">A community-driven group supporting indie teams with tooling and collaboration.</p>
-          </a>
-          <a href="/wayv-originals.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-fuchsia-400/50 transition">
-            <h3 class="text-xl font-bold mb-2">WayV Originals</h3>
-            <p class="text-slate-300 text-sm">Internal studio projects and flagship experiences built on WayV technology.</p>
-          </a>
-        </div>
+    <section class="page-shell section-block" data-reveal>
+      <div class="section-stack" style="margin-bottom:1rem;">
+        <p class="eyebrow">Core Platform</p>
+        <h2 class="section-title">One ecosystem, four focused products</h2>
+      </div>
+      <div class="grid-4">
+        <a class="feature-card section-stack" href="/wave-engine.html">
+          <strong style="color:var(--heading);">Wave Engine</strong>
+          <p class="muted" style="margin:0;">High-performance engine stack for modern interactive software.</p>
+        </a>
+        <a class="feature-card section-stack" href="/orion.html" style="border-color:color-mix(in srgb, var(--accent) 40%, var(--border));">
+          <strong style="color:var(--heading);">Orion</strong>
+          <p class="muted" style="margin:0;">Free open-source DAW for production, composition, and creative experimentation.</p>
+        </a>
+        <a class="feature-card section-stack" href="/wavium-interactive.html">
+          <strong style="color:var(--heading);">Wavium Interactive</strong>
+          <p class="muted" style="margin:0;">Creator collective supporting indie teams with mentorship and shared tooling.</p>
+        </a>
+        <a class="feature-card section-stack" href="/wayv-originals.html">
+          <strong style="color:var(--heading);">WayV Originals</strong>
+          <p class="muted" style="margin:0;">Internal projects pushing our stack in real-world production settings.</p>
+        </a>
       </div>
     </section>
 
-    <section class="pb-24">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
-            <h3 class="font-semibold text-lg mb-2">Open-source first</h3>
-            <p class="text-sm text-slate-300">Transparent development with community participation at the center.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
-            <h3 class="font-semibold text-lg mb-2">Performance-focused</h3>
-            <p class="text-sm text-slate-300">Low overhead architecture and practical optimization for real production workflows.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
-            <h3 class="font-semibold text-lg mb-2">Built to scale</h3>
-            <p class="text-sm text-slate-300">Modular systems designed to evolve with teams, projects, and community contributions.</p>
-          </div>
-        </div>
+    <section class="page-shell section-block" data-reveal>
+      <div class="grid-3">
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Apple-like clarity</h3>
+          <p class="muted" style="margin:0;">Focused hierarchy, fewer distractions, and polished interactions across every page.</p>
+        </article>
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Fluent depth</h3>
+          <p class="muted" style="margin:0;">Layered glass surfaces, soft motion, and dynamic backgrounds that react to theme.</p>
+        </article>
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Open by default</h3>
+          <p class="muted" style="margin:0;">Transparent roadmap and community contributions stay central as we scale Orion.</p>
+        </article>
       </div>
     </section>
   </main>
 
   <div id="footer-include"></div>
-  <script>lucide.createIcons();</script>
 </body>
 </html>

@@ -1,111 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../assets/js/include.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <title>Wavium Interactive Group</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-    <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Wavium Interactive Group is not yet open to the public. We are seeking sponsors, collaborators, and future members. Contact us at wayvsoftware@gmail.com to get involved.">
-    <meta name="keywords" content="Wavium Interactive, WayV, indie games, open source, collective, developer tools, community, sponsorship, collaboration, not open">
-    <meta name="author" content="WayV Inc.">
-    <meta property="og:title" content="Wavium Interactive Group (Not Yet Open)">
-    <meta property="og:description" content="Wavium Interactive Group is not yet open to the public. We are seeking sponsors, collaborators, and future members. Contact us at wayvsoftware@gmail.com to get involved.">
-    <meta property="og:image" content="/assets/images/wayv-logo.svg">
-    <meta property="og:url" content="https://wayv.dev/wavium-interactive.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Wavium Interactive Group (Not Yet Open)">
-    <meta name="twitter:description" content="Wavium Interactive Group is not yet open to the public. We are seeking sponsors, collaborators, and future members. Contact us at wayvsoftware@gmail.com to get involved.">
-    <meta name="twitter:image" content="/assets/images/wayv-logo.svg">
-    <meta name="theme-color" content="#06b6d4">
-    <meta name="robots" content="noindex, nofollow">
-    <style>
-    body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
-        .wave-hero-bg { background: linear-gradient(120deg, #06b6d4 0%, #0ea5e9 100%); filter: blur(32px) saturate(180%); opacity: 0.18; position: absolute; top: -80px; left: 0; right: 0; height: 340px; z-index: 0; }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0B0C15; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      .nav-link { position: relative; }
-      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
-      .nav-link:hover::after { width: 100%; }
-      .nav-link.active { color: white; }
-      .nav-link.active::after { width: 100%; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>Wavium Interactive | WayV</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <meta name="description" content="Wavium Interactive Group is WayV's creator collective for indie teams and future members.">
+  <meta name="theme-color" content="#337dff">
 </head>
 <body>
-    <div id="header-include"></div>
-        <div class="wave-hero-bg"></div>
-        <section class="wave-section text-center pt-32 pb-16 max-w-3xl mx-auto animate-slide-up">
-            <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Logo" class="mx-auto mb-8 w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl" />
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg leading-tight">Wavium Interactive Group</h1>
-            <p class="text-base md:text-xl text-slate-300 mb-8 px-2">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant community, all powered by open source WayV technology.</p>
-            <div class="bg-cyan-900/20 border border-cyan-500/30 rounded-2xl p-6 mb-8 shadow-xl max-w-2xl mx-auto">
-                <h2 class="text-lg md:text-xl font-bold text-cyan-300 mb-2">Not Yet Open to the Public</h2>
-                <p class="text-slate-300 mb-2 text-sm md:text-base">Wavium Interactive Group will open once Wave Engine is production-ready. Until then, we are focused on building the foundation for our creative community.</p>
-                <p class="text-slate-300 mb-2 text-sm md:text-base">If you would like to sponsor Wavium Interactive Group, help build it, or join in the future, please email us at <a href="mailto:wayvsoftware@gmail.com" class="text-cyan-400 underline">wayvsoftware@gmail.com</a>.</p>
-            </div>
-            <div class="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
-                <div class="bg-white/10 rounded-2xl p-6 md:p-8 shadow-xl flex-1 min-w-[220px] mb-4 md:mb-0">
-                    <h2 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Monthly Game Jams</h2>
-                    <p class="text-slate-300 text-sm md:text-base">Participate in monthly game jams and events, collaborate with other creators, and showcase your work to the world.</p>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-6 md:p-8 shadow-xl flex-1 min-w-[220px]">
-                    <h2 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Mentorship & Tools</h2>
-                    <p class="text-slate-300 text-sm md:text-base">Access mentorship, open source tools, and a supportive community to help you grow as a developer and bring your ideas to life.</p>
-                </div>
-            </div>
-            <!-- ...existing code... -->
-            <!-- ...existing code... -->
-        </section>
-        <section class="wave-section max-w-4xl mx-auto pt-8 pb-24 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Why Wavium Interactive?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-white/10 rounded-2xl p-5 md:p-6 shadow-lg mb-4 md:mb-0">
-                    <h3 class="text-lg md:text-xl font-bold text-cyan-200 mb-2">Collaboration</h3>
-                    <p class="text-slate-300 text-sm md:text-base">Work with a diverse group of creators, share knowledge, and build together.</p>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-5 md:p-6 shadow-lg mb-4 md:mb-0">
-                    <h3 class="text-lg md:text-xl font-bold text-cyan-200 mb-2">Open Source</h3>
-                    <p class="text-slate-300 text-sm md:text-base">Leverage and contribute to open source tools and technology from WayV.</p>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-5 md:p-6 shadow-lg">
-                    <h3 class="text-lg md:text-xl font-bold text-cyan-200 mb-2">Support</h3>
-                    <p class="text-slate-300 text-sm md:text-base">Get support from mentors and the community to help you succeed as an indie developer.</p>
-                </div>
-            </div>
-        </section>
-    <div id="footer-include"></div>
-        <script>
-            lucide.createIcons();
-            // Animate on scroll (simple fade/slide for cards/sections)
-            function animateOnScroll() {
-                const animatedEls = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('in-view');
-                        }
-                    });
-                }, { threshold: 0.1 });
-                animatedEls.forEach(el => observer.observe(el));
-            }
-            document.addEventListener('DOMContentLoaded', animateOnScroll);
-        </script>
-        <style>
-            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-            @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-            @keyframes blob { 0% { transform: scale(1) translate(0,0); } 33% { transform: scale(1.1) translate(20px,-20px); } 66% { transform: scale(0.95) translate(-10px,10px); } 100% { transform: scale(1) translate(0,0); } }
-            .animate-fade-in { opacity: 0; transition: opacity 0.7s; }
-            .animate-fade-in.in-view { opacity: 1; animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
-            .animate-slide-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s, transform 0.7s; }
-            .animate-slide-up.in-view { opacity: 1; transform: translateY(0); animation: slideUp 1.1s cubic-bezier(.4,0,.2,1) both; }
-            .animate-blob { animation: blob 7s infinite ease-in-out; }
-        </style>
+  <div id="header-include"></div>
+
+  <main class="page-main">
+    <section class="page-shell page-hero">
+      <div class="hero-layout">
+        <div class="section-stack" data-reveal>
+          <p class="eyebrow">Wavium Interactive Group</p>
+          <h1 class="display-title">A creator collective built for indie teams, mentorship, and shared progress.</h1>
+          <p class="lead">Wavium Interactive is planned as an open, creator-funded network. We are currently building its foundations in parallel with Wave Engine maturity.</p>
+          <div class="callout">Wavium Interactive is not yet open to the public. Contact us if you want to sponsor or help shape the launch phase.</div>
+          <div class="btn-row">
+            <a href="mailto:wayvsoftware@gmail.com" class="btn btn-primary">Contact WayV</a>
+            <a href="/community.html" class="btn btn-secondary">Community</a>
+          </div>
+        </div>
+
+        <article class="hero-panel section-stack" data-reveal>
+          <img src="/assets/images/wavium-logo.svg" alt="Wavium logo" style="width:6rem; height:6rem; object-fit:contain;">
+          <h2 class="section-title" style="font-size:1.55rem;">Planned pillars</h2>
+          <ul class="list-clean">
+            <li>Monthly game jams and creator showcases</li>
+            <li>Mentorship and practical production support</li>
+            <li>Shared open-source tools and reusable assets</li>
+            <li>A contributor-first environment for indie growth</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-shell section-block" data-reveal>
+      <div class="grid-3">
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Collaboration</h3>
+          <p class="muted" style="margin:0;">Work with diverse creators and build together on shared foundations.</p>
+        </article>
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Open Source</h3>
+          <p class="muted" style="margin:0;">Contribute to tools that power both internal and community projects.</p>
+        </article>
+        <article class="info-card section-stack">
+          <h3 style="margin:0; color:var(--heading);">Support</h3>
+          <p class="muted" style="margin:0;">Get access to mentorship, feedback, and iterative improvement loops.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
 </body>
 </html>

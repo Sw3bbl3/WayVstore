@@ -1,89 +1,184 @@
-/* Glassmorphism and mobile menu styles for header */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+}
+
 #navbar.glass {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.78) 40%, rgba(30, 41, 59, 0.72) 100%);
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--surface-strong) 92%, transparent), color-mix(in srgb, var(--surface) 86%, transparent));
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--bg) 42%, transparent), inset 0 1px 0 color-mix(in srgb, #ffffff 18%, transparent);
   backdrop-filter: blur(22px) saturate(170%);
   -webkit-backdrop-filter: blur(22px) saturate(170%);
 }
 
-html[data-theme='light'] #navbar.glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 40%, rgba(248, 250, 252, 0.9) 100%);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+#navbar .header-inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+#navbar .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
+}
+
+#navbar .brand-logo {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+#navbar .brand-wordmark {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--heading);
+}
+
+#navbar .desktop-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+#navbar .desktop-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.35rem;
+}
+
+#navbar .btn,
+#navbar .theme-toggle {
+  width: auto;
+}
+
+#navbar .header-github {
+  padding: 0.52rem 0.8rem;
+  font-size: 0.78rem;
+}
+
+#navbar .header-github i,
+#navbar .theme-toggle i,
+#mobile-menu-btn i,
+#mobile-menu .theme-toggle i {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+#mobile-menu-btn {
+  display: none;
+  margin-left: auto;
+  padding: 0.52rem 0.72rem;
 }
 
 #mobile-menu.fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
-  border-radius: 0 !important;
-  background: linear-gradient(150deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.86));
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
-  backdrop-filter: blur(28px) saturate(155%);
-  -webkit-backdrop-filter: blur(28px) saturate(155%);
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--surface-strong) 94%, transparent), color-mix(in srgb, var(--surface-soft) 92%, transparent));
+  box-shadow: inset 0 0 0 1px var(--border);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
   display: flex;
   flex-direction: column;
-  z-index: 2147483647 !important;
-  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 2147483647;
+  opacity: 0;
+  transform: scaleY(0.95);
+  transform-origin: top;
+  pointer-events: none;
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
-html[data-theme='light'] #mobile-menu.fullscreen {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 249, 0.94));
-  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+#mobile-menu.fullscreen.open {
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
 }
 
 #mobile-menu .close-x {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 2.2rem;
-  color: #fff;
-  background: rgba(15, 23, 42, 0.34);
-  border: none;
-  border-radius: 50%;
-  width: 2.8rem;
-  height: 2.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 1.2rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-soft) 88%, transparent);
+  color: var(--heading);
+  font-size: 1.7rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  z-index: 10001;
-  transition: background 0.2s;
-}
-
-html[data-theme='light'] #mobile-menu .close-x {
-  color: #0f172a;
-  background: rgba(226, 232, 240, 0.8);
 }
 
 #mobile-menu .menu-links {
-  margin-top: 5rem;
-  flex: 1;
+  margin-top: 4.8rem;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.2rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+#mobile-menu .menu-links a,
+#mobile-menu .menu-links button {
+  width: min(90vw, 22rem);
 }
 
 #mobile-menu .menu-links a {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  padding: 1.2rem 2.5rem;
-  border-radius: 1.2rem;
-  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-soft) 82%, transparent);
+  color: var(--heading) !important;
+  font-size: 1.04rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-#mobile-menu .menu-links a:hover {
-  background: rgba(255,255,255,0.08);
+#mobile-menu .menu-links a:hover,
+#mobile-menu .menu-links a:focus-visible {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
 }
 
-html[data-theme='light'] #mobile-menu .menu-links a:hover {
-  background: rgba(15, 23, 42, 0.08);
+#mobile-menu .theme-toggle {
+  justify-content: center;
+  padding: 0.64rem 0.8rem;
 }
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 1050px) {
+  #navbar .desktop-nav,
+  #navbar .desktop-actions {
+    display: none;
+  }
+
+  #mobile-menu-btn {
+    display: inline-flex;
+  }
+}
+
+#mobile-menu .menu-links a.active { border-color: color-mix(in srgb, var(--accent) 56%, var(--border)); background: color-mix(in srgb, var(--surface-soft) 72%, var(--accent) 16%); }
+

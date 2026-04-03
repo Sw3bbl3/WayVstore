@@ -6,58 +6,42 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/assets/js/include.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>News | WayV</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-          colors: { wayv: { dark: '#090b14', card: '#141726', primary: '#6366f1', accent: '#06b6d4' } },
-        },
-      },
-    }
-  </script>
-  <style>
-    body { background-color: #090b14; color: #fff; }
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #06b6d4; transition: width .2s ease; }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-  </style>
+  <meta name="description" content="Latest product and ecosystem updates from WayV.">
+  <meta name="theme-color" content="#337dff">
 </head>
 <body>
   <div id="header-include"></div>
 
-  <main class="pt-28 pb-20 min-h-screen">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <header class="mb-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">WayV News</h1>
-        <p class="text-slate-300 text-lg">Product updates and ecosystem milestones.</p>
-      </header>
+  <main class="page-main">
+    <section class="page-shell page-hero section-stack" data-reveal>
+      <p class="eyebrow">WayV Newsroom</p>
+      <h1 class="display-title">Product updates and milestone announcements.</h1>
+      <p class="lead">Track launch notes, roadmap movement, and ecosystem releases from the WayV team.</p>
+    </section>
 
-      <div class="space-y-6">
-        <article class="bg-wayv-card/85 border border-wayv-accent/25 rounded-2xl p-7">
-          <p class="text-xs font-mono text-wayv-accent mb-2">April 3, 2026 · Product Announcement</p>
-          <h2 class="text-2xl font-bold mb-3">Orion joins the WayV product lineup</h2>
-          <p class="text-slate-300 mb-4">We are introducing <strong>Orion</strong>, a modern open-source DAW focused on low-latency audio, a clean interface, and a modular architecture. Orion is currently in active development, and we are clearly separating what is available now from what is planned next.</p>
-          <ul class="list-disc list-inside text-slate-300 space-y-1 mb-4">
-            <li><strong>Current focus:</strong> real-time audio engine, multi-track timeline, MIDI/audio workflows, and mixer foundations.</li>
-            <li><strong>Planned / in progress:</strong> plugin ecosystem support, expanded internal extensions, and broader platform coverage.</li>
-          </ul>
-          <a href="/orion.html" class="inline-flex items-center text-wayv-accent font-semibold hover:underline">View Orion product page <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
-        </article>
+    <section class="page-shell section-block section-stack" data-reveal>
+      <article class="timeline-card section-stack">
+        <span class="badge"><i data-lucide="calendar-days" class="w-4 h-4"></i> April 3, 2026</span>
+        <h2 class="section-title" style="font-size:1.65rem;">Orion is now released for free</h2>
+        <p class="muted" style="margin:0; line-height:1.7;">Orion officially joins the WayV product lineup as a free, open-source DAW focused on low-latency audio, clean interface design, and long-term extensibility.</p>
+        <ul class="list-clean">
+          <li><strong style="color:var(--heading);">Live focus:</strong> audio engine performance, timeline workflows, and routing fundamentals.</li>
+          <li><strong style="color:var(--heading);">In progress:</strong> plugin ecosystem support and deeper optimization for complex sessions.</li>
+        </ul>
+        <a href="/orion.html" class="btn btn-primary" style="width:max-content;">Open Orion page <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+      </article>
 
-        <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-7">
-          <p class="text-xs font-mono text-wayv-primary mb-2">January 30, 2026 · Company Update</p>
-          <h2 class="text-2xl font-bold mb-3">WayV open-source direction continues</h2>
-          <p class="text-slate-300">WayV remains committed to open development and community collaboration across our ecosystem. We are continuing to invest in transparent roadmaps and creator-first tooling.</p>
-        </article>
-      </div>
-    </div>
+      <article class="timeline-card section-stack">
+        <span class="badge"><i data-lucide="calendar-days" class="w-4 h-4"></i> January 30, 2026</span>
+        <h2 class="section-title" style="font-size:1.4rem;">WayV open-source roadmap expansion</h2>
+        <p class="muted" style="margin:0; line-height:1.7;">WayV continues expanding transparent product development across ecosystem tooling, with stronger alignment between engine, audio, and community workflows.</p>
+      </article>
+    </section>
   </main>
 
   <div id="footer-include"></div>
-  <script>lucide.createIcons();</script>
 </body>
 </html>
