@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>Orion | WayV</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <meta name="description" content="Orion is a modern open-source DAW built for performance, simplicity, and creators.">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: { wayv: { dark: '#090b14', card: '#141726', primary: '#6366f1', accent: '#06b6d4' } }
+        },
+      },
+    }
+  </script>
+  <style>
+    body { background: #090b14; color: #fff; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #06b6d4; transition: width .2s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="header-include"></div>
+
+  <main class="pt-32 pb-20">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-14">
+      <div class="bg-gradient-to-br from-wayv-card via-wayv-card/95 to-slate-900 border border-wayv-accent/30 rounded-3xl p-10 md:p-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-wayv-accent font-semibold mb-4">New Product</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-5">Orion</h1>
+        <p class="text-xl text-slate-200 mb-6 max-w-3xl">Orion is a modern, open-source digital audio workstation built for performance, simplicity, and creators.</p>
+        <p class="text-slate-300 max-w-3xl mb-8">Orion is in active development and evolving quickly. We are focusing on the core audio experience first, while building the architecture needed for long-term extensibility.</p>
+        <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="inline-flex items-center px-5 py-3 bg-wayv-primary hover:bg-indigo-500 rounded-xl font-semibold transition">Follow Development <i data-lucide="github" class="w-4 h-4 ml-2"></i></a>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6">
+          <h2 class="text-2xl font-bold mb-4">Current Focus</h2>
+          <ul class="space-y-3 text-slate-300">
+            <li>• Real-time audio processing and low-latency playback</li>
+            <li>• Multi-track timeline for MIDI and audio workflows</li>
+            <li>• Mixer and routing foundations</li>
+            <li>• Fast, minimal user interface with real-time feedback</li>
+          </ul>
+        </div>
+        <div class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6">
+          <h2 class="text-2xl font-bold mb-4">Planned / In Progress</h2>
+          <ul class="space-y-3 text-slate-300">
+            <li>• Plugin ecosystem support (including external plugin integration)</li>
+            <li>• Internal plugin architecture for community extensions</li>
+            <li>• Deeper optimization for larger and more complex projects</li>
+            <li>• Broader cross-platform support over time</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+          <h3 class="font-semibold text-lg mb-2">For producers</h3>
+          <p class="text-sm text-slate-300">A focused workflow for music production, composition, and sound design.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+          <h3 class="font-semibold text-lg mb-2">For developers</h3>
+          <p class="text-sm text-slate-300">A modular codebase that welcomes contributors and ecosystem experimentation.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+          <h3 class="font-semibold text-lg mb-2">For the community</h3>
+          <p class="text-sm text-slate-300">Open-source governance and transparent progress with practical milestones.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

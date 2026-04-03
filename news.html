@@ -1,130 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/assets/js/include.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <title>News | WayV</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-    <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Latest news, updates, and stories from the WayV ecosystem. Stay up to date with our open source journey.">
-    <meta name="keywords" content="WayV, news, updates, open source, developer tools, Wave Engine, Wavium Interactive, community">
-    <meta name="author" content="WayV Inc.">
-    <meta property="og:title" content="News | WayV">
-    <meta property="og:description" content="Latest news, updates, and stories from the WayV ecosystem. Stay up to date with our open source journey.">
-    <meta property="og:image" content="/assets/images/wayv-logo.svg">
-    <meta property="og:url" content="https://wayv.dev/news.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="News | WayV">
-    <meta name="twitter:description" content="Latest news, updates, and stories from the WayV ecosystem. Stay up to date with our open source journey.">
-    <meta name="twitter:image" content="/assets/images/wayv-logo.svg">
-    <meta name="theme-color" content="#6366f1">
-    <meta name="robots" content="index, follow">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
-          },
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>News | WayV</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: { wayv: { dark: '#090b14', card: '#141726', primary: '#6366f1', accent: '#06b6d4' } },
         },
-      }
-    </script>
-    <style>
-      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0B0C15; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      .nav-link { position: relative; }
-      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
-      .nav-link:hover::after { width: 100%; }
-      .nav-link.active { color: white; }
-      .nav-link.active::after { width: 100%; }
-    </style>
+      },
+    }
+  </script>
+  <style>
+    body { background-color: #090b14; color: #fff; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #06b6d4; transition: width .2s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  </style>
 </head>
 <body>
-    <!-- Header Include -->
-    <div id="header-include"></div>
+  <div id="header-include"></div>
 
-    <div class="pt-24 pb-16 min-h-screen">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">WayV News</h1>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Latest updates, releases, and stories from the WayV ecosystem.</p>
-            </div>
-            <div class="space-y-10">
-              <!-- News Post 1 -->
-              <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer" onclick="openNewsModal(1)">
-                <div class="flex items-center mb-4 text-wayv-accent font-mono text-xs">
-                  <i data-lucide="rocket" class="w-4 h-4 mr-2"></i> Jan 30, 2026
-                </div>
-                <h2 class="text-2xl font-bold text-white mb-2">Wave Engine: Development Underway</h2>
-                <p class="text-slate-300 mb-4">We're currently building Wave Engine, our next-generation, high-performance game engine. Stay tuned for updates and early access opportunities!</p>
-              </article>
-              <!-- News Post 2 -->
-              <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer" onclick="openNewsModal(2)">
-                <div class="flex items-center mb-4 text-wayv-primary font-mono text-xs">
-                  <i data-lucide="unlock" class="w-4 h-4 mr-2"></i> Jan 30, 2026
-                </div>
-                <h2 class="text-2xl font-bold text-white mb-2">WayV Is Now Open Source</h2>
-                <p class="text-slate-300 mb-4">We're excited to announce that WayV is now an open source company! Join us on GitHub and help shape the future of creative technology.</p>
-                <a href="https://github.com/WayV-Inc" target="_blank" class="text-wayv-accent font-semibold hover:underline">Visit WayV-Inc on GitHub</a>
-              </article>
-            </div>
-            <!-- News Modal -->
-            <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
-              <div class="bg-wayv-card/90 border border-wayv-accent/30 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative animate-slide-up">
-                <button onclick="closeNewsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i data-lucide='x' class='w-6 h-6'></i></button>
-                <div id="news-modal-content"></div>
-              </div>
-            </div>
-            </div>
-        </div>
+  <main class="pt-28 pb-20 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">WayV News</h1>
+        <p class="text-slate-300 text-lg">Product updates and ecosystem milestones.</p>
+      </header>
+
+      <div class="space-y-6">
+        <article class="bg-wayv-card/85 border border-wayv-accent/25 rounded-2xl p-7">
+          <p class="text-xs font-mono text-wayv-accent mb-2">April 3, 2026 · Product Announcement</p>
+          <h2 class="text-2xl font-bold mb-3">Orion joins the WayV product lineup</h2>
+          <p class="text-slate-300 mb-4">We are introducing <strong>Orion</strong>, a modern open-source DAW focused on low-latency audio, a clean interface, and a modular architecture. Orion is currently in active development, and we are clearly separating what is available now from what is planned next.</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-1 mb-4">
+            <li><strong>Current focus:</strong> real-time audio engine, multi-track timeline, MIDI/audio workflows, and mixer foundations.</li>
+            <li><strong>Planned / in progress:</strong> plugin ecosystem support, expanded internal extensions, and broader platform coverage.</li>
+          </ul>
+          <a href="/orion.html" class="inline-flex items-center text-wayv-accent font-semibold hover:underline">View Orion product page <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+        </article>
+
+        <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-7">
+          <p class="text-xs font-mono text-wayv-primary mb-2">January 30, 2026 · Company Update</p>
+          <h2 class="text-2xl font-bold mb-3">WayV open-source direction continues</h2>
+          <p class="text-slate-300">WayV remains committed to open development and community collaboration across our ecosystem. We are continuing to invest in transparent roadmaps and creator-first tooling.</p>
+        </article>
+      </div>
     </div>
+  </main>
 
-    <!-- Footer Include -->
-    <div id="footer-include"></div>
-    <script>
-      lucide.createIcons();
-      // News modal logic
-      const newsData = [
-        {
-          title: "Wave Engine: Development Underway",
-          date: "Jan 30, 2026",
-          icon: "rocket",
-          color: "wayv-accent",
-          content: `<p class='mb-4 text-slate-300'>We're currently building <strong>Wave Engine</strong>, our next-generation, high-performance game engine. The team is focused on blazing speed, modularity, and developer experience. Early access and dev logs will be available soon—stay tuned for more updates and opportunities to get involved!</p>`
-        },
-        {
-          title: "WayV Is Now Open Source",
-          date: "Jan 30, 2026",
-          icon: "unlock",
-          color: "wayv-primary",
-          content: `<p class='mb-4 text-slate-300'>We're excited to announce that <strong>WayV</strong> is now an open source company! All our core projects, including Wave Engine and Wavium UI, are available on GitHub. We invite you to contribute, collaborate, and help shape the future of creative technology.</p><a href='https://github.com/WayV-Inc' target='_blank' class='text-wayv-accent font-semibold hover:underline'>Visit WayV-Inc on GitHub</a>`
-        }
-      ];
-      function openNewsModal(idx) {
-        const modal = document.getElementById('news-modal');
-        const content = document.getElementById('news-modal-content');
-        const news = newsData[idx-1];
-        content.innerHTML = `
-          <div class='flex items-center mb-4 font-mono text-xs text-${news.color}'>
-            <i data-lucide='${news.icon}' class='w-5 h-5 mr-2'></i> ${news.date}
-          </div>
-          <h2 class='text-2xl font-bold text-white mb-4'>${news.title}</h2>
-          ${news.content}
-        `;
-        modal.classList.remove('hidden');
-        lucide.createIcons();
-      }
-      function closeNewsModal() {
-        document.getElementById('news-modal').classList.add('hidden');
-      }
-    </script>
+  <div id="footer-include"></div>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

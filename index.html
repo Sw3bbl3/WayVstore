@@ -1,283 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-            },
-            colors: {
-              wayv: {
-                dark: '#0B0C15',
-                card: '#161827',
-                primary: '#6366f1',
-                accent: '#06b6d4',
-                glow: '#8b5cf6',
-              }
-            },
-            animation: {
-              'blob': 'blob 7s infinite',
-              'fade-in': 'fadeIn 1s ease-out',
-              'slide-up': 'slideUp 0.8s ease-out',
-              'shimmer': 'shimmer 1.5s infinite',
-            },
-            keyframes: {
-              blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
-              },
-              shimmer: {
-                '100%': { transform: 'translateX(100%)' }
-              }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/include.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>WayV | Open Creative Technology</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
+  <meta name="description" content="WayV builds professional open-source tools for creative technology. Explore Wave Engine, Orion, and the broader WayV ecosystem.">
+  <meta name="theme-color" content="#6366f1">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
           },
-        },
-      }
-    </script>
-    <title>WayV | Build the Future</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-    <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="WayV is building the future of open source, high-performance creative technology. Explore our ecosystem, products, and join our global community.">
-    <meta name="keywords" content="WayV, open source, game engine, Wave Engine, Wavium Interactive, developer tools, community, Rust, WASM, high performance, creative technology">
-    <meta name="author" content="WayV Inc.">
-    <meta property="og:title" content="WayV | Build the Future">
-    <meta property="og:description" content="WayV is building the future of open source, high-performance creative technology. Explore our ecosystem, products, and join our global community.">
-    <meta property="og:image" content="/assets/images/wayv-logo.svg">
-    <meta property="og:url" content="https://wayv.dev/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WayV | Build the Future">
-    <meta name="twitter:description" content="WayV is building the future of open source, high-performance creative technology. Explore our ecosystem, products, and join our global community.">
-    <meta name="twitter:image" content="/assets/images/wayv-logo.svg">
-    <meta name="theme-color" content="#6366f1">
-    <meta name="robots" content="index, follow">
-    <style>
-            body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
-            #navbar { left: 0; right: 0; }
-            @media (max-width: 768px) {
-                #navbar { padding-left: 0.5rem; padding-right: 0.5rem; }
-                .nav-link { font-size: 1rem; }
-                #mobile-menu { top: 56px !important; max-width: 100vw !important; border-radius: 0 0 1.5rem 1.5rem; }
+          colors: {
+            wayv: {
+              dark: '#090b14',
+              card: '#141726',
+              muted: '#99a3bd',
+              primary: '#6366f1',
+              accent: '#06b6d4',
             }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0B0C15; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #475569; }
-      .nav-link { position: relative; }
-      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
-      .nav-link:hover::after { width: 100%; }
-      .nav-link.active { color: white; }
-      .nav-link.active::after { width: 100%; }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "react": "https://esm.sh/react@^19.2.4",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "recharts": "https://esm.sh/recharts@^3.7.0"
-  }
-}
-</script>
-    <script src="assets/js/include.js"></script>
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body { background: #090b14; color: #fff; overflow-x: hidden; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #06b6d4; transition: width .2s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #090b14; }
+    ::-webkit-scrollbar-thumb { background: #31384a; border-radius: 4px; }
+  </style>
 </head>
 <body>
+  <div id="header-include"></div>
 
-    <!-- Header Include -->
-    <div id="header-include"></div>
-
-    <!-- WayV Introduction Section -->
-    <section class="relative py-28 bg-gradient-to-b from-wayv-dark via-wayv-card/60 to-transparent">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-wayv-primary/10 rounded-full blur-3xl z-0"></div>
-        <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
-            <img src="assets/images/wayv-logo.svg" alt="WayV Logo" class="mx-auto h-20 w-20 mb-8 drop-shadow-2xl" />
-            <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-                Welcome to <span class="text-wayv-primary bg-gradient-to-r from-wayv-primary to-wayv-accent bg-clip-text text-transparent">WayV</span>
-            </h1>
-            <p class="text-3xl md:text-4xl font-bold text-wayv-accent mb-8 tracking-tight">Surf the Wave</p>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-2">Empowering the next generation of creators with open source tools for performance, scale, and beautiful design.</p>
-            <p class="text-lg text-slate-400 max-w-2xl mx-auto">Join us and ride the wave of innovation.</p>
-        </div>
-    </section>
-            <!-- Code Mockup -->
-            <div class="mt-20 relative w-full max-w-4xl mx-auto h-64 md:h-80 animate-slide-up" style="animation-delay: 0.4s">
-                <div class="absolute inset-0 bg-gradient-to-t from-wayv-dark to-transparent z-20"></div>
-                <div class="absolute inset-0 bg-wayv-card border border-white/5 rounded-xl overflow-hidden shadow-2xl transform perspective-1000 rotate-x-6">
-                    <div class="flex items-center px-4 py-2 bg-slate-800 border-b border-white/10 space-x-2 rounded-t-xl">
-                        <div class="px-3 py-1 bg-slate-700/70 rounded text-xs font-mono text-slate-300 flex-1 text-left">main.cpp — WaveEngine</div>
-                        <div class="flex items-center gap-1 ml-4">
-                            <div class="w-2.5 h-2.5 bg-slate-400 rounded-sm"></div>
-                            <div class="w-2.5 h-2.5 bg-slate-400 rounded-sm"></div>
-                            <div class="w-2.5 h-2.5 bg-slate-400 rounded-sm"></div>
-                        </div>
-                    </div>
-                    <div class="p-6 font-mono text-sm text-left overflow-hidden">
-                        <div class="text-slate-400">#include <span class="text-white">&quot;WE/WaveEngine.h&quot;</span></div>
-                        <div class="h-2"></div>
-                        <div class="text-blue-400">int <span class="text-pink-500">main</span>() {</div>
-                        <div class="pl-4 text-white">WE::<span class="text-cyan-400">init</span>();</div>
-                        <div class="pl-4 text-white">WE::WindowManager&amp; wManager = WE::WindowManager::<span class="text-cyan-400">get</span>();</div>
-                        <div class="pl-4 text-white">wManager.addWindow(<span class="text-pink-500">new</span> WE::Window(<span class="text-green-400">&quot;Window&quot;</span>, glm::uvec2(480, 480)));
-                        <div class="pl-4 text-white">while (!wManager.empty()) {</div>
-                        <div class="pl-8 text-white">wManager.updateWindows();</div>
-                        <div class="pl-4 text-white">}</div>
-                        <div class="pl-4 text-white">WE::<span class="text-cyan-400">shutdown</span>();</div>
-                        <div class="pl-4 text-white"><span class="text-pink-500">return</span> 0;</div>
-                        <div class="text-blue-400">}</div>
-                    </div>
-                </div>
+  <main>
+    <section class="pt-36 pb-24 bg-gradient-to-b from-wayv-dark via-wayv-card/40 to-transparent border-b border-white/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-wayv-accent font-semibold mb-5">WayV Technology</p>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Professional, open-source tools for creators and developers.</h1>
+            <p class="text-lg text-slate-300 mb-8 max-w-xl">We build modern creative platforms with a focus on performance, clean user experience, and long-term extensibility.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="/ecosystem.html" class="px-6 py-3 rounded-xl bg-wayv-primary hover:bg-indigo-500 text-white font-semibold transition">Explore Ecosystem</a>
+              <a href="/orion.html" class="px-6 py-3 rounded-xl border border-white/20 hover:border-wayv-accent text-white font-semibold transition">Discover Orion</a>
             </div>
+          </div>
+          <div class="bg-wayv-card/80 border border-white/10 rounded-2xl p-7 shadow-2xl">
+            <p class="text-sm text-wayv-accent font-mono mb-4">Latest Announcement</p>
+            <h2 class="text-2xl font-bold mb-3">Introducing Orion</h2>
+            <p class="text-slate-300 mb-5">Orion is our modern open-source DAW, currently in active development. It is designed around low-latency audio, clarity, and a modular architecture.</p>
+            <a href="/news.html" class="inline-flex items-center text-wayv-accent font-semibold hover:underline">Read the announcement <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Product Showcase -->
-    <section class="py-32 relative bg-gradient-to-b from-wayv-card/60 to-slate-950/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">
-                    <span class="bg-gradient-to-r from-wayv-primary to-wayv-accent bg-clip-text text-transparent">The WayV Ecosystem</span>
-                </h2>
-                <p class="text-slate-300 text-xl">Build faster, scale endlessly, and design beautifully with our open ecosystem.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
-                <a href="wayv-originals.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-3xl p-8 border border-white/10 hover:border-wayv-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
-                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
-                        <img src="assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-white tracking-tight">WayV Originals</h3>
-                </a>
-                <a href="wave-engine.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-violet-500/10 to-fuchsia-500/5 rounded-3xl p-8 border border-white/10 hover:border-violet-400/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
-                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
-                        <img src="assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-white tracking-tight">Wave Engine</h3>
-                </a>
-                <a href="wavium-interactive.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-emerald-500/10 to-teal-500/5 rounded-3xl p-8 border border-white/10 hover:border-emerald-400/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
-                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
-                        <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="w-full h-full object-cover rounded-full" />
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-white tracking-tight">Wavium Interactive Group</h3>
-                </a>
-            </div>
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Products</h2>
+          <p class="text-slate-300">A focused portfolio for game development, music production, and collaborative creative work.</p>
         </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <a href="/wave-engine.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-violet-400/50 transition">
+            <h3 class="text-xl font-bold mb-2">Wave Engine</h3>
+            <p class="text-slate-300 text-sm">A high-performance engine stack for interactive applications and games.</p>
+          </a>
+          <a href="/orion.html" class="bg-wayv-card/80 border border-wayv-accent/30 rounded-2xl p-6 hover:border-wayv-accent transition">
+            <h3 class="text-xl font-bold mb-2">Orion DAW</h3>
+            <p class="text-slate-300 text-sm">Modern open-source DAW platform built for audio performance and creator workflows.</p>
+          </a>
+          <a href="/wavium-interactive.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-emerald-400/50 transition">
+            <h3 class="text-xl font-bold mb-2">Wavium Interactive</h3>
+            <p class="text-slate-300 text-sm">A community-driven group supporting indie teams with tooling and collaboration.</p>
+          </a>
+          <a href="/wayv-originals.html" class="bg-wayv-card/80 border border-white/10 rounded-2xl p-6 hover:border-fuchsia-400/50 transition">
+            <h3 class="text-xl font-bold mb-2">WayV Originals</h3>
+            <p class="text-slate-300 text-sm">Internal studio projects and flagship experiences built on WayV technology.</p>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- Community Section -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute top-1/2 left-0 w-64 h-64 bg-wayv-primary/10 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-wayv-glow/10 rounded-full filter blur-3xl"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-white mb-6">Powered by <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Global Collaboration</span></h2>
-                <!-- No subtext -->
-                <div class="mb-8">
-                    <div class="flex flex-col items-center justify-center gap-8">
-                        <div class="flex flex-row items-end justify-center gap-8 w-full flex-wrap">
-                            <a href="https://github.com/Sw3bbl3" target="_blank" class="flex flex-col items-center group transition-transform hover:-translate-y-2" style="flex-basis:120px;">
-                                <img src="assets/images/sw3bbl3.png" alt="Sw3bbl3" class="w-24 h-24 rounded-full mb-3 shadow-2xl group-hover:scale-110 transition-transform duration-200" />
-                                <span class="text-white font-bold text-lg">Sw3bbl3</span>
-                                <span class="text-wayv-accent text-xs font-mono">@Sw3bbl3</span>
-                            </a>
-                            <a href="https://github.com/kaivexx" target="_blank" class="flex flex-col items-center group transition-transform hover:-translate-y-2" style="flex-basis:120px;">
-                                <img src="assets/images/kaivexx.png" alt="kaivexx" class="w-24 h-24 rounded-full mb-3 shadow-2xl group-hover:scale-110 transition-transform duration-200" />
-                                <span class="text-white font-bold text-lg">kaivexx</span>
-                                <span class="text-wayv-accent text-xs font-mono">@kaivexx</span>
-                            </a>
-                            <a href="https://github.com/LoulouNoLegend" target="_blank" class="flex flex-col items-center group transition-transform hover:-translate-y-2" style="flex-basis:120px;">
-                                <img src="assets/images/loulounolegend.png" alt="LoulouNoLegend" class="w-24 h-24 rounded-full mb-3 shadow-2xl group-hover:scale-110 transition-transform duration-200" />
-                                <span class="text-white font-bold text-lg">LoulouNoLegend</span>
-                                <span class="text-wayv-accent text-xs font-mono">@LoulouNoLegend</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-                    <div class="text-slate-400 text-sm font-mono">Contributors: <span class="text-wayv-accent font-bold">3</span></div>
-                    <div class="text-slate-400 text-sm font-mono">Total Time: <span class="text-wayv-accent font-bold">10,000+ Hours</span></div>
-                </div>
-                <!-- Join Discord Community button removed -->
-            </div>
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+            <h3 class="font-semibold text-lg mb-2">Open-source first</h3>
+            <p class="text-sm text-slate-300">Transparent development with community participation at the center.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+            <h3 class="font-semibold text-lg mb-2">Performance-focused</h3>
+            <p class="text-sm text-slate-300">Low overhead architecture and practical optimization for real production workflows.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-wayv-card/70 p-6">
+            <h3 class="font-semibold text-lg mb-2">Built to scale</h3>
+            <p class="text-sm text-slate-300">Modular systems designed to evolve with teams, projects, and community contributions.</p>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <div id="footer-include"></div>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Navbar Scroll Logic
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3');
-                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5');
-            } else {
-                navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3');
-                navbar.classList.add('bg-transparent', 'border-transparent', 'py-5');
-            }
-        });
-
-                // Mobile Menu Logic
-                const menuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (menuBtn && mobileMenu) {
-                    menuBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const isOpen = mobileMenu.classList.contains('opacity-100');
-                        if (!isOpen) {
-                            mobileMenu.classList.remove('hidden');
-                            setTimeout(() => {
-                                mobileMenu.classList.add('opacity-100');
-                                mobileMenu.classList.remove('opacity-0', 'scale-y-95');
-                                mobileMenu.classList.add('scale-y-100');
-                                mobileMenu.style.pointerEvents = 'auto';
-                            }, 10);
-                        } else {
-                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
-                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
-                            mobileMenu.style.pointerEvents = 'none';
-                            setTimeout(() => {
-                                mobileMenu.classList.add('hidden');
-                            }, 300);
-                        }
-                    });
-                    // Close menu when clicking outside
-                    document.addEventListener('click', (e) => {
-                        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
-                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
-                            mobileMenu.style.pointerEvents = 'none';
-                            setTimeout(() => {
-                                mobileMenu.classList.add('hidden');
-                            }, 300);
-                        }
-                    });
-                }
-    </script>
+  <div id="footer-include"></div>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
