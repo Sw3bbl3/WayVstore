@@ -10,62 +10,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Ecosystem | WayV</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <meta name="description" content="Explore the WayV ecosystem and navigate every product through an animated interactive carousel.">
+  <meta name="description" content="Explore the full-screen WayV ecosystem with interactive hover-expanding product panels.">
   <meta name="theme-color" content="#337dff">
 </head>
 <body>
   <div id="header-include"></div>
 
-  <main class="page-main">
-    <section class="page-shell page-hero section-stack" data-reveal>
-      <p class="eyebrow">WayV Ecosystem</p>
-      <h1 class="display-title">Everything we build, connected through one creator workflow.</h1>
-      <p class="lead" style="max-width:72ch;">Navigate the ecosystem with the animated carousel. It loops automatically, supports arrows, dots, keyboard, and mobile swipe, and links directly into each product page.</p>
-    </section>
+  <main class="page-main ecosystem-main">
+    <section class="ecosystem-stage" data-reveal>
+      <header class="page-shell ecosystem-stage-top">
+        <p class="eyebrow">WayV Ecosystem</p>
+        <h1 class="display-title">Hover a product to dive deeper.</h1>
+        <p class="lead">All core platforms are visible at once. Hover (or tap on touch) to expand a panel and prioritize the product you want to explore.</p>
+      </header>
 
-    <section class="page-shell section-block" data-reveal>
-      <div class="ecosystem-carousel" data-carousel aria-label="WayV ecosystem carousel">
-        <div class="ecosystem-carousel-header">
-          <span class="badge"><i data-lucide="orbit" class="w-4 h-4"></i> Animated Product Carousel</span>
-          <div class="ecosystem-carousel-actions">
-            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous slide"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-            <button class="carousel-btn" type="button" data-carousel-next aria-label="Next slide"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+      <div class="ecosystem-panels" data-ecosystem-panels>
+        <a href="/wave-engine.html" class="eco-panel is-active" style="--panel-gradient: linear-gradient(135deg, #5c46f7 0%, #2e9df7 100%);">
+          <div class="eco-panel-media"><img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine logo"></div>
+          <div class="eco-panel-content">
+            <h2>Wave Engine</h2>
+            <p>High-performance runtime foundations for interactive software.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="ecosystem-track-wrap" tabindex="0" aria-live="polite" data-carousel-viewport>
-          <div class="ecosystem-track" data-carousel-track>
-            <article class="slide-card ecosystem-slide" data-slide data-link="/wave-engine.html">
-              <img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine logo" class="ecosystem-slide-logo">
-              <h2>Wave Engine</h2>
-              <p>Data-oriented engine foundations built for high-performance interactive apps.</p>
-              <a href="/wave-engine.html" class="btn btn-secondary">Open page</a>
-            </article>
-
-            <article class="slide-card ecosystem-slide" data-slide data-link="/orion.html">
-              <img src="/assets/images/Orion_logo.png" alt="Orion logo" class="ecosystem-slide-logo">
-              <h2>Orion</h2>
-              <p>Now released free. Open-source DAW focused on low-latency audio and clean UX.</p>
-              <a href="/orion.html" class="btn btn-primary">Get Orion free</a>
-            </article>
-
-            <article class="slide-card ecosystem-slide" data-slide data-link="/wavium-interactive.html">
-              <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive logo" class="ecosystem-slide-logo">
-              <h2>Wavium Interactive</h2>
-              <p>Creator-funded collective for mentorship, collaboration, and community growth.</p>
-              <a href="/wavium-interactive.html" class="btn btn-secondary">Open page</a>
-            </article>
-
-            <article class="slide-card ecosystem-slide" data-slide data-link="/wayv-originals.html">
-              <img src="/assets/images/wayv-logo.svg" alt="WayV Originals logo" class="ecosystem-slide-logo">
-              <h2>WayV Originals</h2>
-              <p>Internal releases and flagship experiences built with WayV technology.</p>
-              <a href="/wayv-originals.html" class="btn btn-secondary">Open page</a>
-            </article>
+        <a href="/orion.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #2f8dff 0%, #32d6d2 100%);">
+          <div class="eco-panel-media"><img src="/assets/images/Orion_logo.png" alt="Orion logo"></div>
+          <div class="eco-panel-content">
+            <h2>Orion</h2>
+            <p>Now released free: modern DAW workflow with low-latency audio.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="ecosystem-dots" role="tablist" aria-label="Select ecosystem slide" data-carousel-dots></div>
+        <a href="/wavium-interactive.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #0887b8 0%, #43c9f2 100%);">
+          <div class="eco-panel-media"><img src="/assets/images/wavium-logo.svg" alt="Wavium logo"></div>
+          <div class="eco-panel-content">
+            <h2>Wavium Interactive</h2>
+            <p>Mentorship and collaboration layer for growing indie teams.</p>
+          </div>
+        </a>
+
+        <a href="/wayv-originals.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #3048d4 0%, #5e8fff 100%);">
+          <div class="eco-panel-media"><img src="/assets/images/wayv-logo.svg" alt="WayV Originals logo"></div>
+          <div class="eco-panel-content">
+            <h2>WayV Originals</h2>
+            <p>Flagship internal projects that validate the WayV stack.</p>
+          </div>
+        </a>
       </div>
     </section>
   </main>

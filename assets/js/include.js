@@ -24,11 +24,59 @@ function refreshIconsAndTheme() {
 
 function markActiveNavigation() {
   const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  document.querySelectorAll('#navbar .nav-link, #mobile-menu .menu-links a').forEach((link) => {
+  const activeParents = new Set();
+
+  document.querySelectorAll('#navbar .dropdown-link, #mobile-menu .menu-links a').forEach((link) => {
     const href = (link.getAttribute('href') || '').replace(/^\//, '').toLowerCase();
     if (!href || href.startsWith('http')) return;
     const isMatch = href === path || (path === '' && href === 'index.html');
     link.classList.toggle('active', isMatch);
+    if (isMatch) {
+      const parent = link.getAttribute('data-menu-parent');
+      if (parent) activeParents.add(parent);
+    }
+  });
+
+  document.querySelectorAll('[data-menu-trigger]').forEach((trigger) => {
+    const key = trigger.getAttribute('data-menu-trigger');
+    trigger.classList.toggle('active', activeParents.has(key));
+  });
+}
+
+function setupDesktopDropdowns() {
+  const groups = Array.from(document.querySelectorAll('[data-menu-group]'));
+  if (!groups.length) return;
+
+  function closeAll() {
+    groups.forEach((group) => {
+      group.classList.remove('open');
+      const trigger = group.querySelector('[data-menu-trigger]');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  groups.forEach((group) => {
+    const trigger = group.querySelector('[data-menu-trigger]');
+    if (!trigger || trigger.dataset.bound === 'true') return;
+    trigger.dataset.bound = 'true';
+
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      const isOpen = group.classList.contains('open');
+      closeAll();
+      if (!isOpen) {
+        group.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('[data-menu-group]')) closeAll();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeAll();
   });
 }
 
@@ -133,6 +181,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   Promise.all(tasks).finally(() => {
     refreshIconsAndTheme();
+    setupDesktopDropdowns();
     setupRevealAnimations();
   });
 });
+

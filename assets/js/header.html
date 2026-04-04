@@ -8,14 +8,15 @@
       <span data-theme-label>Dark</span> Mode
     </button>
     <a href="/index.html">Home</a>
-    <a href="/ecosystem.html">Ecosystem</a>
+    <a href="/ecosystem.html">Ecosystem Overview</a>
     <a href="/wave-engine.html">Wave Engine</a>
     <a href="/orion.html">Orion</a>
     <a href="/wavium-interactive.html">Wavium Interactive</a>
     <a href="/wayv-originals.html">WayV Originals</a>
-    <a href="/news.html">News</a>
-    <a href="/community.html">Community</a>
     <a href="/about.html">About</a>
+    <a href="/community.html">Community</a>
+    <a href="/careers.html">Careers</a>
+    <a href="/news.html">News</a>
     <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener">GitHub</a>
   </div>
 </div>
@@ -27,15 +28,33 @@
       <span class="brand-wordmark">WayV</span>
     </a>
 
-    <div class="desktop-nav">
-      <a href="/ecosystem.html" class="nav-link muted">Ecosystem</a>
-      <a href="/wave-engine.html" class="nav-link muted">Wave Engine</a>
-      <a href="/orion.html" class="nav-link muted">Orion</a>
-      <a href="/wavium-interactive.html" class="nav-link muted">Wavium</a>
-      <a href="/wayv-originals.html" class="nav-link muted">Originals</a>
-      <a href="/news.html" class="nav-link muted">News</a>
-      <a href="/community.html" class="nav-link muted">Community</a>
-      <a href="/about.html" class="nav-link muted">About</a>
+    <div class="desktop-nav" aria-label="Desktop navigation">
+      <div class="menu-group" data-menu-group>
+        <button class="menu-trigger muted" type="button" data-menu-trigger="ecosystem" aria-expanded="false">
+          Ecosystem
+          <span class="caret">▾</span>
+        </button>
+        <div class="menu-dropdown" role="menu" aria-label="Ecosystem links">
+          <a href="/ecosystem.html" class="dropdown-link" data-menu-parent="ecosystem">Ecosystem Overview</a>
+          <a href="/wave-engine.html" class="dropdown-link" data-menu-parent="ecosystem">Wave Engine</a>
+          <a href="/orion.html" class="dropdown-link" data-menu-parent="ecosystem">Orion DAW</a>
+          <a href="/wavium-interactive.html" class="dropdown-link" data-menu-parent="ecosystem">Wavium Interactive</a>
+          <a href="/wayv-originals.html" class="dropdown-link" data-menu-parent="ecosystem">WayV Originals</a>
+        </div>
+      </div>
+
+      <div class="menu-group" data-menu-group>
+        <button class="menu-trigger muted" type="button" data-menu-trigger="company" aria-expanded="false">
+          Company
+          <span class="caret">▾</span>
+        </button>
+        <div class="menu-dropdown" role="menu" aria-label="Company links">
+          <a href="/about.html" class="dropdown-link" data-menu-parent="company">About</a>
+          <a href="/community.html" class="dropdown-link" data-menu-parent="company">Community</a>
+          <a href="/careers.html" class="dropdown-link" data-menu-parent="company">Careers</a>
+          <a href="/news.html" class="dropdown-link" data-menu-parent="company">News</a>
+        </div>
+      </div>
     </div>
 
     <div class="desktop-actions">
@@ -44,8 +63,8 @@
         <i data-lucide="moon" data-theme-icon="moon" class="hidden"></i>
         <span data-theme-label>Dark</span>
       </button>
-      <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-secondary header-github">
-        <i data-lucide="github"></i>
+      <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-secondary header-github" aria-label="WayV on GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6a3.18 3.18 0 0 0-1.34-1.75c-1.1-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.57 2.57 0 0 1 .76-1.6c-2.66-.3-5.47-1.33-5.47-5.92a4.64 4.64 0 0 1 1.24-3.22 4.31 4.31 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.35 11.35 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 0 1 .12 3.18 4.63 4.63 0 0 1 1.24 3.22c0 4.61-2.82 5.62-5.5 5.91a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.22.7.83.58A12 12 0 0 0 12 .5"/></svg>
         GitHub
       </a>
     </div>

@@ -1,132 +1,146 @@
-.ecosystem-carousel {
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  background: linear-gradient(160deg, color-mix(in srgb, var(--surface-strong) 95%, transparent), color-mix(in srgb, var(--surface-soft) 92%, transparent));
-  box-shadow: var(--shadow-lg);
-  padding: 1.1rem;
+.ecosystem-main {
+  padding-top: 5.2rem;
+  padding-bottom: 0.5rem;
+}
+
+.ecosystem-stage {
+  min-height: calc(100vh - 5.2rem);
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
-.ecosystem-carousel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.ecosystem-carousel-actions {
-  display: inline-flex;
-  align-items: center;
+.ecosystem-stage-top {
+  display: grid;
   gap: 0.55rem;
 }
 
-.carousel-btn {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 999px;
+.ecosystem-stage-top .lead {
+  max-width: 72ch;
+}
+
+.ecosystem-panels {
+  width: min(1500px, calc(100% - 2.4rem));
+  margin-inline: auto;
+  min-height: min(72vh, 760px);
+  height: calc(100vh - 12rem);
+  display: flex;
+  gap: 0.55rem;
+  border-radius: 24px;
+  overflow: hidden;
   border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface-soft) 90%, transparent);
-  color: var(--heading);
+  background: color-mix(in srgb, var(--surface-soft) 72%, transparent);
+  box-shadow: var(--shadow-lg);
+}
+
+.eco-panel {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background: var(--panel-gradient);
+  transition: flex 0.52s cubic-bezier(0.2, 0.85, 0.26, 1), filter 0.4s ease;
+}
+
+.eco-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 14, 30, 0.08), rgba(7, 14, 30, 0.72)),
+    radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.3), transparent 44%);
+  pointer-events: none;
+}
+
+.ecosystem-panels:hover .eco-panel {
+  flex: 0.9 1 0;
+  filter: saturate(0.9);
+}
+
+.ecosystem-panels:hover .eco-panel:hover,
+.eco-panel.is-active {
+  flex: 2.6 1 0;
+  filter: saturate(1.08);
+}
+
+.eco-panel-media {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  opacity: 0.78;
+  transform: scale(0.94);
+  transition: transform 0.42s ease, opacity 0.42s ease;
 }
 
-.carousel-btn:hover,
-.carousel-btn:focus-visible {
-  transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-  background: color-mix(in srgb, var(--surface-soft) 80%, var(--accent) 16%);
-}
-
-.ecosystem-track-wrap {
-  overflow: hidden;
-  border-radius: calc(var(--radius-xl) - 8px);
-  outline: none;
-}
-
-.ecosystem-track {
-  display: flex;
-  gap: 0;
-  transition: transform 0.62s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: transform;
-}
-
-.ecosystem-slide {
-  min-width: 100%;
-  border-radius: calc(var(--radius-xl) - 8px);
-  border: 1px solid var(--border);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--surface-strong) 96%, transparent), color-mix(in srgb, var(--surface-soft) 86%, transparent));
-  padding: clamp(1rem, 3vw, 2rem);
-  display: grid;
-  justify-items: start;
-  gap: 0.75rem;
-}
-
-.ecosystem-slide.is-active {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  box-shadow: 0 20px 36px color-mix(in srgb, var(--accent-strong) 24%, transparent);
-}
-
-.ecosystem-slide-logo {
-  width: clamp(3.6rem, 12vw, 5.2rem);
-  height: clamp(3.6rem, 12vw, 5.2rem);
+.eco-panel-media img {
+  width: min(230px, 58%);
+  height: auto;
   object-fit: contain;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.34));
 }
 
-.ecosystem-slide h2 {
+.ecosystem-panels:hover .eco-panel:hover .eco-panel-media,
+.eco-panel.is-active .eco-panel-media {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.eco-panel-content {
+  position: absolute;
+  left: 1.1rem;
+  right: 1rem;
+  bottom: 1.1rem;
+  z-index: 2;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.eco-panel-content h2 {
   margin: 0;
-  color: var(--heading);
-  font-size: clamp(1.35rem, 4vw, 2.1rem);
+  font-size: clamp(1.3rem, 2vw, 2.35rem);
   letter-spacing: -0.01em;
 }
 
-.ecosystem-slide p {
+.eco-panel-content p {
   margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-  max-width: 62ch;
+  font-size: clamp(0.84rem, 1vw, 1.05rem);
+  opacity: 0.92;
+  max-width: 38ch;
 }
 
-.ecosystem-slide .btn {
-  margin-top: 0.4rem;
-}
-
-.ecosystem-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.45rem;
-}
-
-.carousel-dot {
-  width: 0.62rem;
-  height: 0.62rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface-soft) 94%, transparent);
-  padding: 0;
-}
-
-.carousel-dot[aria-selected='true'] {
-  width: 1.8rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
-  border-color: transparent;
-}
-
-@media (max-width: 800px) {
-  .ecosystem-carousel {
-    padding: 0.8rem;
+@media (max-width: 1020px) {
+  .ecosystem-panels {
+    width: min(1500px, calc(100% - 1.2rem));
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    border: none;
+    box-shadow: none;
+    background: transparent;
   }
 
-  .ecosystem-carousel-header {
-    align-items: flex-start;
-    flex-direction: column;
+  .eco-panel,
+  .ecosystem-panels:hover .eco-panel,
+  .ecosystem-panels:hover .eco-panel:hover,
+  .eco-panel.is-active {
+    flex: initial;
+    min-height: 240px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
   }
 
-  .ecosystem-slide {
-    padding: 1rem;
-    min-height: 320px;
-    align-content: start;
+  .eco-panel-content {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .eco-panel-media img {
+    width: min(190px, 44%);
   }
 }
