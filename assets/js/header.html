@@ -3,14 +3,14 @@
   <button class="close-x" id="mobile-menu-close" aria-label="Close menu">&times;</button>
   <div class="menu-links">
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-      <i data-lucide="sun" data-theme-icon="sun"></i>
-      <i data-lucide="moon" data-theme-icon="moon" class="hidden"></i>
+      <i data-lucide="sun" data-theme-icon="sun" class="icon-16"></i>
+      <i data-lucide="moon" data-theme-icon="moon" class="icon-16 hidden"></i>
       <span data-theme-label>Dark</span> Mode
     </button>
     <a href="/index.html">Home</a>
-    <a href="/ecosystem.html">Ecosystem Overview</a>
-    <a href="/wave-engine.html">Wave Engine</a>
     <a href="/orion.html">Orion</a>
+    <a href="/ecosystem.html">Ecosystem</a>
+    <a href="/wave-engine.html">Wave Engine</a>
     <a href="/wavium-interactive.html">Wavium Interactive</a>
     <a href="/wayv-originals.html">WayV Originals</a>
     <a href="/about.html">About</a>
@@ -23,28 +23,39 @@
 
 <nav id="navbar" class="glass" role="navigation" aria-label="Main navigation">
   <div class="page-shell header-inner">
-    <a href="/index.html" class="brand">
+    <a href="/index.html" class="brand" aria-label="WayV home">
       <img src="/assets/images/wayv-logo.svg" alt="WayV" class="brand-logo" />
       <span class="brand-wordmark">WayV</span>
     </a>
 
     <div class="desktop-nav" aria-label="Desktop navigation">
       <div class="menu-group" data-menu-group>
-        <button class="menu-trigger muted" type="button" data-menu-trigger="ecosystem" aria-expanded="false">
+        <button class="menu-trigger" type="button" data-menu-trigger="orion" aria-expanded="false">
+          Orion
+          <span class="caret">▾</span>
+        </button>
+        <div class="menu-dropdown" role="menu" aria-label="Orion links">
+          <a href="/orion.html" class="dropdown-link" data-menu-parent="orion">Orion Overview</a>
+          <a href="/news.html" class="dropdown-link" data-menu-parent="orion">Release Notes</a>
+          <a href="https://github.com/WayV-Inc" class="dropdown-link" target="_blank" rel="noopener">Development on GitHub</a>
+        </div>
+      </div>
+
+      <div class="menu-group" data-menu-group>
+        <button class="menu-trigger" type="button" data-menu-trigger="ecosystem" aria-expanded="false">
           Ecosystem
           <span class="caret">▾</span>
         </button>
         <div class="menu-dropdown" role="menu" aria-label="Ecosystem links">
           <a href="/ecosystem.html" class="dropdown-link" data-menu-parent="ecosystem">Ecosystem Overview</a>
           <a href="/wave-engine.html" class="dropdown-link" data-menu-parent="ecosystem">Wave Engine</a>
-          <a href="/orion.html" class="dropdown-link" data-menu-parent="ecosystem">Orion DAW</a>
           <a href="/wavium-interactive.html" class="dropdown-link" data-menu-parent="ecosystem">Wavium Interactive</a>
           <a href="/wayv-originals.html" class="dropdown-link" data-menu-parent="ecosystem">WayV Originals</a>
         </div>
       </div>
 
       <div class="menu-group" data-menu-group>
-        <button class="menu-trigger muted" type="button" data-menu-trigger="company" aria-expanded="false">
+        <button class="menu-trigger" type="button" data-menu-trigger="company" aria-expanded="false">
           Company
           <span class="caret">▾</span>
         </button>
@@ -59,18 +70,22 @@
 
     <div class="desktop-actions">
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-        <i data-lucide="sun" data-theme-icon="sun"></i>
-        <i data-lucide="moon" data-theme-icon="moon" class="hidden"></i>
+        <i data-lucide="sun" data-theme-icon="sun" class="icon-16"></i>
+        <i data-lucide="moon" data-theme-icon="moon" class="icon-16 hidden"></i>
         <span data-theme-label>Dark</span>
       </button>
+      <a href="/orion.html" class="btn btn-primary header-github" aria-label="Open Orion">
+        <i data-lucide="music-4" class="icon-16"></i>
+        Open Orion
+      </a>
       <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-secondary header-github" aria-label="WayV on GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6a3.18 3.18 0 0 0-1.34-1.75c-1.1-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.57 2.57 0 0 1 .76-1.6c-2.66-.3-5.47-1.33-5.47-5.92a4.64 4.64 0 0 1 1.24-3.22 4.31 4.31 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.35 11.35 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 0 1 .12 3.18 4.63 4.63 0 0 1 1.24 3.22c0 4.61-2.82 5.62-5.5 5.91a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.22.7.83.58A12 12 0 0 0 12 .5"/></svg>
         GitHub
       </a>
     </div>
 
-    <button id="mobile-menu-btn" class="mobile-menu-btn btn btn-secondary" aria-label="Open menu">
-      <i data-lucide="menu"></i>
+    <button id="mobile-menu-btn" class="btn btn-secondary" aria-label="Open menu">
+      <i data-lucide="menu" class="icon-20"></i>
     </button>
   </div>
 </nav>

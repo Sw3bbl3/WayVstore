@@ -1,4 +1,4 @@
-function ensureGlobalThemeAssets() {
+function ensureGlobalAssets() {
   if (!document.getElementById('wayv-theme-style')) {
     const themeStyle = document.createElement('link');
     themeStyle.id = 'wayv-theme-style';
@@ -13,9 +13,16 @@ function ensureGlobalThemeAssets() {
     themeScript.src = '/assets/js/theme.js';
     document.head.appendChild(themeScript);
   }
+
+  if (!document.getElementById('wayv-motion-script')) {
+    const motionScript = document.createElement('script');
+    motionScript.id = 'wayv-motion-script';
+    motionScript.src = '/assets/js/motion.js';
+    document.head.appendChild(motionScript);
+  }
 }
 
-ensureGlobalThemeAssets();
+ensureGlobalAssets();
 
 function refreshIconsAndTheme() {
   if (window.lucide) window.lucide.createIcons();
@@ -28,7 +35,7 @@ function markActiveNavigation() {
 
   document.querySelectorAll('#navbar .dropdown-link, #mobile-menu .menu-links a').forEach((link) => {
     const href = (link.getAttribute('href') || '').replace(/^\//, '').toLowerCase();
-    if (!href || href.startsWith('http')) return;
+    if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
     const isMatch = href === path || (path === '' && href === 'index.html');
     link.classList.toggle('active', isMatch);
     if (isMatch) {
@@ -45,7 +52,9 @@ function markActiveNavigation() {
 
 function setupDesktopDropdowns() {
   const groups = Array.from(document.querySelectorAll('[data-menu-group]'));
-  if (!groups.length) return;
+  if (!groups.length || document.body.dataset.dropdownBound === 'true') return;
+
+  document.body.dataset.dropdownBound = 'true';
 
   function closeAll() {
     groups.forEach((group) => {
@@ -57,8 +66,7 @@ function setupDesktopDropdowns() {
 
   groups.forEach((group) => {
     const trigger = group.querySelector('[data-menu-trigger]');
-    if (!trigger || trigger.dataset.bound === 'true') return;
-    trigger.dataset.bound = 'true';
+    if (!trigger) return;
 
     trigger.addEventListener('click', (event) => {
       event.preventDefault();
@@ -80,73 +88,28 @@ function setupDesktopDropdowns() {
   });
 }
 
-function setupRevealAnimations() {
-  const revealEls = document.querySelectorAll('[data-reveal]');
+function setupRevealFallbacks() {
+  const revealEls = document.querySelectorAll('[data-reveal], [data-stagger]');
   if (!revealEls.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
       });
     },
-    { threshold: 0.14 }
+    { threshold: 0.15 }
   );
 
-  revealEls.forEach((el, index) => {
-    if (!el.style.getPropertyValue('--reveal-delay')) {
-      el.style.setProperty('--reveal-delay', `${Math.min(index * 40, 280)}ms`);
-    }
-    observer.observe(el);
-  });
-}
-
-function setupHomepageMotion() {
-  if (!document.body.classList.contains('home-page')) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const hero = document.querySelector('.orion-top-hero');
-  if (!hero) return;
-
-  const motionSections = Array.from(document.querySelectorAll('main .section-block'));
-  let rafId = null;
-
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-
-  function updateMotion() {
-    rafId = null;
-
-    const heroRect = hero.getBoundingClientRect();
-    const heroProgress = clamp(-heroRect.top / Math.max(heroRect.height, 1), 0, 1.1);
-    hero.style.setProperty('--hero-progress', heroProgress.toFixed(4));
-
-    const viewportMid = window.innerHeight * 0.52;
-    motionSections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const sectionMid = rect.top + rect.height * 0.5;
-      const normalized = clamp((viewportMid - sectionMid) / window.innerHeight, -1, 1);
-      section.style.setProperty('--section-shift', `${(normalized * 24).toFixed(2)}px`);
-      section.style.setProperty('--section-emphasis', `${(1 - Math.abs(normalized) * 0.35).toFixed(3)}`);
-    });
-  }
-
-  function requestUpdate() {
-    if (rafId !== null) return;
-    rafId = window.requestAnimationFrame(updateMotion);
-  }
-
-  updateMotion();
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate);
+  revealEls.forEach((el) => observer.observe(el));
 }
 
 function setupMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  if (!menuBtn || !mobileMenu) return;
+  if (!menuBtn || !mobileMenu || mobileMenu.dataset.bound === 'true') return;
+
+  mobileMenu.dataset.bound = 'true';
 
   function openMobileMenu() {
     mobileMenu.classList.remove('hidden');
@@ -194,6 +157,37 @@ function setupMobileMenu() {
   mobileMenu.setAttribute('aria-hidden', 'true');
 }
 
+function initMotionLayer() {
+  if (window.WayVMotion && typeof window.WayVMotion.init === 'function') {
+    window.WayVMotion.init();
+    return;
+  }
+
+  const motionScript = document.getElementById('wayv-motion-script');
+  if (motionScript && motionScript.dataset.motionBound !== 'true') {
+    motionScript.dataset.motionBound = 'true';
+    motionScript.addEventListener('load', () => {
+      if (window.WayVMotion && typeof window.WayVMotion.init === 'function') {
+        window.WayVMotion.init();
+      }
+    });
+  }
+
+  window.setTimeout(() => {
+    if (window.WayVMotion && typeof window.WayVMotion.init === 'function') {
+      window.WayVMotion.init();
+    }
+  }, 320);
+}
+
+function initializeEnhancements() {
+  refreshIconsAndTheme();
+  markActiveNavigation();
+  setupDesktopDropdowns();
+  setupRevealFallbacks();
+  initMotionLayer();
+}
+
 function loadInclude(id, file, callback) {
   return fetch(file)
     .then((response) => response.text())
@@ -202,8 +196,6 @@ function loadInclude(id, file, callback) {
       if (!target) return;
       target.innerHTML = data;
       if (typeof callback === 'function') callback();
-      refreshIconsAndTheme();
-      markActiveNavigation();
     });
 }
 
@@ -218,11 +210,9 @@ document.addEventListener('DOMContentLoaded', function () {
     tasks.push(loadInclude('footer-include', '/assets/js/footer.html'));
   }
 
-  Promise.all(tasks).finally(() => {
-    refreshIconsAndTheme();
-    setupDesktopDropdowns();
-    setupRevealAnimations();
-    setupHomepageMotion();
-  });
+  Promise.all(tasks)
+    .catch(() => {})
+    .finally(() => {
+      initializeEnhancements();
+    });
 });
-

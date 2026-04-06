@@ -3,83 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/assets/js/include.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Orion | Free by WayV</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <meta name="description" content="Orion is a free modern open-source DAW by WayV, built for low-latency audio, clarity, and extensibility.">
-  <meta name="theme-color" content="#337dff">
+  <meta name="description" content="Orion is a free modern DAW by WayV, designed for low-latency audio and production-ready workflows.">
+  <meta name="theme-color" content="#2b7cff">
 </head>
-<body>
+<body class="orion-page">
   <div id="header-include"></div>
 
   <main class="page-main">
-    <section class="page-shell page-hero">
-      <div class="hero-layout">
-        <div class="section-stack" data-reveal>
-          <span class="badge"><i data-lucide="music-4" class="w-4 h-4"></i> Orion released free</span>
-          <p class="eyebrow">Orion DAW</p>
-          <h1 class="display-title">A modern, free DAW designed for speed, focus, and open creativity.</h1>
-          <p class="lead">Orion combines low-latency playback, streamlined workflow, and an extensible architecture so producers and developers can build serious work without friction.</p>
-          <div class="btn-row">
-            <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-primary">Follow Development <i data-lucide="github" class="w-4 h-4"></i></a>
-            <a href="/news.html" class="btn btn-secondary">Launch Notes</a>
+    <section class="page-shell page-hero" data-scene data-scene-pin>
+      <article class="home-hero" data-scene-layer="1">
+        <div class="hero-grid">
+          <div class="stack" data-scene-layer="1.1" data-reveal>
+            <span class="badge"><i data-lucide="music-4" class="icon-16"></i> Orion is free</span>
+            <h1 class="hero-title">A flagship DAW built for modern creative throughput.</h1>
+            <p class="lead">Orion combines low-latency playback, clean arrangement flow, and extensible architecture so creators can ship with speed and confidence.</p>
+            <div class="btn-row">
+              <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-primary">Follow development <i data-lucide="github" class="icon-16"></i></a>
+              <a href="/news.html" class="btn btn-secondary">Read release notes</a>
+            </div>
+            <div class="chip-row">
+              <span class="chip">Realtime audio</span>
+              <span class="chip">Focused interface</span>
+              <span class="chip">Open roadmap</span>
+            </div>
           </div>
-        </div>
 
-        <aside class="hero-panel section-stack" data-reveal>
-          <div class="logo-pill">
-            <img src="/assets/images/Orion_logo.png" alt="Orion logo">
-            <span>Orion Product View</span>
+          <figure class="hero-media" data-scene-layer="0.82" data-parallax data-speed="0.22" data-reveal>
+            <div class="hero-media-inner">
+              <img src="/assets/images/laptop-orion-dark.png" class="home-laptop" alt="Orion workstation view" />
+            </div>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <section class="page-shell section-block" data-scene data-scene-pin>
+      <article class="hero-panel stack" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Product Experience</p>
+          <h2 class="section-title">Designed to keep high-focus sessions moving.</h2>
+        </div>
+        <div class="grid-3" data-stagger>
+          <article class="feature-card stack" data-scene-layer="1.1">
+            <h3>Engine stability</h3>
+            <p>Low-latency playback and dependable monitoring behavior for demanding recording and editing sessions.</p>
+          </article>
+          <article class="feature-card stack" data-scene-layer="1">
+            <h3>Timeline precision</h3>
+            <p>Arrangement, trimming, and iteration are structured to stay readable as session complexity expands.</p>
+          </article>
+          <article class="feature-card stack" data-scene-layer="0.9">
+            <h3>Scalable architecture</h3>
+            <p>Modular foundations prepare Orion for deeper extension paths and broader ecosystem interoperability.</p>
+          </article>
+        </div>
+      </article>
+    </section>
+
+    <section class="page-shell section-block" data-scene>
+      <div class="media-split" data-stagger>
+        <article class="hero-panel stack" data-reveal>
+          <div class="section-head">
+            <p class="eyebrow">Workflow</p>
+            <h2 class="section-title">A cleaner path from idea to final bounce.</h2>
           </div>
-          <div class="split-media" style="min-height:300px;">
+          <ul class="list-clean">
+            <li>Capture and arrange ideas quickly with a timeline layout that favors fast navigation.</li>
+            <li>Refine mix decisions with predictable routing and control group behavior.</li>
+            <li>Finalize export-ready sessions without bouncing between disconnected tools.</li>
+          </ul>
+        </article>
+
+        <article class="hero-panel stack" data-reveal>
+          <div class="split-media">
             <img src="/assets/images/Orion-Screenshot.png" alt="Orion interface screenshot">
           </div>
-          <p class="muted" style="margin:0;">Current release focus: stable real-time engine, timeline depth, and plugin-ready foundations.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="page-shell section-block" data-reveal>
-      <div class="grid-2">
-        <article class="feature-card section-stack">
-          <h2 class="section-title" style="font-size:1.4rem;">Current Focus</h2>
-          <ul class="list-clean">
-            <li>Real-time audio processing and low-latency playback pipeline</li>
-            <li>Multi-track timeline for MIDI and audio editing workflows</li>
-            <li>Mixer routing foundations for scalable sessions</li>
-            <li>Fast UI feedback for production-critical controls</li>
-          </ul>
-        </article>
-        <article class="feature-card section-stack">
-          <h2 class="section-title" style="font-size:1.4rem;">In Progress</h2>
-          <ul class="list-clean">
-            <li>External plugin ecosystem integration and management</li>
-            <li>Internal extension APIs for community modules</li>
-            <li>Optimization for larger projects and heavy sessions</li>
-            <li>Long-term platform coverage growth</li>
-          </ul>
+          <p class="body-copy">Every surface is tuned for legibility, reduction of UI noise, and faster iteration loops for real production environments.</p>
         </article>
       </div>
     </section>
 
-    <section class="page-shell section-block" data-reveal>
-      <div class="grid-3">
-        <article class="info-card section-stack">
-          <h3 style="margin:0; color:var(--heading);">For Producers</h3>
-          <p class="muted" style="margin:0;">Write, arrange, and mix with a production flow optimized for iteration speed.</p>
-        </article>
-        <article class="info-card section-stack">
-          <h3 style="margin:0; color:var(--heading);">For Developers</h3>
-          <p class="muted" style="margin:0;">Contribute to a modular codebase intended for long-term ecosystem growth.</p>
-        </article>
-        <article class="info-card section-stack">
-          <h3 style="margin:0; color:var(--heading);">For Community</h3>
-          <p class="muted" style="margin:0;">Open-source progress with transparent milestones and practical releases.</p>
-        </article>
-      </div>
+    <section class="page-shell section-block" data-scene>
+      <article class="hero-panel stack" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Roadmap Priorities</p>
+          <h2 class="section-title">What ships next for Orion.</h2>
+        </div>
+        <div class="metric-grid three" data-stagger>
+          <div class="stat-card stack"><strong>Performance depth</strong><p>Optimization for large projects, heavier track counts, and stable transport behavior.</p></div>
+          <div class="stat-card stack"><strong>Plugin readiness</strong><p>Structured plugin pathways and ecosystem hooks for creator-driven expansion.</p></div>
+          <div class="stat-card stack"><strong>Community velocity</strong><p>Open contribution model with transparent milestones and clear implementation focus.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="page-shell section-block" data-scene>
+      <article class="cta-band centered-shell text-center" data-reveal>
+        <p class="eyebrow">Launch Orion</p>
+        <h2 class="section-title">Start producing with Orion today.</h2>
+        <p class="lead">Use Orion now for free and follow each roadmap milestone as the platform evolves.</p>
+        <div class="btn-row center">
+          <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-primary">Open GitHub</a>
+          <a href="/community.html" class="btn btn-secondary">Join contributors</a>
+        </div>
+      </article>
     </section>
   </main>
 

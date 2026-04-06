@@ -3,64 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/assets/js/include.js"></script>
-  <link rel="stylesheet" href="/assets/css/ecosystem-carousel.css">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Ecosystem | WayV</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <meta name="description" content="Explore the full-screen WayV ecosystem with interactive hover-expanding product panels.">
-  <meta name="theme-color" content="#337dff">
+  <meta name="description" content="Explore the WayV product ecosystem across Orion, Wave Engine, Wavium Interactive, and WayV Originals.">
+  <meta name="theme-color" content="#2b7cff">
 </head>
 <body>
   <div id="header-include"></div>
 
-  <main class="page-main ecosystem-main">
-    <section class="ecosystem-stage" data-reveal>
-      <header class="page-shell ecosystem-stage-top">
+  <main class="page-main">
+    <section class="page-shell page-hero" data-scene>
+      <article class="hero-panel stack" data-reveal>
         <p class="eyebrow">WayV Ecosystem</p>
-        <h1 class="display-title">Hover a product to dive deeper.</h1>
-        <p class="lead">All core platforms are visible at once. Hover (or tap on touch) to expand a panel and prioritize the product you want to explore.</p>
-      </header>
+        <h1 class="display-title">One platform strategy. Four coordinated products.</h1>
+        <p class="lead">WayV aligns audio production, runtime performance, creator collaboration, and flagship experiences under one focused technology direction.</p>
+      </article>
+    </section>
 
-      <div class="ecosystem-panels" data-ecosystem-panels>
-        <a href="/wave-engine.html" class="eco-panel is-active" style="--panel-gradient: linear-gradient(135deg, #5c46f7 0%, #2e9df7 100%);">
-          <div class="eco-panel-media"><img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine logo"></div>
-          <div class="eco-panel-content">
-            <h2>Wave Engine</h2>
-            <p>High-performance runtime foundations for interactive software.</p>
-          </div>
-        </a>
+    <section class="page-shell section-block" data-scene data-scene-pin>
+      <article class="hero-panel stack" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Product Hierarchy</p>
+          <h2 class="section-title">Orion leads now. The rest extends the stack.</h2>
+        </div>
 
-        <a href="/orion.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #2f8dff 0%, #32d6d2 100%);">
-          <div class="eco-panel-media"><img src="/assets/images/Orion_logo.png" alt="Orion logo"></div>
-          <div class="eco-panel-content">
-            <h2>Orion</h2>
-            <p>Now released free: modern DAW workflow with low-latency audio.</p>
-          </div>
-        </a>
+        <div class="product-grid" data-stagger>
+          <a href="/orion.html" class="product-card" data-scene-layer="1.2">
+            <span class="chip">Primary experience</span>
+            <h3>Orion DAW</h3>
+            <p>Free modern DAW with low-latency foundations and open long-term product velocity.</p>
+            <span class="btn btn-link">Explore Orion <i data-lucide="arrow-up-right" class="icon-16"></i></span>
+          </a>
+          <a href="/wave-engine.html" class="product-card" data-scene-layer="1">
+            <span class="chip">Runtime core</span>
+            <h3>Wave Engine</h3>
+            <p>Performance-oriented engine architecture for advanced interactive software products.</p>
+            <span class="btn btn-link">Explore Wave Engine <i data-lucide="arrow-up-right" class="icon-16"></i></span>
+          </a>
+          <a href="/wavium-interactive.html" class="product-card" data-scene-layer="0.9">
+            <span class="chip">Creator network</span>
+            <h3>Wavium Interactive</h3>
+            <p>Mentorship and collaboration infrastructure for teams building in public.</p>
+            <span class="btn btn-link">Explore Wavium <i data-lucide="arrow-up-right" class="icon-16"></i></span>
+          </a>
+        </div>
 
-        <a href="/wavium-interactive.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #0887b8 0%, #43c9f2 100%);">
-          <div class="eco-panel-media"><img src="/assets/images/wavium-logo.svg" alt="Wavium logo"></div>
-          <div class="eco-panel-content">
-            <h2>Wavium Interactive</h2>
-            <p>Mentorship and collaboration layer for growing indie teams.</p>
-          </div>
+        <a href="/wayv-originals.html" class="product-card" data-reveal>
+          <span class="chip">Flagship validation layer</span>
+          <h3>WayV Originals</h3>
+          <p>Internal titles proving tooling quality in real production scenarios before wider release cycles.</p>
+          <span class="btn btn-link">Explore Originals <i data-lucide="arrow-up-right" class="icon-16"></i></span>
         </a>
+      </article>
+    </section>
 
-        <a href="/wayv-originals.html" class="eco-panel" style="--panel-gradient: linear-gradient(135deg, #3048d4 0%, #5e8fff 100%);">
-          <div class="eco-panel-media"><img src="/assets/images/wayv-logo.svg" alt="WayV Originals logo"></div>
-          <div class="eco-panel-content">
-            <h2>WayV Originals</h2>
-            <p>Flagship internal projects that validate the WayV stack.</p>
+    <section class="page-shell section-block" data-scene>
+      <div class="grid-2" data-stagger>
+        <article class="hero-panel stack" data-reveal>
+          <div class="section-head">
+            <p class="eyebrow">Operating Principles</p>
+            <h2 class="section-title">A unified product model with clear sequencing.</h2>
           </div>
-        </a>
+          <ul class="list-clean">
+            <li>Ship user-facing value through Orion while core systems mature beneath it.</li>
+            <li>Use Wave Engine as the durability and performance backbone.</li>
+            <li>Grow Wavium and Originals from verified product foundations, not assumptions.</li>
+          </ul>
+        </article>
+
+        <article class="hero-panel stack" data-reveal>
+          <div class="section-head">
+            <p class="eyebrow">Execution</p>
+            <h2 class="section-title">Current platform cadence.</h2>
+          </div>
+          <div class="timeline-list">
+            <div class="timeline-item"><span class="chip">Now</span><p class="body-copy">Orion release momentum and production-grade stability improvements.</p></div>
+            <div class="timeline-item"><span class="chip">Near term</span><p class="body-copy">Engine maturity and plugin architecture expansion.</p></div>
+            <div class="timeline-item"><span class="chip">Later</span><p class="body-copy">Broader creator network initiatives and originals development depth.</p></div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
   <div id="footer-include"></div>
-  <script src="/assets/js/ecosystem-carousel.js"></script>
 </body>
 </html>

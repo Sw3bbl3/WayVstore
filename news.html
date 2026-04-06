@@ -3,41 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/assets/js/include.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>News | WayV</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
   <meta name="description" content="Latest product and ecosystem updates from WayV.">
-  <meta name="theme-color" content="#337dff">
+  <meta name="theme-color" content="#2b7cff">
 </head>
 <body>
   <div id="header-include"></div>
 
   <main class="page-main">
-    <section class="page-shell page-hero section-stack" data-reveal>
-      <p class="eyebrow">WayV Newsroom</p>
-      <h1 class="display-title">Product updates and milestone announcements.</h1>
-      <p class="lead">Track launch notes, roadmap movement, and ecosystem releases from the WayV team.</p>
+    <section class="page-shell page-hero" data-scene>
+      <article class="hero-panel stack" data-reveal>
+        <p class="eyebrow">WayV Newsroom</p>
+        <h1 class="display-title">Launch updates, roadmap progress, and milestone signals.</h1>
+        <p class="lead">A concise record of what shipped, what changed, and where the product roadmap moves next.</p>
+      </article>
     </section>
 
-    <section class="page-shell section-block section-stack" data-reveal>
-      <article class="timeline-card section-stack">
-        <span class="badge"><i data-lucide="calendar-days" class="w-4 h-4"></i> April 3, 2026</span>
-        <h2 class="section-title" style="font-size:1.65rem;">Orion is now released for free</h2>
-        <p class="muted" style="margin:0; line-height:1.7;">Orion officially joins the WayV product lineup as a free, open-source DAW focused on low-latency audio, clean interface design, and long-term extensibility.</p>
-        <ul class="list-clean">
-          <li><strong style="color:var(--heading);">Live focus:</strong> audio engine performance, timeline workflows, and routing fundamentals.</li>
-          <li><strong style="color:var(--heading);">In progress:</strong> plugin ecosystem support and deeper optimization for complex sessions.</li>
-        </ul>
-        <a href="/orion.html" class="btn btn-primary" style="width:max-content;">Open Orion page <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-      </article>
+    <section class="page-shell section-block" data-scene>
+      <article class="hero-panel stack" data-reveal>
+        <div class="timeline-list" data-stagger>
+          <article class="timeline-card stack">
+            <span class="badge"><i data-lucide="calendar-days" class="icon-16"></i> April 3, 2026</span>
+            <h2>Orion launched free</h2>
+            <p>Orion officially entered the WayV product lineup as a free modern DAW built for low-latency performance and long-term extensibility.</p>
+            <ul class="list-clean">
+              <li>Current priorities: engine reliability, arrangement depth, and routing maturity.</li>
+              <li>Next focus: plugin pathways and larger-session performance optimization.</li>
+            </ul>
+            <a href="/orion.html" class="btn btn-primary">Open Orion page <i data-lucide="arrow-up-right" class="icon-16"></i></a>
+          </article>
 
-      <article class="timeline-card section-stack">
-        <span class="badge"><i data-lucide="calendar-days" class="w-4 h-4"></i> January 30, 2026</span>
-        <h2 class="section-title" style="font-size:1.4rem;">WayV open-source roadmap expansion</h2>
-        <p class="muted" style="margin:0; line-height:1.7;">WayV continues expanding transparent product development across ecosystem tooling, with stronger alignment between engine, audio, and community workflows.</p>
+          <article class="timeline-card stack">
+            <span class="badge"><i data-lucide="calendar-days" class="icon-16"></i> January 30, 2026</span>
+            <h2>Open roadmap expansion</h2>
+            <p>WayV expanded public roadmap alignment across Orion, Wave Engine, and ecosystem product layers to improve execution transparency.</p>
+          </article>
+        </div>
       </article>
     </section>
   </main>
