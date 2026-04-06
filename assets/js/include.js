@@ -104,6 +104,45 @@ function setupRevealAnimations() {
   });
 }
 
+function setupHomepageMotion() {
+  if (!document.body.classList.contains('home-page')) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const hero = document.querySelector('.orion-top-hero');
+  if (!hero) return;
+
+  const motionSections = Array.from(document.querySelectorAll('main .section-block'));
+  let rafId = null;
+
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+  function updateMotion() {
+    rafId = null;
+
+    const heroRect = hero.getBoundingClientRect();
+    const heroProgress = clamp(-heroRect.top / Math.max(heroRect.height, 1), 0, 1.1);
+    hero.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+
+    const viewportMid = window.innerHeight * 0.52;
+    motionSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const sectionMid = rect.top + rect.height * 0.5;
+      const normalized = clamp((viewportMid - sectionMid) / window.innerHeight, -1, 1);
+      section.style.setProperty('--section-shift', `${(normalized * 24).toFixed(2)}px`);
+      section.style.setProperty('--section-emphasis', `${(1 - Math.abs(normalized) * 0.35).toFixed(3)}`);
+    });
+  }
+
+  function requestUpdate() {
+    if (rafId !== null) return;
+    rafId = window.requestAnimationFrame(updateMotion);
+  }
+
+  updateMotion();
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+}
+
 function setupMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -183,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     refreshIconsAndTheme();
     setupDesktopDropdowns();
     setupRevealAnimations();
+    setupHomepageMotion();
   });
 });
 
