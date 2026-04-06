@@ -29,15 +29,41 @@
     </a>
 
     <div class="desktop-nav" aria-label="Desktop navigation">
+      <a href="/index.html" class="top-link">Home</a>
+
       <div class="menu-group" data-menu-group>
         <button class="menu-trigger" type="button" data-menu-trigger="orion" aria-expanded="false">
           Orion
           <span class="caret">▾</span>
         </button>
         <div class="menu-dropdown" role="menu" aria-label="Orion links">
-          <a href="/orion.html" class="dropdown-link" data-menu-parent="orion">Orion Overview</a>
-          <a href="/news.html" class="dropdown-link" data-menu-parent="orion">Release Notes</a>
-          <a href="https://github.com/WayV-Inc" class="dropdown-link" target="_blank" rel="noopener">Development on GitHub</a>
+          <div class="menu-dropdown-inner">
+            <div class="dropdown-lead">
+              <p class="dropdown-eyebrow">Orion</p>
+              <p class="dropdown-title">Music production, modernized.</p>
+              <p class="dropdown-copy">Open Orion instantly, track releases, and follow the public development path.</p>
+            </div>
+            <div class="dropdown-column">
+              <a href="/orion.html" class="dropdown-link" data-menu-parent="orion">
+                <span>Orion Overview</span>
+                <small>See the flagship DAW and workflow direction.</small>
+              </a>
+              <a href="/news.html" class="dropdown-link" data-menu-parent="orion">
+                <span>Release Notes</span>
+                <small>Read shipping updates and platform milestones.</small>
+              </a>
+            </div>
+            <div class="dropdown-column">
+              <a href="https://github.com/WayV-Inc" class="dropdown-link" target="_blank" rel="noopener">
+                <span>Development on GitHub</span>
+                <small>Follow commits, roadmap progress, and open issues.</small>
+              </a>
+              <a href="/community.html" class="dropdown-link" data-menu-parent="orion">
+                <span>Join the Community</span>
+                <small>Connect with creators and contributors building with Orion.</small>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -47,10 +73,33 @@
           <span class="caret">▾</span>
         </button>
         <div class="menu-dropdown" role="menu" aria-label="Ecosystem links">
-          <a href="/ecosystem.html" class="dropdown-link" data-menu-parent="ecosystem">Ecosystem Overview</a>
-          <a href="/wave-engine.html" class="dropdown-link" data-menu-parent="ecosystem">Wave Engine</a>
-          <a href="/wavium-interactive.html" class="dropdown-link" data-menu-parent="ecosystem">Wavium Interactive</a>
-          <a href="/wayv-originals.html" class="dropdown-link" data-menu-parent="ecosystem">WayV Originals</a>
+          <div class="menu-dropdown-inner">
+            <div class="dropdown-lead">
+              <p class="dropdown-eyebrow">Ecosystem</p>
+              <p class="dropdown-title">One coordinated stack.</p>
+              <p class="dropdown-copy">Explore the products around Orion, from runtime infrastructure to creator programs.</p>
+            </div>
+            <div class="dropdown-column">
+              <a href="/ecosystem.html" class="dropdown-link" data-menu-parent="ecosystem">
+                <span>Ecosystem Overview</span>
+                <small>Get the full strategy and product map.</small>
+              </a>
+              <a href="/wave-engine.html" class="dropdown-link" data-menu-parent="ecosystem">
+                <span>Wave Engine</span>
+                <small>Runtime architecture for high-performance apps.</small>
+              </a>
+            </div>
+            <div class="dropdown-column">
+              <a href="/wavium-interactive.html" class="dropdown-link" data-menu-parent="ecosystem">
+                <span>Wavium Interactive</span>
+                <small>Community collaboration and mentorship.</small>
+              </a>
+              <a href="/wayv-originals.html" class="dropdown-link" data-menu-parent="ecosystem">
+                <span>WayV Originals</span>
+                <small>First-party projects validating the platform.</small>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -60,27 +109,49 @@
           <span class="caret">▾</span>
         </button>
         <div class="menu-dropdown" role="menu" aria-label="Company links">
-          <a href="/about.html" class="dropdown-link" data-menu-parent="company">About</a>
-          <a href="/community.html" class="dropdown-link" data-menu-parent="company">Community</a>
-          <a href="/careers.html" class="dropdown-link" data-menu-parent="company">Careers</a>
-          <a href="/news.html" class="dropdown-link" data-menu-parent="company">News</a>
+          <div class="menu-dropdown-inner">
+            <div class="dropdown-lead">
+              <p class="dropdown-eyebrow">Company</p>
+              <p class="dropdown-title">Built for creators and developers.</p>
+              <p class="dropdown-copy">Learn about WayV, follow news, and find where to participate across the ecosystem.</p>
+            </div>
+            <div class="dropdown-column">
+              <a href="/about.html" class="dropdown-link" data-menu-parent="company">
+                <span>About</span>
+                <small>Mission, product philosophy, and platform direction.</small>
+              </a>
+              <a href="/community.html" class="dropdown-link" data-menu-parent="company">
+                <span>Community</span>
+                <small>Programs, creator support, and contributor paths.</small>
+              </a>
+            </div>
+            <div class="dropdown-column">
+              <a href="/careers.html" class="dropdown-link" data-menu-parent="company">
+                <span>Careers</span>
+                <small>Open roles across product, design, and engineering.</small>
+              </a>
+              <a href="/news.html" class="dropdown-link" data-menu-parent="company">
+                <span>News</span>
+                <small>Company updates, launches, and release activity.</small>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <a href="/news.html" class="top-link">News</a>
     </div>
 
     <div class="desktop-actions">
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+      <button class="theme-toggle header-icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
         <i data-lucide="sun" data-theme-icon="sun" class="icon-16"></i>
         <i data-lucide="moon" data-theme-icon="moon" class="icon-16 hidden"></i>
-        <span data-theme-label>Dark</span>
       </button>
-      <a href="/orion.html" class="btn btn-primary header-github" aria-label="Open Orion">
-        <i data-lucide="music-4" class="icon-16"></i>
+      <a href="/orion.html" class="header-open-link" aria-label="Open Orion">
         Open Orion
       </a>
-      <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="btn btn-secondary header-github" aria-label="WayV on GitHub">
+      <a href="https://github.com/WayV-Inc" target="_blank" rel="noopener" class="header-icon-btn" aria-label="WayV on GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6a3.18 3.18 0 0 0-1.34-1.75c-1.1-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.57 2.57 0 0 1 .76-1.6c-2.66-.3-5.47-1.33-5.47-5.92a4.64 4.64 0 0 1 1.24-3.22 4.31 4.31 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.35 11.35 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 0 1 .12 3.18 4.63 4.63 0 0 1 1.24 3.22c0 4.61-2.82 5.62-5.5 5.91a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.22.7.83.58A12 12 0 0 0 12 .5"/></svg>
-        GitHub
       </a>
     </div>
 

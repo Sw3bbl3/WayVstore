@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/assets/js/include.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="/assets/js/home-hero-carousel.js" defer></script>
   <title>WayV | Orion-First Creative Technology</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
   <meta name="description" content="WayV builds modern creative technology across Orion DAW, Wave Engine, and an open product ecosystem.">
@@ -15,142 +15,56 @@
   <div id="header-include"></div>
 
   <main class="page-main">
-    <section class="page-shell page-hero" data-scene data-scene-pin>
+    <section class="page-shell page-hero" data-scene>
       <article class="home-hero" data-scene-layer="1">
         <div class="hero-grid">
-          <div class="stack" data-scene-layer="1.15" data-reveal>
-            <span class="badge"><i data-lucide="sparkles" class="icon-16"></i> Orion DAW now free</span>
-            <h1 class="hero-title">Orion. Free now. Ready for real sessions.</h1>
-            <p class="lead">WayV ships a modern digital audio workstation with low-latency playback, clean timeline flow, and an open architecture built to scale with creators.</p>
-            <div class="btn-row">
-              <a href="/orion.html" class="btn btn-primary">Open Orion <i data-lucide="arrow-up-right" class="icon-16"></i></a>
-              <a href="/news.html" class="btn btn-secondary">Read launch notes</a>
+          <div class="stack home-launch-copy" data-reveal>
+            <div class="home-hero-track" data-home-carousel-text>
+              <article class="home-hero-slide slide-orion is-active" data-home-slide>
+                <h1 class="hero-title">Orion is now released for Free</h1>
+                <div class="btn-row">
+                  <a href="/orion.html" class="btn btn-primary">Download Orion</a>
+                  <a href="/news.html" class="btn btn-secondary">Learn more</a>
+                </div>
+              </article>
+
+              <article class="home-hero-slide slide-wave-engine" data-home-slide>
+                <h1 class="hero-title">Wave Engine is being developed</h1>
+                <div class="btn-row">
+                  <a href="/wave-engine.html" class="btn btn-primary">View Wave Engine</a>
+                  <a href="/news.html" class="btn btn-secondary">Development news</a>
+                </div>
+              </article>
+
+              <article class="home-hero-slide slide-waveos" data-home-slide>
+                <h1 class="hero-title">WaveOS, our operating system, is being developed</h1>
+                <div class="btn-row">
+                  <a href="/ecosystem.html" class="btn btn-primary">Explore WaveOS</a>
+                  <a href="/news.html" class="btn btn-secondary">Development news</a>
+                </div>
+              </article>
             </div>
-            <div class="chip-row">
-              <span class="chip">Low-latency core</span>
-              <span class="chip">Modern timeline UX</span>
-              <span class="chip">Open roadmap</span>
+
+            <div class="home-carousel-dots" role="tablist" aria-label="Homepage highlights">
+              <button class="home-carousel-dot is-active" type="button" data-home-carousel-dot="0" aria-label="Show Orion update" aria-selected="true"></button>
+              <button class="home-carousel-dot" type="button" data-home-carousel-dot="1" aria-label="Show Wave Engine update" aria-selected="false"></button>
+              <button class="home-carousel-dot" type="button" data-home-carousel-dot="2" aria-label="Show WaveOS update" aria-selected="false"></button>
             </div>
+            <div class="home-carousel-progress" aria-hidden="true"><span data-home-carousel-progress></span></div>
           </div>
 
-          <figure class="hero-media" data-scene-layer="0.76" data-parallax data-speed="0.2" data-reveal>
+          <figure class="hero-media" data-reveal>
             <div class="hero-media-inner">
-              <img src="/assets/images/laptop-orion-dark.png" class="home-laptop" alt="Orion DAW on laptop" />
+              <img
+                src="/assets/images/laptop-orion-dark-cutout.png"
+                class="home-feature-media media-laptop"
+                alt="Orion DAW on laptop"
+                data-home-carousel-media
+                data-parallax
+                data-speed="0.12"
+              />
             </div>
           </figure>
-        </div>
-      </article>
-    </section>
-
-    <section class="page-shell section-block" data-scene data-scene-pin>
-      <article class="hero-panel home-capability-rail" data-scene-layer="1" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Orion Capabilities</p>
-          <h2 class="section-title">A cinematic workflow tuned for speed, control, and precision.</h2>
-        </div>
-
-        <div class="capability-row" data-stagger>
-          <div class="card capability-panel stack" data-scene-layer="1.08">
-            <h3>Audio engine that stays responsive under pressure</h3>
-            <p>Orion keeps monitoring and playback stable with deterministic low-latency behavior for modern production sessions.</p>
-          </div>
-          <div class="card capability-panel stack" data-scene-layer="0.92">
-            <h3>Timeline and routing that scale cleanly</h3>
-            <p>Editing, arrangement, and session navigation are designed to stay clear as project complexity grows.</p>
-          </div>
-        </div>
-
-        <div class="capability-row" data-stagger>
-          <div class="card capability-panel stack" data-scene-layer="0.9">
-            <h3>Creator-first interface language</h3>
-            <p>Focused controls, restrained contrast, and consistent interaction patterns keep attention on the work instead of the UI.</p>
-          </div>
-          <div class="card capability-panel stack" data-scene-layer="1.14">
-            <h3>Open platform trajectory</h3>
-            <p>Plugin integration and extension APIs are built into the roadmap so contributors can help shape the future stack.</p>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="page-shell section-block" data-scene>
-      <article class="ecosystem-highlight hero-panel stack" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">WayV Ecosystem</p>
-          <h2 class="section-title">One ecosystem, four focused product pillars.</h2>
-          <p class="body-copy">Orion leads the experience today, while Wave Engine, Wavium Interactive, and WayV Originals expand the long-term platform story.</p>
-        </div>
-
-        <div class="product-grid" data-stagger>
-          <a href="/orion.html" class="product-card" data-scene-layer="1.15">
-            <span class="chip">Primary</span>
-            <h3>Orion DAW</h3>
-            <p>Free now, production-focused, and built for rapid creative throughput.</p>
-          </a>
-          <a href="/wave-engine.html" class="product-card" data-scene-layer="1">
-            <span class="chip">Core runtime</span>
-            <h3>Wave Engine</h3>
-            <p>High-performance foundation for interactive software and future runtime modules.</p>
-          </a>
-          <a href="/wavium-interactive.html" class="product-card" data-scene-layer="0.9">
-            <span class="chip">Creator network</span>
-            <h3>Wavium Interactive</h3>
-            <p>Mentorship, collaboration, and shared production momentum for indie teams.</p>
-          </a>
-        </div>
-
-        <div class="btn-row">
-          <a href="/ecosystem.html" class="btn btn-secondary">Explore ecosystem</a>
-        </div>
-      </article>
-    </section>
-
-    <section class="page-shell section-block" data-scene>
-      <div class="grid-2" data-stagger>
-        <article class="hero-panel stack" data-reveal>
-          <div class="section-head">
-            <p class="eyebrow">Proof</p>
-            <h2 class="section-title">Execution signals that build confidence.</h2>
-          </div>
-          <div class="metric-grid two">
-            <div class="stat-card stack"><strong>4</strong><p>Integrated product tracks with aligned design language and roadmap direction.</p></div>
-            <div class="stat-card stack"><strong>Free Orion</strong><p>Immediate product access with transparent development progress.</p></div>
-            <div class="stat-card stack"><strong>Open model</strong><p>Community-visible evolution across audio, runtime, and creator workflows.</p></div>
-            <div class="stat-card stack"><strong>2026 pace</strong><p>Frequent launch notes and active platform refinement cadence.</p></div>
-          </div>
-        </article>
-
-        <article class="hero-panel stack" data-reveal>
-          <div class="section-head">
-            <p class="eyebrow">Roadmap</p>
-            <h2 class="section-title">Near-term focus for Orion and platform depth.</h2>
-          </div>
-          <div class="timeline-list">
-            <div class="timeline-item">
-              <span class="chip">Now</span>
-              <p class="body-copy">Stabilize low-latency performance and strengthen large-session reliability.</p>
-            </div>
-            <div class="timeline-item">
-              <span class="chip">Next</span>
-              <p class="body-copy">Expand workflow depth with routing precision and faster arrangement iteration.</p>
-            </div>
-            <div class="timeline-item">
-              <span class="chip">Then</span>
-              <p class="body-copy">Open plugin and extension pathways for wider creator and developer adoption.</p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="page-shell section-block" data-scene>
-      <article class="cta-band centered-shell text-center" data-reveal>
-        <p class="eyebrow">Start With Orion</p>
-        <h2 class="section-title">Build your next project in Orion today.</h2>
-        <p class="lead">Launch the flagship DAW now, then explore the wider WayV ecosystem as your workflow scales.</p>
-        <div class="btn-row center">
-          <a href="/orion.html" class="btn btn-primary">Open Orion</a>
-          <a href="/community.html" class="btn btn-secondary">Join the community</a>
         </div>
       </article>
     </section>

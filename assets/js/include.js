@@ -33,7 +33,7 @@ function markActiveNavigation() {
   const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const activeParents = new Set();
 
-  document.querySelectorAll('#navbar .dropdown-link, #mobile-menu .menu-links a').forEach((link) => {
+  document.querySelectorAll('#navbar .dropdown-link, #navbar .top-link, #mobile-menu .menu-links a').forEach((link) => {
     const href = (link.getAttribute('href') || '').replace(/^\//, '').toLowerCase();
     if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
     const isMatch = href === path || (path === '' && href === 'index.html');
@@ -86,22 +86,6 @@ function setupDesktopDropdowns() {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeAll();
   });
-}
-
-function setupRevealFallbacks() {
-  const revealEls = document.querySelectorAll('[data-reveal], [data-stagger]');
-  if (!revealEls.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('is-visible');
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  revealEls.forEach((el) => observer.observe(el));
 }
 
 function setupMobileMenu() {
@@ -158,6 +142,12 @@ function setupMobileMenu() {
 }
 
 function initMotionLayer() {
+  const revealAll = () => {
+    document.querySelectorAll('[data-reveal], [data-stagger]').forEach((el) => {
+      el.classList.add('is-visible');
+    });
+  };
+
   if (window.WayVMotion && typeof window.WayVMotion.init === 'function') {
     window.WayVMotion.init();
     return;
@@ -176,7 +166,9 @@ function initMotionLayer() {
   window.setTimeout(() => {
     if (window.WayVMotion && typeof window.WayVMotion.init === 'function') {
       window.WayVMotion.init();
+      return;
     }
+    revealAll();
   }, 320);
 }
 
@@ -184,7 +176,6 @@ function initializeEnhancements() {
   refreshIconsAndTheme();
   markActiveNavigation();
   setupDesktopDropdowns();
-  setupRevealFallbacks();
   initMotionLayer();
 }
 

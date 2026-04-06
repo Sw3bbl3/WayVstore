@@ -61,8 +61,11 @@
     const wantsTransition = options.transition === true && current !== normalized;
     const supportsViewTransitions = typeof document.startViewTransition === 'function';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const smallViewport = window.matchMedia('(max-width: 900px)').matches;
+    const lowCPU = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+    const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
 
-    if (!wantsTransition || !supportsViewTransitions || reduceMotion) {
+    if (!wantsTransition || !supportsViewTransitions || reduceMotion || smallViewport || lowCPU || lowMemory) {
       commitTheme(normalized);
       return;
     }
