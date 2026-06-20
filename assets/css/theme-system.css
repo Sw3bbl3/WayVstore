@@ -1365,3 +1365,9 @@ html.theme-transitioning.to-dark::view-transition-new(root) {
 .hidden { display: none !important; }
 @media (max-width: 980px) { .tap-hero, .tap-app-shell, .insight-grid, .split-grid, .settings-grid { grid-template-columns: 1fr; } .tap-feature-grid, .metric-grid { grid-template-columns: repeat(2, 1fr); } .tap-sidebar { border-right: 0; border-bottom: 1px solid var(--border); } .tap-hero-device { min-height: 520px; } }
 @media (max-width: 640px) { .tap-display { font-size: clamp(3rem, 18vw, 5rem); } .tap-feature-grid, .metric-grid, .spark-grid { grid-template-columns: 1fr; } .table-head, .table-row { grid-template-columns: 1fr; } .tap-workspace-head { align-items: stretch; flex-direction: column; } }
+.tap-status.is-error { color: #ff6b6b; }
+.tap-tabs button[hidden] { display: none; }
+.tap-workspace-head .btn { white-space: nowrap; }
+.tap-device-card, .tap-app-shell { position: relative; }
+.tap-device-card::before, .tap-app-shell::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 28%, rgba(255,255,255,.08)); opacity: .8; }
+.tap-device-card > *, .tap-app-shell > * { position: relative; z-index: 1; }
