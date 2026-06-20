@@ -4,69 +4,120 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/assets/js/include.js"></script>
-  <script src="/assets/js/home-hero-carousel.js" defer></script>
-  <title>WayV | Orion-First Creative Technology</title>
+  <script src="/assets/js/tapmood-app.js" defer></script>
+  <title>Tapmood | Workforce mood intelligence</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg">
-  <meta name="description" content="WayV builds modern creative technology across Orion DAW, Wave Engine, and an open product ecosystem.">
-  <meta name="theme-color" content="#2b7cff">
+  <meta name="description" content="Tapmood is an Apple-like B2B workforce mood platform with Supabase login, HR dashboards, seat management, and admin company controls.">
+  <meta name="theme-color" content="#9df8d1">
 </head>
-<body class="home-page">
+<body class="tapmood-page">
   <div id="header-include"></div>
 
-  <main class="page-main">
-    <section class="page-shell page-hero" data-scene>
-      <article class="home-hero" data-scene-layer="1">
-        <div class="hero-grid">
-          <div class="stack home-launch-copy" data-reveal>
-            <div class="home-hero-track" data-home-carousel-text>
-              <article class="home-hero-slide slide-orion is-active" data-home-slide>
-                <h1 class="hero-title">Orion is now released for Free</h1>
-                <div class="btn-row">
-                  <a href="/orion.html" class="btn btn-primary">Download Orion</a>
-                  <a href="/news.html" class="btn btn-secondary">Learn more</a>
-                </div>
-              </article>
+  <main class="tap-main">
+    <section class="tap-hero page-shell" id="top">
+      <div class="tap-hero-copy" data-reveal>
+        <p class="eyebrow">Tapmood for teams</p>
+        <h1 class="tap-display">Know how work feels before it becomes a retention risk.</h1>
+        <p class="tap-lead">Tapmood gives HR leaders a private, real-time pulse on culture, capacity, burnout, and belonging — with beautiful dashboards powered by Supabase.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary tap-cta" href="#app">Open dashboard</a>
+          <a class="btn btn-secondary" href="#platform">Explore platform</a>
+        </div>
+        <div class="tap-trust-row" aria-label="Product highlights">
+          <span>SSO-ready</span><span>Role-aware</span><span>Seat-based</span><span>Realtime insights</span>
+        </div>
+      </div>
+      <div class="tap-hero-device" data-reveal>
+        <div class="tap-orb tap-orb-one"></div>
+        <div class="tap-orb tap-orb-two"></div>
+        <div class="tap-device-card">
+          <div class="tap-device-top"><span></span><span></span><span></span></div>
+          <div class="mood-ring" aria-label="Mood score 84 percent"><strong>84</strong><small>Mood score</small></div>
+          <div class="spark-grid">
+            <div><b>Engagement</b><strong>91%</strong><span class="spark up"></span></div>
+            <div><b>Burnout risk</b><strong>12%</strong><span class="spark down"></span></div>
+            <div><b>Belonging</b><strong>88%</strong><span class="spark up"></span></div>
+          </div>
+          <div class="mini-feed">
+            <p><i data-lucide="heart-pulse"></i> Product sentiment improved after manager check-ins.</p>
+            <p><i data-lucide="shield-check"></i> Anonymous comments clustered by Supabase edge-safe policies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <article class="home-hero-slide slide-wave-engine" data-home-slide>
-                <h1 class="hero-title">Wave Engine is being developed</h1>
-                <div class="btn-row">
-                  <a href="/wave-engine.html" class="btn btn-primary">View Wave Engine</a>
-                  <a href="/news.html" class="btn btn-secondary">Development news</a>
-                </div>
-              </article>
+    <section class="page-shell tap-section" id="platform">
+      <div class="section-head text-center">
+        <p class="eyebrow">A complete operating system for HR</p>
+        <h2 class="section-title">Everything a people team needs to listen, act, and prove impact.</h2>
+      </div>
+      <div class="tap-feature-grid">
+        <article><i data-lucide="activity"></i><h3>Live culture pulse</h3><p>See mood trends, at-risk teams, participation, and comment themes in one calm command center.</p></article>
+        <article><i data-lucide="users-round"></i><h3>People & seats</h3><p>Add employees, assign departments, monitor seat usage, and keep licensing clean as teams grow.</p></article>
+        <article><i data-lucide="building-2"></i><h3>Company admin</h3><p>Platform admins can create companies, edit plans, review seats, and jump between tenant views.</p></article>
+        <article><i data-lucide="lock-keyhole"></i><h3>Supabase auth</h3><p>Email login, session persistence, role routing, and database-backed demo data with graceful fallback.</p></article>
+      </div>
+    </section>
 
-              <article class="home-hero-slide slide-waveos" data-home-slide>
-                <h1 class="hero-title">WaveOS, our operating system, is being developed</h1>
-                <div class="btn-row">
-                  <a href="/ecosystem.html" class="btn btn-primary">Explore WaveOS</a>
-                  <a href="/news.html" class="btn btn-secondary">Development news</a>
-                </div>
-              </article>
+    <section class="page-shell tap-app-shell" id="app" aria-label="Tapmood application">
+      <aside class="tap-sidebar">
+        <div class="tap-brand-mark"><span>t</span><div><strong>tapmood</strong><small id="session-subtitle">Demo workspace</small></div></div>
+        <nav class="tap-tabs" aria-label="Dashboard sections">
+          <button class="active" data-view="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</button>
+          <button data-view="people"><i data-lucide="user-plus"></i> People & seats</button>
+          <button data-view="settings"><i data-lucide="settings"></i> Settings</button>
+          <button data-view="admin"><i data-lucide="crown"></i> Admin</button>
+        </nav>
+        <button class="btn btn-secondary tap-logout" id="logout-button">Sign out</button>
+      </aside>
+
+      <section class="tap-panel">
+        <div class="tap-login-card" id="login-card">
+          <p class="eyebrow">Secure login</p>
+          <h2>Connect to Tapmood</h2>
+          <p>Use Supabase email/password auth when configured. For this static demo, try <strong>hr@tapmood.app</strong> or <strong>admin@tapmood.app</strong> with any password.</p>
+          <form id="login-form" class="tap-form">
+            <label>Email<input type="email" id="email" value="hr@tapmood.app" required></label>
+            <label>Password<input type="password" id="password" value="tapmood-demo" required></label>
+            <button class="btn btn-primary" type="submit">Log in</button>
+          </form>
+          <p class="tap-status" id="auth-status"></p>
+        </div>
+
+        <div class="tap-workspace hidden" id="workspace">
+          <header class="tap-workspace-head">
+            <div><p class="eyebrow" id="role-label">HR dashboard</p><h2 id="workspace-title">Good morning, People team.</h2></div>
+            <button class="btn btn-primary" id="sync-button"><i data-lucide="refresh-cw"></i> Sync Supabase</button>
+          </header>
+
+          <div class="tap-view" data-view-panel="dashboard">
+            <div class="metric-grid" id="metric-grid"></div>
+            <div class="insight-grid">
+              <article class="glass-card wide"><h3>Team mood map</h3><div class="bar-list" id="team-bars"></div></article>
+              <article class="glass-card"><h3>Actions</h3><ul id="action-list" class="action-list"></ul></article>
             </div>
-
-            <div class="home-carousel-dots" role="tablist" aria-label="Homepage highlights">
-              <button class="home-carousel-dot is-active" type="button" data-home-carousel-dot="0" aria-label="Show Orion update" aria-selected="true"></button>
-              <button class="home-carousel-dot" type="button" data-home-carousel-dot="1" aria-label="Show Wave Engine update" aria-selected="false"></button>
-              <button class="home-carousel-dot" type="button" data-home-carousel-dot="2" aria-label="Show WaveOS update" aria-selected="false"></button>
-            </div>
-            <div class="home-carousel-progress" aria-hidden="true"><span data-home-carousel-progress></span></div>
           </div>
 
-          <figure class="hero-media" data-reveal>
-            <div class="hero-media-inner">
-              <img
-                src="/assets/images/laptop-orion-dark-cutout.png"
-                class="home-feature-media media-laptop"
-                alt="Orion DAW on laptop"
-                data-home-carousel-media
-                data-parallax
-                data-speed="0.12"
-              />
+          <div class="tap-view hidden" data-view-panel="people">
+            <div class="split-grid">
+              <article class="glass-card"><h3>Add a person</h3><form id="person-form" class="tap-form compact"><input id="person-name" placeholder="Name" required><input id="person-email" type="email" placeholder="Email" required><input id="person-team" placeholder="Team" required><button class="btn btn-primary" type="submit">Add seat</button></form></article>
+              <article class="glass-card"><h3>Seat usage</h3><div class="seat-meter"><span id="seat-meter-fill"></span></div><p id="seat-copy"></p></article>
             </div>
-          </figure>
+            <div class="people-table" id="people-table"></div>
+          </div>
+
+          <div class="tap-view hidden" data-view-panel="settings">
+            <div class="settings-grid"><article class="glass-card"><h3>Workspace settings</h3><label>Company name<input id="company-name"></label><label>Plan<select id="company-plan"><option>Growth</option><option>Scale</option><option>Enterprise</option></select></label><button class="btn btn-primary" id="save-settings">Save settings</button></article><article class="glass-card"><h3>Data connection</h3><p id="connection-copy"></p><code>window.TAPMOOD_SUPABASE_URL<br>window.TAPMOOD_SUPABASE_ANON_KEY</code></article></div>
+          </div>
+
+          <div class="tap-view hidden" data-view-panel="admin">
+            <div class="split-grid"><article class="glass-card"><h3>Create company</h3><form id="company-form" class="tap-form compact"><input id="new-company" placeholder="Company name" required><input id="new-seats" type="number" min="1" value="50" required><button class="btn btn-primary" type="submit">Create</button></form></article><article class="glass-card"><h3>Platform overview</h3><div id="admin-metrics" class="admin-metrics"></div></article></div>
+            <div class="people-table" id="company-table"></div>
+          </div>
         </div>
-      </article>
+      </section>
     </section>
   </main>
 
